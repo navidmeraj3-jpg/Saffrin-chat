@@ -77,8 +77,21 @@
     color: var(--muted); cursor: pointer;
     display: flex; align-items: center; justify-content: center;
     font-size: 15px; transition: all 0.2s;
+    position: relative;
   }
   .icon-btn:hover { background: rgba(244,180,0,0.18); color: var(--gold); }
+  .icon-btn .dot {
+    position: absolute; top: -3px; right: -3px;
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--red); border: 2px solid var(--panel);
+    display: none;
+    animation: dotPulse 1.5s infinite;
+  }
+  .icon-btn .dot.show { display: block; }
+  @keyframes dotPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.4); }
+  }
 
   /* CHAT */
   .chat {
@@ -99,6 +112,7 @@
   }
   .msg-av.bot { background: linear-gradient(135deg, var(--gold), var(--deep)); }
   .msg-av.user { background: linear-gradient(135deg, var(--red), #8b2a1f); }
+  .msg-av.support { background: linear-gradient(135deg, var(--green), #16a34a); }
   .msg {
     max-width: 78%; padding: 10px 14px;
     border-radius: 14px; font-size: 13px;
@@ -112,6 +126,19 @@
     background: linear-gradient(135deg, var(--gold), var(--deep));
     color: #1a1410; font-weight: 500;
     border-top-left-radius: 4px;
+  }
+  .msg.support {
+    background: linear-gradient(135deg, rgba(34,197,94,0.15), rgba(34,197,94,0.05));
+    border: 1px solid rgba(34,197,94,0.4);
+    border-top-right-radius: 4px;
+  }
+  .msg.support::before {
+    content: '👨‍💼 پشتیبان';
+    display: block;
+    font-size: 10.5px;
+    color: var(--green);
+    margin-bottom: 5px;
+    font-weight: 700;
   }
   .msg strong { color: var(--gold); }
   .msg.user strong { color: #1a1410; }
@@ -136,7 +163,7 @@
     30% { transform: translateY(-6px); opacity: 1; }
   }
 
-  /* QUICK REPLIES */
+  /* QUICK */
   .quick {
     padding: 0 18px 10px;
     display: flex; gap: 6px; flex-wrap: wrap;
@@ -177,7 +204,6 @@
     transition: all 0.2s; flex-shrink: 0;
   }
   .send:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(244,180,0,0.4); }
-  .send:active { transform: scale(0.96); }
 
   /* SUPPORT FORM */
   .support-form {
@@ -210,8 +236,43 @@
     font-family: inherit; cursor: pointer;
     transition: all 0.2s;
   }
-  .support-form button:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(34,197,94,0.4); }
-  .support-form button:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+  .support-form button:hover { transform: translateY(-1px); }
+  .support-form button:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  /* TICKET TRACKER */
+  .ticket-tracker {
+    background: linear-gradient(135deg, rgba(244,180,0,0.1), rgba(244,180,0,0.02));
+    border: 1px solid var(--border);
+    border-radius: 14px; padding: 14px; margin-top: 8px;
+  }
+  .ticket-tracker h4 {
+    font-size: 13px; color: var(--gold);
+    margin-bottom: 8px; font-weight: 700;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .ticket-id {
+    font-family: monospace;
+    font-size: 16px; font-weight: 800;
+    color: var(--gold); letter-spacing: 2px;
+    background: rgba(244,180,0,0.12);
+    padding: 8px 12px; border-radius: 8px;
+    text-align: center; direction: ltr;
+    margin: 10px 0;
+    border: 1px dashed var(--border);
+    cursor: pointer;
+  }
+  .ticket-status {
+    font-size: 12px;
+    display: flex; align-items: center; gap: 6px;
+    color: var(--muted); line-height: 1.6;
+  }
+  .status-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--gold);
+    animation: dotPulse 1.5s infinite;
+  }
+  .status-dot.waiting { background: var(--gold); }
+  .status-dot.answered { background: var(--green); animation: none; }
 
   /* ADMIN */
   .admin {
@@ -278,7 +339,7 @@
     display: inline-flex; align-items: center; gap: 6px;
   }
   .btn-primary { background: linear-gradient(135deg, var(--gold), var(--deep)); color: #1a1410; }
-  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(244,180,0,0.35); }
+  .btn-primary:hover { transform: translateY(-1px); }
   .btn-ghost { background: rgba(244,180,0,0.08); color: var(--gold); border: 1px solid var(--border); }
   .btn-danger { background: rgba(192,57,43,0.15); color: #ff8a80; border: 1px solid rgba(192,57,43,0.4); }
   .btn-sm { padding: 6px 10px; font-size: 11.5px; }
@@ -386,7 +447,6 @@
     font-weight: 700; font-family: inherit;
     cursor: pointer; transition: all 0.2s;
   }
-  .login-card button:hover { transform: translateY(-2px); }
   .login-err {
     color: #ff8a80; font-size: 12px;
     margin-top: 10px; min-height: 16px;
@@ -447,7 +507,23 @@
   }
   .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
-  /* MOBILE */
+  /* NEW REPLY NOTIFICATION */
+  .new-reply-notif {
+    position: fixed; top: 20px; left: 50%;
+    transform: translateX(-50%) translateY(-100px);
+    background: linear-gradient(135deg, var(--green), #16a34a);
+    color: white; padding: 14px 24px;
+    border-radius: 14px;
+    font-size: 13.5px; font-weight: 700;
+    box-shadow: 0 12px 32px rgba(34,197,94,0.5);
+    z-index: 350;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: flex; align-items: center; gap: 10px;
+    cursor: pointer;
+    max-width: 90%;
+  }
+  .new-reply-notif.show { transform: translateX(-50%) translateY(0); }
+
   @media (max-width: 520px) {
     body { padding: 0; }
     .app { max-width: 100%; height: 100vh; height: 100dvh; border-radius: 0; }
@@ -467,6 +543,10 @@
           <p><span>●</span> آنلاین — آماده پاسخ</p>
         </div>
       </div>
+      <button class="icon-btn" id="notifBtn" onclick="showActiveTickets()" title="پیام‌های من">
+        📬
+        <span class="dot" id="notifDot"></span>
+      </button>
       <button class="icon-btn" onclick="openAdmin()" title="پنل ادمین">⚙️</button>
     </header>
 
@@ -496,23 +576,16 @@
 
       <div class="admin-body">
         
-        <!-- DASHBOARD -->
         <div class="pane active" data-pane="dash">
-          <div class="section">
-            <h3>📊 آمار کلی</h3>
-          </div>
+          <div class="section"><h3>📊 آمار کلی</h3></div>
           <div class="stats">
             <div class="stat"><div class="num" id="statKB">0</div><div class="lbl">پاسخ دانشنامه</div></div>
             <div class="stat"><div class="num" id="statTickets">0</div><div class="lbl">درخواست پشتیبانی</div></div>
             <div class="stat"><div class="num" id="statMessages">0</div><div class="lbl">پیام چت</div></div>
           </div>
-          <div class="section">
-            <h3>⚡ عملیات سریع</h3>
-          </div>
           <button class="btn btn-primary" onclick="openKnowledgeModal()">➕ افزودن پاسخ جدید</button>
         </div>
 
-        <!-- KNOWLEDGE -->
         <div class="pane" data-pane="kb">
           <div class="section">
             <h3>🧠 مدیریت دانشنامه</h3>
@@ -521,20 +594,16 @@
           <div id="kbList"></div>
         </div>
 
-        <!-- TICKETS -->
         <div class="pane" data-pane="tickets">
           <div class="section">
-            <h3>📨 درخواست‌های پشتیبانی انسانی</h3>
+            <h3>📨 درخواست‌ها</h3>
             <button class="btn btn-danger btn-sm" onclick="clearTickets()">🗑 پاک کردن</button>
           </div>
           <div id="ticketsList"></div>
         </div>
 
-        <!-- SETTINGS -->
         <div class="pane" data-pane="settings">
-          <div class="section">
-            <h3>⚙️ تنظیمات ربات</h3>
-          </div>
+          <div class="section"><h3>⚙️ تنظیمات</h3></div>
           <div class="form-group">
             <label>نام دستیار</label>
             <input type="text" id="setBotName">
@@ -548,29 +617,25 @@
             <input type="number" id="setSpeed" min="200" max="3000" step="100">
           </div>
           <div class="form-group">
-            <label>لینک Google Apps Script (برای ارسال به تلگرام)</label>
+            <label>لینک Google Apps Script (Webhook)</label>
             <input type="text" id="setWebhook" placeholder="https://script.google.com/macros/s/.../exec" style="direction:ltr;font-size:11px;">
           </div>
-          <button class="btn btn-primary" onclick="saveSettings()">💾 ذخیره تنظیمات</button>
+          <button class="btn btn-primary" onclick="saveSettings()">💾 ذخیره</button>
           
-          <div class="section" style="margin-top:24px;">
-            <h3>🔐 امنیت</h3>
-          </div>
+          <div class="section" style="margin-top:24px;"><h3>🔐 امنیت</h3></div>
           <div class="form-group">
             <label>رمز فعلی</label>
             <input type="password" id="oldPass">
           </div>
           <div class="form-group">
-            <label>رمز جدید (حداقل ۶ کاراکتر)</label>
+            <label>رمز جدید (۶+)</label>
             <input type="password" id="newPass">
           </div>
           <button class="btn btn-primary" onclick="changePassword()">🔑 تغییر رمز</button>
 
-          <div class="section" style="margin-top:24px;">
-            <h3>💾 پشتیبان‌گیری</h3>
-          </div>
+          <div class="section" style="margin-top:24px;"><h3>💾 پشتیبان</h3></div>
           <div style="display:flex; gap:8px; flex-wrap:wrap;">
-            <button class="btn btn-ghost" onclick="exportBackup()">📥 دانلود پشتیبان</button>
+            <button class="btn btn-ghost" onclick="exportBackup()">📥 دانلود</button>
             <button class="btn btn-ghost" onclick="document.getElementById('importFile').click()">📂 بازیابی</button>
             <input type="file" id="importFile" accept=".json" style="display:none" onchange="importBackup(event)">
           </div>
@@ -583,9 +648,9 @@
     <div class="login" id="loginPanel">
       <div class="login-card">
         <div class="login-icon">🔐</div>
-        <h3>ورود به پنل مدیریت</h3>
+        <h3>ورود به پنل</h3>
         <p>رمز عبور را وارد کنید</p>
-        <input type="password" id="loginPass" placeholder="رمز عبور..." onkeypress="if(event.key==='Enter')tryLogin()">
+        <input type="password" id="loginPass" placeholder="رمز..." onkeypress="if(event.key==='Enter')tryLogin()">
         <button onclick="tryLogin()">ورود</button>
         <div class="login-err" id="loginErr"></div>
         <button class="login-cancel" onclick="closeLogin()">انصراف</button>
@@ -610,11 +675,16 @@
   </div>
 
   <div class="toast" id="toast"></div>
+  <div class="new-reply-notif" id="newReplyNotif" onclick="scrollToLatestReply()">
+    <span>💬</span>
+    <span>پاسخ پشتیبان دریافت شد!</span>
+  </div>
 
 <script>
 /* ================= CONFIG ================= */
 const DEFAULT_PASSWORD = 'shirzad1404';
-const STORAGE_KEY = 'saffron_chat_v7';
+const STORAGE_KEY = 'saffron_chat_v8';
+const CHECK_INTERVAL = 20000; // هر ۲۰ ثانیه
 
 const DEFAULT_KB = [
   { id:'k1', keywords:['زعفران چیه','زعفران چیست'], answer:'🌿 <strong>زعفران چیه؟</strong><br><br>گران‌بهاترین ادویه دنیاست که از کلاله گل <strong>Crocus sativus</strong> به دست میاد.<br><br>• هر گل فقط <strong>۳ کلاله</strong> داره<br>• برای ۱ کیلو، حدود <strong>۱۵۰,۰۰۰ گل</strong> لازمه<br>• برداشتش کاملاً دستیه<br>🇮🇷 ایران <strong>۹۰٪ زعفران جهان</strong> رو تأمین می‌کنه.' },
@@ -623,7 +693,7 @@ const DEFAULT_KB = [
   { id:'k4', keywords:['خواص زعفران','خاصیت','فایده'], answer:'💚 <strong>خواص زعفران:</strong><br><br>• <strong>ضد افسردگی</strong> طبیعی<br>• <strong>آنتی‌اکسیدان قوی</strong><br>• <strong>تقویت حافظه و تمرکز</strong><br>• <strong>بهبود خلق‌وخو</strong><br>• <strong>سلامت قلب</strong><br><br>⚠️ روزانه ۳۰-۵۰ میلی‌گرم کافیه.' },
   { id:'k5', keywords:['دم کردن','روش استفاده','طریقه'], answer:'🍵 <strong>روش صحیح استفاده:</strong><br><br>1️⃣ مقدار لازم رو با کمی شکر آسیاب کن<br>2️⃣ آب جوش (نه در حال جوش) اضافه کن<br>3️⃣ در ظرف دربسته <strong>۲۰ دقیقه</strong> دم کن<br>4️⃣ عصاره طلایی آماده‌ست!' },
   { id:'k6', keywords:['نگهداری','انبار'], answer:'🏺 <strong>نگهداری صحیح:</strong><br><br>• ظرف <strong>شیشه‌ای تیره</strong><br>• دور از نور مستقیم<br>• محل خشک و خنک<br>• درب کاملاً بسته<br>• <strong>۶ ماه</strong> پس از باز کردن مصرف کن' },
-  { id:'k7', keywords:['سفارش','خرید','قیمت'], answer:'💰 <strong>سفارش و قیمت:</strong><br><br>برای اطلاع از قیمت روز و ثبت سفارش:<br>📞 با پشتیبانی تماس بگیرید<br>💬 یا بنویسید «پشتیبان» تا با شما تماس بگیریم' },
+  { id:'k7', keywords:['سفارش','خرید','قیمت'], answer:'💰 <strong>سفارش و قیمت:</strong><br><br>برای اطلاع از قیمت روز و ثبت سفارش:<br>💬 بنویسید «پشتیبان» تا با شما تماس بگیریم' },
   { id:'k8', keywords:['سلام','درود','وقت بخیر'], answer:'سلام و درود! 🌸<br>چطور میتونم کمکتون کنم؟' },
   { id:'k9', keywords:['ممنون','مرسی','سپاس'], answer:'خواهش می‌کنم 🌸<br>هر وقت سوالی داشتید در خدمتم!' },
   { id:'k10', keywords:['خداحافظ','بای'], answer:'خدانگهدار! 🌸<br>منتظر حضور گرمتون هستیم ✨' },
@@ -644,13 +714,16 @@ let state = {
   tickets: [],
   messages: [],
   passwordHash: '',
+  activeTickets: [],       // تیکت‌های فعال کاربر (برای پیگیری)
   settings: {
     botName: 'دستیار زعفران شیرزاد',
-    welcome: 'سلام و درود! 🌸<br>به پشتیبانی <strong>زعفران شیرزاد</strong> خوش آمدید.<br><br>من اینجام تا درباره زعفران، خواص، روش استفاده و کیفیت کمکتون کنم.<br><br>💬 اگه خواستید با پشتیبان انسانی صحبت کنید، بنویسید «پشتیبان».',
+    welcome: 'سلام و درود! 🌸<br>به پشتیبانی <strong>زعفران شیرزاد</strong> خوش آمدید.<br><br>من اینجا هستم تا درباره زعفران، خواص، روش استفاده و کیفیت کمکتون کنم.<br><br>💬 اگه خواستید با پشتیبان انسانی صحبت کنید، بنویسید «پشتیبان».',
     speed: 800,
     webhook: ''
   }
 };
+
+let ticketPolling = null;
 
 /* ================= UTILS ================= */
 function hash(s) {
@@ -689,6 +762,7 @@ function load() {
       if (p.tickets) state.tickets = p.tickets;
       if (p.passwordHash) state.passwordHash = p.passwordHash;
       if (p.settings) state.settings = { ...state.settings, ...p.settings };
+      if (p.activeTickets) state.activeTickets = p.activeTickets;
     } else {
       resetDefaults();
     }
@@ -706,10 +780,11 @@ function resetDefaults() {
   state.quick = JSON.parse(JSON.stringify(DEFAULT_QUICK));
   state.tickets = [];
   state.messages = [];
+  state.activeTickets = [];
   state.passwordHash = hash(DEFAULT_PASSWORD);
   state.settings = {
     botName: 'دستیار زعفران شیرزاد',
-    welcome: 'سلام و درود! 🌸<br>به پشتیبانی <strong>زعفران شیرزاد</strong> خوش آمدید.<br><br>من اینجام تا درباره زعفران، خواص، روش استفاده و کیفیت کمکتون کنم.<br><br>💬 اگه خواستید با پشتیبان انسانی صحبت کنید، بنویسید «پشتیبان».',
+    welcome: 'سلام و درود! 🌸<br>به پشتیبانی <strong>زعفران شیرزاد</strong> خوش آمدید.<br><br>من اینجا هستم تا درباره زعفران، خواص، روش استفاده و کیفیت کمکتون کنم.<br><br>💬 اگه خواستید با پشتیبان انسانی صحبت کنید، بنویسید «پشتیبان».',
     speed: 800,
     webhook: ''
   };
@@ -722,6 +797,7 @@ function save() {
       kb: state.kb,
       quick: state.quick,
       tickets: state.tickets,
+      activeTickets: state.activeTickets,
       passwordHash: state.passwordHash,
       settings: state.settings
     }));
@@ -736,8 +812,8 @@ function addMsg(text, sender, save = true) {
   const row = document.createElement('div');
   row.className = 'msg-row' + (sender === 'user' ? ' user' : '');
   const av = document.createElement('div');
-  av.className = 'msg-av ' + sender;
-  av.textContent = sender === 'user' ? '👤' : '🌸';
+  av.className = 'msg-av ' + (sender === 'support' ? 'support' : sender);
+  av.textContent = sender === 'user' ? '👤' : (sender === 'support' ? '👨‍💼' : '🌸');
   const msg = document.createElement('div');
   msg.className = 'msg ' + sender;
   msg.innerHTML = text + '<time>' + now() + '</time>';
@@ -785,7 +861,7 @@ function sendMessage(text) {
     showTyping();
     setTimeout(() => {
       hideTyping();
-      addMsg('💬 <strong>درخواست چت با پشتیبان انسانی</strong><br><br>لطفاً اطلاعات زیر رو پر کنید تا کارشناس ما در اسرع وقت با شما تماس بگیره:', 'bot');
+      addMsg('💬 <strong>درخواست چت با پشتیبان انسانی</strong><br><br>لطفاً اطلاعات زیر رو پر کنید تا کارشناس ما با شما تماس بگیره:', 'bot');
       setTimeout(showSupportForm, 300);
     }, 600);
     return;
@@ -828,7 +904,7 @@ function showSupportForm() {
   chatBody.scrollTop = chatBody.scrollHeight;
 }
 
-function submitSupport() {
+async function submitSupport() {
   const name = document.getElementById('sfName').value.trim();
   const phone = document.getElementById('sfPhone').value.trim();
   const msg = document.getElementById('sfMsg').value.trim();
@@ -839,45 +915,162 @@ function submitSupport() {
     return;
   }
 
-  const ticket = {
-    id: 'T' + Date.now().toString().slice(-8),
-    name, phone, message: msg || '(بدون پیام)',
-    createdAt: Date.now()
-  };
-
-  state.tickets.unshift(ticket);
-  save();
-
   btn.disabled = true;
   btn.textContent = '⏳ در حال ارسال...';
 
-  // ارسال به Google Apps Script
   const webhook = state.settings.webhook;
-  if (webhook) {
-    fetch(webhook, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, phone, message: msg || '(بدون پیام)' })
-    })
-    .then(() => {
-      addMsg('✅ <strong>درخواست شما ثبت شد!</strong><br><br>👤 ' + esc(name) + '<br>📞 ' + esc(phone) + '<br><br>کارشناس ما در اسرع وقت با شما تماس می‌گیره 🌸', 'bot');
-      toast('✅ درخواست ارسال شد');
-    })
-    .catch(() => {
-      addMsg('✅ <strong>درخواست شما ثبت شد!</strong><br><br>👤 ' + esc(name) + '<br>📞 ' + esc(phone) + '<br><br>به‌زودی با شما تماس می‌گیریم 🌸', 'bot');
-      toast('✅ ثبت شد');
-    });
-  } else {
-    addMsg('✅ <strong>درخواست شما ثبت شد!</strong><br><br>👤 ' + esc(name) + '<br>📞 ' + esc(phone) + '<br><br>کارشناس ما به‌زودی با شما تماس می‌گیره 🌸', 'bot');
-    toast('✅ ثبت شد');
+  
+  if (!webhook) {
+    // حالت تست بدون وبهوک
+    const fakeId = 'T' + Date.now().toString(36).toUpperCase();
+    state.activeTickets.push({ id: fakeId, name, phone, message: msg, status: 'waiting', createdAt: Date.now() });
+    save();
+    btn.closest('.msg-row').remove();
+    addMsg('✅ <strong>درخواست شما ثبت شد!</strong><br><br>🆔 کد پیگیری: <strong>' + fakeId + '</strong><br><br>⚠️ وبهوک تنظیم نشده — این فقط تست بود.', 'bot');
+    toast('⚠️ وبهوک تنظیم نشده');
+    return;
   }
 
-  // حذف فرم
-  setTimeout(() => {
-    const forms = document.querySelectorAll('.support-form');
-    if (forms.length) forms[forms.length - 1].closest('.msg-row').remove();
-  }, 500);
+  try {
+    const res = await fetch(webhook, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ action: 'newTicket', name, phone, message: msg })
+    });
+    const data = await res.json();
+
+    if (data.ok && data.id) {
+      const ticketId = data.id;
+      
+      state.activeTickets.push({
+        id: ticketId,
+        name, phone, message: msg,
+        status: 'waiting',
+        createdAt: Date.now(),
+        lastCheck: Date.now()
+      });
+      save();
+
+      btn.closest('.msg-row').remove();
+      
+      addMsg('✅ <strong>درخواست شما ثبت شد!</strong><br><br>🆔 کد پیگیری شما:<br><strong style="font-size:16px; letter-spacing:2px; direction:ltr; display:inline-block;">' + ticketId + '</strong><br><br>🔔 به محض پاسخ کارشناس، بهتون اطلاع می‌دیم.', 'bot');
+
+      // شروع polling
+      startTicketPolling();
+      
+      // ذخیره کد پیگیری
+      localStorage.setItem('lastTicketId', ticketId);
+      updateNotifDot();
+      
+      toast('✅ درخواست ارسال شد');
+    } else {
+      throw new Error(data.error || 'خطا');
+    }
+  } catch (e) {
+    console.error(e);
+    btn.disabled = false;
+    btn.textContent = '📨 ارسال درخواست';
+    toast('❌ خطا در ارسال — دوباره امتحان کنید');
+  }
+}
+
+/* ================= TICKET POLLING ================= */
+function startTicketPolling() {
+  if (ticketPolling) clearInterval(ticketPolling);
+  checkTickets();
+  ticketPolling = setInterval(checkTickets, CHECK_INTERVAL);
+}
+
+async function checkTickets() {
+  const webhook = state.settings.webhook;
+  if (!webhook) return;
+  if (!state.activeTickets.length) return;
+
+  for (const ticket of state.activeTickets) {
+    if (ticket.status === 'answered') continue;
+    
+    try {
+      const res = await fetch(webhook, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({ action: 'checkReply', id: ticket.id })
+      });
+      const data = await res.json();
+
+      if (data.ok && data.hasReply && data.reply) {
+        ticket.status = 'answered';
+        ticket.reply = data.reply;
+        ticket.repliedAt = Date.now();
+        save();
+
+        // نمایش پاسخ در چت
+        addMsg(esc(data.reply), 'support');
+
+        // نوتیفیکیشن
+        showNewReplyNotification();
+        playNotifSound();
+        toast('💬 پاسخ پشتیبان دریافت شد!');
+        
+        updateNotifDot();
+      }
+    } catch (e) {
+      console.error('Polling error:', e);
+    }
+  }
+}
+
+function showNewReplyNotification() {
+  const n = document.getElementById('newReplyNotif');
+  n.classList.add('show');
+  setTimeout(() => n.classList.remove('show'), 5000);
+}
+
+function playNotifSound() {
+  try {
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.frequency.value = 800;
+    gain.gain.value = 0.15;
+    osc.start();
+    setTimeout(() => {
+      osc.frequency.value = 1000;
+      setTimeout(() => osc.stop(), 150);
+    }, 120);
+  } catch (e) {}
+}
+
+function updateNotifDot() {
+  const dot = document.getElementById('notifDot');
+  const unread = state.activeTickets.filter(t => t.status === 'answered' && !t.seen).length;
+  if (unread > 0) dot.classList.add('show');
+  else dot.classList.remove('show');
+}
+
+function showActiveTickets() {
+  const dot = document.getElementById('notifDot');
+  dot.classList.remove('show');
+  
+  const answered = state.activeTickets.filter(t => t.status === 'answered');
+  if (!answered.length) {
+    const waiting = state.activeTickets.filter(t => t.status === 'waiting');
+    if (waiting.length) {
+      addMsg('⏳ <strong>درخواست شما در حال بررسیه</strong><br><br>به محض دریافت پاسخ، بهتون اطلاع می‌دیم 🔔', 'bot');
+    } else {
+      addMsg('📬 شما درخواست فعالی ندارید.', 'bot');
+    }
+    return;
+  }
+
+  addMsg('📬 <strong>پاسخ‌های پشتیبان:</strong><br><br>لطفاً بالا اسکرول کنید یا آخرین پیام‌های سبز رنگ رو ببینید.', 'bot');
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+function scrollToLatestReply() {
+  document.getElementById('newReplyNotif').classList.remove('show');
+  chatBody.scrollTop = chatBody.scrollHeight;
 }
 
 /* ================= QUICK REPLIES ================= */
@@ -962,41 +1155,36 @@ function renderKBList() {
           <button class="btn btn-danger btn-sm" onclick="deleteKB('${k.id}')">🗑</button>
         </div>
       </div>
-      <div class="answer">${(k.answer === '__TRIGGER_SUPPORT__' ? '💬 [نمایش فرم پشتیبانی]' : k.answer).replace(/<[^>]+>/g, '').substring(0, 120)}</div>
+      <div class="answer">${(k.answer === '__TRIGGER_SUPPORT__' ? '💬 [فرم پشتیبانی]' : k.answer).replace(/<[^>]+>/g, '').substring(0, 120)}</div>
     </div>
   `).join('');
 }
 
 function editKB(id) {
   const k = state.kb.find(x => x.id === id);
-  if (!k) return;
-  openKBModal(k);
+  if (k) openKBModal(k);
 }
 
 function deleteKB(id) {
-  if (!confirm('این پاسخ حذف شود؟')) return;
+  if (!confirm('حذف شود؟')) return;
   state.kb = state.kb.filter(x => x.id !== id);
-  save();
-  refreshAdmin();
-  toast('🗑 حذف شد');
+  save(); refreshAdmin(); toast('🗑 حذف شد');
 }
 
-function openKnowledgeModal() {
-  openKBModal(null);
-}
+function openKnowledgeModal() { openKBModal(null); }
 
 function openKBModal(item) {
   const isEdit = !!item;
   const kws = item ? item.keywords.join('\n') : '';
   const ans = item ? item.answer : '';
-  openModal(isEdit ? '✏️ ویرایش پاسخ' : '➕ افزودن پاسخ', `
+  openModal(isEdit ? '✏️ ویرایش' : '➕ افزودن', `
     <div class="form-group">
-      <label>کلمات کلیدی (هر خط یک کلمه)</label>
-      <textarea id="mKw" style="min-height:90px;" placeholder="زعفران چیه&#10;زعفران چیست">${esc(kws)}</textarea>
+      <label>کلمات کلیدی (هر خط یکی)</label>
+      <textarea id="mKw" style="min-height:90px;">${esc(kws)}</textarea>
     </div>
     <div class="form-group">
-      <label>پاسخ (می‌توانید HTML استفاده کنید)</label>
-      <textarea id="mAns" style="min-height:120px;" placeholder="پاسخ خود را اینجا بنویسید...">${esc(ans === '__TRIGGER_SUPPORT__' ? '' : ans)}</textarea>
+      <label>پاسخ (HTML مجاز)</label>
+      <textarea id="mAns" style="min-height:120px;">${esc(ans === '__TRIGGER_SUPPORT__' ? '' : ans)}</textarea>
     </div>
     <div style="font-size:11.5px; color:var(--muted); padding:8px; background:rgba(34,197,94,0.08); border-radius:8px; border:1px solid rgba(34,197,94,0.3);">
       💡 برای نمایش فرم پشتیبانی، در فیلد پاسخ بنویسید: <code style="color:var(--green);">__TRIGGER_SUPPORT__</code>
@@ -1004,10 +1192,7 @@ function openKBModal(item) {
   `, () => {
     const kwsRaw = document.getElementById('mKw').value.trim();
     const ansRaw = document.getElementById('mAns').value.trim();
-    if (!kwsRaw || !ansRaw) {
-      toast('⚠️ کلمات کلیدی و پاسخ الزامی است');
-      return false;
-    }
+    if (!kwsRaw || !ansRaw) { toast('⚠️ الزامی'); return false; }
     const keywords = kwsRaw.split('\n').map(s => s.trim()).filter(Boolean);
     if (isEdit) {
       item.keywords = keywords;
@@ -1015,9 +1200,7 @@ function openKBModal(item) {
     } else {
       state.kb.push({ id: 'k' + Date.now(), keywords, answer: ansRaw });
     }
-    save();
-    refreshAdmin();
-    toast('✅ ذخیره شد');
+    save(); refreshAdmin(); toast('✅ ذخیره شد');
   });
 }
 
@@ -1033,14 +1216,14 @@ function renderTickets() {
       <div class="item">
         <div class="item-head">
           <div>
-            <div style="font-size:13px; font-weight:700; color:var(--text);">👤 ${esc(t.name)}</div>
+            <div style="font-size:13px; font-weight:700;">👤 ${esc(t.name)}</div>
             <div style="font-size:11px; color:var(--muted); margin-top:3px;">🕐 ${date}</div>
           </div>
           <div class="item-actions">
             <button class="btn btn-danger btn-sm" onclick="deleteTicket('${t.id}')">🗑</button>
           </div>
         </div>
-        <div style="font-size:12.5px; color:var(--text); margin-top:8px; line-height:1.8;">
+        <div style="font-size:12.5px; margin-top:8px; line-height:1.8;">
           📞 <strong style="direction:ltr; display:inline-block;">${esc(t.phone)}</strong><br>
           💬 ${esc(t.message)}
         </div>
@@ -1052,18 +1235,14 @@ function renderTickets() {
 function deleteTicket(id) {
   if (!confirm('حذف شود؟')) return;
   state.tickets = state.tickets.filter(t => t.id !== id);
-  save();
-  refreshAdmin();
-  toast('🗑 حذف شد');
+  save(); refreshAdmin(); toast('🗑 حذف شد');
 }
 
 function clearTickets() {
   if (!state.tickets.length) return;
-  if (!confirm('همه درخواست‌ها پاک شوند؟')) return;
+  if (!confirm('همه پاک شوند؟')) return;
   state.tickets = [];
-  save();
-  refreshAdmin();
-  toast('🗑 پاک شد');
+  save(); refreshAdmin(); toast('🗑 پاک شد');
 }
 
 function fillSettings() {
@@ -1080,13 +1259,14 @@ function saveSettings() {
   state.settings.speed = (isNaN(sp) || sp < 200) ? 800 : Math.min(sp, 3000);
   state.settings.webhook = document.getElementById('setWebhook').value.trim();
   save();
-  toast('✅ تنظیمات ذخیره شد');
+  toast('✅ ذخیره شد');
+  if (state.settings.webhook) startTicketPolling();
 }
 
 function changePassword() {
   const oldP = document.getElementById('oldPass').value;
   const newP = document.getElementById('newPass').value;
-  if (hash(oldP) !== state.passwordHash) { toast('❌ رمز فعلی اشتباهه'); return; }
+  if (hash(oldP) !== state.passwordHash) { toast('❌ رمز فعلی اشتباه'); return; }
   if (newP.length < 6) { toast('⚠️ حداقل ۶ کاراکتر'); return; }
   state.passwordHash = hash(newP);
   save();
@@ -1112,9 +1292,7 @@ function closeModal() {
 /* ================= BACKUP ================= */
 function exportBackup() {
   const data = {
-    kb: state.kb,
-    quick: state.quick,
-    tickets: state.tickets,
+    kb: state.kb, quick: state.quick, tickets: state.tickets,
     settings: state.settings,
     exportedAt: new Date().toISOString()
   };
@@ -1135,18 +1313,14 @@ function importBackup(e) {
   reader.onload = (ev) => {
     try {
       const data = JSON.parse(ev.target.result);
-      if (!confirm('داده‌های فعلی جایگزین می‌شوند. مطمئنید؟')) return;
+      if (!confirm('داده‌ها جایگزین شوند؟')) return;
       if (data.kb) state.kb = data.kb;
       if (data.quick) state.quick = data.quick;
       if (data.tickets) state.tickets = data.tickets;
       if (data.settings) state.settings = { ...state.settings, ...data.settings };
-      save();
-      renderQuick();
-      refreshAdmin();
+      save(); renderQuick(); refreshAdmin();
       toast('✅ بازیابی شد');
-    } catch (err) {
-      toast('❌ فایل نامعتبر');
-    }
+    } catch (err) { toast('❌ فایل نامعتبر'); }
   };
   reader.readAsText(file);
   e.target.value = '';
@@ -1157,13 +1331,18 @@ load();
 renderQuick();
 addMsg(state.settings.welcome, 'bot', false);
 
-// Focus input on load
-window.addEventListener('load', () => {
-  setTimeout(() => userInput.focus(), 100);
-});
+// اگه تیکت فعال داره، polling رو شروع کن
+if (state.activeTickets.length && state.settings.webhook) {
+  startTicketPolling();
+}
+updateNotifDot();
 
 userInput.addEventListener('keypress', (e) => {
   if (e.key === 'Enter') sendMessage();
+});
+
+window.addEventListener('load', () => {
+  setTimeout(() => userInput.focus(), 100);
 });
 </script>
 </body>
