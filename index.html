@@ -5,61 +5,48 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="theme-color" content="#f4b400">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="زعفران شیرزاد">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🌸%3C/text%3E%3C/svg%3E">
-<title>پشتیبانی زعفران شیرزاد</title>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>زعفران شیرزاد | انفجار</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Vazirmatn', 'Segoe UI', Tahoma, sans-serif; -webkit-tap-highlight-color: transparent; }
-
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Vazirmatn', sans-serif; -webkit-tap-highlight-color: transparent; }
   :root {
     --saffron-gold: #f4b400;
     --saffron-deep: #d48806;
+    --saffron-red: #c0392b;
     --dark-bg: #1a1410;
     --dark-panel: #241d16;
     --dark-card: #2d2419;
     --text-light: #f5e6d3;
     --text-muted: #b8a790;
     --border-gold: rgba(244, 180, 0, 0.25);
-    --safe-top: env(safe-area-inset-top, 0px);
+    --green: #22c55e;
+    --purple: #a855f7;
     --safe-bottom: env(safe-area-inset-bottom, 0px);
   }
-
   html, body { height: 100%; overscroll-behavior: none; }
-
   body {
     background: var(--dark-bg);
-    background-image: 
-      radial-gradient(circle at 15% 20%, rgba(244, 180, 0, 0.08) 0%, transparent 40%),
-      radial-gradient(circle at 85% 80%, rgba(192, 57, 43, 0.08) 0%, transparent 40%);
+    background-image: radial-gradient(circle at 15% 20%, rgba(244, 180, 0, 0.08) 0%, transparent 40%), radial-gradient(circle at 85% 80%, rgba(192, 57, 43, 0.08) 0%, transparent 40%);
     display: flex; justify-content: center; align-items: center;
-    color: var(--text-light);
-    overflow: hidden;
-    padding: 20px;
+    color: var(--text-light); overflow: hidden; padding: 20px;
   }
-
   .app {
     width: 100%; max-width: 1100px; height: 700px;
-    display: flex;
-    background: var(--dark-panel);
-    border-radius: 24px;
-    overflow: hidden;
+    display: flex; background: var(--dark-panel);
+    border-radius: 24px; overflow: hidden;
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--border-gold);
-    animation: fadeIn 0.6s ease;
-    position: relative;
+    animation: fadeIn 0.6s ease; position: relative;
   }
-
   @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-  /* ================= SIDEBAR ================= */
+  /* ============ SIDEBAR ============ */
   .sidebar {
-    width: 260px;
-    background: linear-gradient(180deg, #1f1812 0%, #2a2016 100%);
+    width: 260px; background: linear-gradient(180deg, #1f1812 0%, #2a2016 100%);
     border-left: 1px solid var(--border-gold);
-    display: flex; flex-direction: column; padding: 24px 18px; gap: 20px;
-    position: relative; overflow: hidden; flex-shrink: 0;
+    display: flex; flex-direction: column; padding: 20px 16px; gap: 14px;
+    position: relative; overflow-y: auto; flex-shrink: 0;
   }
   .sidebar::before {
     content: ''; position: absolute; top: -50px; left: -50px;
@@ -67,31 +54,93 @@
     background: radial-gradient(circle, rgba(244, 180, 0, 0.15) 0%, transparent 70%);
     border-radius: 50%; pointer-events: none;
   }
-  .brand { display: flex; align-items: center; gap: 12px; padding-bottom: 20px; border-bottom: 1px solid var(--border-gold); position: relative; z-index: 1; }
+  .brand { display: flex; align-items: center; gap: 12px; padding-bottom: 16px; border-bottom: 1px solid var(--border-gold); position: relative; z-index: 1; }
   .brand-logo {
-    width: 48px; height: 48px; border-radius: 14px;
+    width: 46px; height: 46px; border-radius: 14px;
     background: linear-gradient(135deg, var(--saffron-gold), var(--saffron-deep));
     display: flex; align-items: center; justify-content: center;
-    font-size: 26px; box-shadow: 0 8px 20px rgba(244, 180, 0, 0.3); flex-shrink: 0;
+    font-size: 24px; box-shadow: 0 8px 20px rgba(244, 180, 0, 0.3); flex-shrink: 0;
+    animation: logoGlow 3s ease-in-out infinite;
   }
-  .brand-text h2 { font-size: 15px; font-weight: 700; color: var(--saffron-gold); }
-  .brand-text p { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
-  .nav-title { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.5px; padding: 0 8px; margin-bottom: 8px; font-weight: 600; }
-  .nav { display: flex; flex-direction: column; gap: 6px; flex: 1; overflow-y: auto; }
+  @keyframes logoGlow {
+    0%, 100% { box-shadow: 0 8px 20px rgba(244, 180, 0, 0.3); }
+    50% { box-shadow: 0 8px 30px rgba(244, 180, 0, 0.6); }
+  }
+  .brand-text h2 { font-size: 14px; font-weight: 800; color: var(--saffron-gold); }
+  .brand-text p { font-size: 10.5px; color: var(--text-muted); margin-top: 2px; }
+
+  /* User Mini Profile */
+  .user-mini {
+    background: linear-gradient(135deg, rgba(244, 180, 0, 0.15), rgba(244, 180, 0, 0.03));
+    border: 1px solid var(--border-gold);
+    border-radius: 14px; padding: 12px;
+    display: flex; align-items: center; gap: 10px;
+    cursor: pointer; transition: all 0.25s;
+    position: relative; z-index: 1;
+  }
+  .user-mini:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(244, 180, 0, 0.2); }
+  .user-avatar {
+    width: 42px; height: 42px; border-radius: 12px;
+    background: linear-gradient(135deg, var(--purple), #7c3aed);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; flex-shrink: 0;
+    position: relative;
+  }
+  .user-avatar .badge-lvl {
+    position: absolute; bottom: -4px; right: -4px;
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--dark-panel);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; border: 2px solid var(--saffron-gold);
+  }
+  .user-info { flex: 1; min-width: 0; }
+  .user-info .name { font-size: 12.5px; font-weight: 700; color: var(--text-light); }
+  .user-info .score { font-size: 11px; color: var(--saffron-gold); margin-top: 2px; font-weight: 600; }
+  .user-progress {
+    width: 100%; height: 4px; border-radius: 2px;
+    background: rgba(0, 0, 0, 0.3);
+    margin-top: 6px; overflow: hidden;
+  }
+  .user-progress-bar {
+    height: 100%; border-radius: 2px;
+    background: linear-gradient(90deg, var(--saffron-gold), #ff6b35);
+    transition: width 0.6s ease;
+  }
+
+  .nav-title { font-size: 10.5px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.5px; padding: 0 8px; margin-bottom: 6px; font-weight: 600; }
+  .nav { display: flex; flex-direction: column; gap: 5px; }
   .nav-item {
-    display: flex; align-items: center; gap: 12px; padding: 12px 14px;
+    display: flex; align-items: center; gap: 12px; padding: 11px 14px;
     border-radius: 12px; cursor: pointer; transition: all 0.25s ease;
-    color: var(--text-muted); font-size: 13.5px; font-weight: 500;
+    color: var(--text-muted); font-size: 13px; font-weight: 500;
     border: 1px solid transparent; position: relative;
   }
   .nav-item:hover { background: rgba(244, 180, 0, 0.08); color: var(--text-light); border-color: var(--border-gold); }
   .nav-item.active { background: linear-gradient(90deg, rgba(244, 180, 0, 0.18), rgba(244, 180, 0, 0.02)); color: var(--saffron-gold); border-color: rgba(244, 180, 0, 0.4); }
-  .nav-item.active::before { content: ''; position: absolute; right: -18px; top: 50%; transform: translateY(-50%); width: 3px; height: 20px; background: var(--saffron-gold); border-radius: 3px; box-shadow: 0 0 10px var(--saffron-gold); }
-  .nav-item .icon { font-size: 18px; width: 22px; text-align: center; flex-shrink: 0; }
-  .sidebar-footer { padding-top: 16px; border-top: 1px solid var(--border-gold); font-size: 11px; color: var(--text-muted); text-align: center; line-height: 1.8; position: relative; z-index: 1; }
-  .sidebar-footer strong { color: var(--saffron-gold); font-weight: 600; }
+  .nav-item.active::before { content: ''; position: absolute; right: -16px; top: 50%; transform: translateY(-50%); width: 3px; height: 20px; background: var(--saffron-gold); border-radius: 3px; box-shadow: 0 0 10px var(--saffron-gold); }
+  .nav-item .icon { font-size: 17px; width: 22px; text-align: center; flex-shrink: 0; }
+  .nav-item .count-badge {
+    margin-right: auto;
+    background: var(--saffron-red); color: white;
+    font-size: 10px; font-weight: 700;
+    padding: 2px 7px; border-radius: 8px;
+    min-width: 18px; text-align: center;
+  }
 
-  /* ================= MAIN ================= */
+  /* Wheel Nav item pulse */
+  .nav-item.wheel {
+    background: linear-gradient(90deg, rgba(168, 85, 247, 0.15), rgba(244, 180, 0, 0.08));
+    border-color: rgba(168, 85, 247, 0.4);
+    animation: wheelPulse 2s infinite;
+  }
+  @keyframes wheelPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.4); }
+    50% { box-shadow: 0 0 0 8px rgba(168, 85, 247, 0); }
+  }
+  .nav-item.wheel .icon { animation: spinSlow 3s linear infinite; }
+  @keyframes spinSlow { from { transform: rotate(0); } to { transform: rotate(360deg); } }
+
+  /* ============ MAIN ============ */
   .main { flex: 1; display: flex; flex-direction: column; background: var(--dark-bg); position: relative; overflow: hidden; min-width: 0; }
   .main::before {
     content: ''; position: absolute; inset: 0;
@@ -100,43 +149,68 @@
   }
 
   .chat-header {
-    padding: 20px 26px;
+    padding: 16px 22px;
     background: linear-gradient(180deg, rgba(36, 29, 22, 0.95), rgba(26, 20, 16, 0.7));
     border-bottom: 1px solid var(--border-gold);
     display: flex; align-items: center; justify-content: space-between;
     backdrop-filter: blur(10px); position: relative; z-index: 2; flex-shrink: 0;
   }
-  .header-left { display: flex; align-items: center; gap: 14px; }
+  .header-left { display: flex; align-items: center; gap: 12px; }
   .bot-avatar {
-    width: 48px; height: 48px; border-radius: 14px;
+    width: 44px; height: 44px; border-radius: 14px;
     background: linear-gradient(135deg, var(--saffron-gold), var(--saffron-deep));
     display: flex; align-items: center; justify-content: center;
-    font-size: 24px; box-shadow: 0 8px 24px rgba(244, 180, 0, 0.35);
+    font-size: 22px; box-shadow: 0 8px 24px rgba(244, 180, 0, 0.35);
     position: relative; flex-shrink: 0;
   }
   .bot-avatar::after {
     content: ''; position: absolute; bottom: -3px; left: -3px;
-    width: 14px; height: 14px; background: #22c55e; border-radius: 50%;
+    width: 13px; height: 13px; background: var(--green); border-radius: 50%;
     border: 3px solid var(--dark-bg); animation: pulse 2s infinite;
   }
   @keyframes pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); } 50% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); } }
-  .header-info h3 { font-size: 16px; font-weight: 700; color: var(--text-light); }
-  .header-info p { font-size: 12px; color: var(--text-muted); margin-top: 3px; display: flex; align-items: center; gap: 6px; }
-  .header-info p span { color: #22c55e; font-weight: 500; }
-  .header-actions { display: flex; gap: 8px; }
+  .header-info h3 { font-size: 14.5px; font-weight: 700; }
+  .header-info p { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+  .header-info p span { color: var(--green); }
+  .header-actions { display: flex; gap: 6px; }
   .icon-btn {
-    width: 38px; height: 38px; border-radius: 10px;
+    width: 36px; height: 36px; border-radius: 10px;
     background: rgba(244, 180, 0, 0.08); border: 1px solid var(--border-gold);
     color: var(--text-muted); cursor: pointer;
     display: flex; align-items: center; justify-content: center;
-    font-size: 16px; transition: all 0.25s;
+    font-size: 15px; transition: all 0.25s; position: relative;
   }
   .icon-btn:hover { background: rgba(244, 180, 0, 0.18); color: var(--saffron-gold); transform: translateY(-2px); }
+  .icon-btn .dot {
+    position: absolute; top: -3px; right: -3px;
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--saffron-red); border: 2px solid var(--dark-panel);
+    display: none;
+  }
+  .icon-btn .dot.show { display: block; animation: dotPulse 1.5s infinite; }
+  @keyframes dotPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.3); } }
 
-  /* ================= MESSAGES ================= */
+  /* ============ HIDDEN STAR (EASTER EGG) ============ */
+  .hidden-star {
+    position: absolute;
+    font-size: 22px;
+    cursor: pointer;
+    opacity: 0.4;
+    z-index: 15;
+    animation: starTwinkle 2s infinite;
+    filter: drop-shadow(0 0 8px rgba(244, 180, 0, 0.7));
+    transition: all 0.3s;
+  }
+  .hidden-star:hover { opacity: 1; transform: scale(1.5) rotate(20deg); }
+  @keyframes starTwinkle {
+    0%, 100% { opacity: 0.3; transform: scale(0.9); }
+    50% { opacity: 0.7; transform: scale(1.1); }
+  }
+
+  /* ============ MESSAGES ============ */
   .chat-body {
-    flex: 1; padding: 26px; overflow-y: auto;
-    display: flex; flex-direction: column; gap: 16px;
+    flex: 1; padding: 22px; overflow-y: auto;
+    display: flex; flex-direction: column; gap: 14px;
     position: relative; z-index: 1; scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
   }
@@ -146,406 +220,663 @@
   .message-row { display: flex; gap: 10px; animation: slideIn 0.35s ease; max-width: 100%; }
   .message-row.user { justify-content: flex-start; flex-direction: row-reverse; }
   @keyframes slideIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-
   .msg-avatar {
-    width: 36px; height: 36px; border-radius: 10px;
+    width: 34px; height: 34px; border-radius: 10px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 18px; flex-shrink: 0; margin-top: 2px;
+    font-size: 17px; flex-shrink: 0; margin-top: 2px;
   }
   .msg-avatar.bot { background: linear-gradient(135deg, var(--saffron-gold), var(--saffron-deep)); box-shadow: 0 4px 12px rgba(244, 180, 0, 0.25); }
   .msg-avatar.user { background: linear-gradient(135deg, #c0392b, #8b2a1f); box-shadow: 0 4px 12px rgba(192, 57, 43, 0.25); }
-
-  .message { max-width: 75%; padding: 12px 16px; border-radius: 16px; font-size: 13.5px; line-height: 1.75; word-wrap: break-word; }
-  .message.bot { background: var(--dark-card); color: var(--text-light); border: 1px solid var(--border-gold); border-top-right-radius: 4px; }
+  .message { max-width: 75%; padding: 11px 15px; border-radius: 16px; font-size: 13px; line-height: 1.75; word-wrap: break-word; }
+  .message.bot { background: var(--dark-card); border: 1px solid var(--border-gold); border-top-right-radius: 4px; }
   .message.user { background: linear-gradient(135deg, var(--saffron-gold), var(--saffron-deep)); color: #1a1410; font-weight: 500; border-top-left-radius: 4px; box-shadow: 0 6px 20px rgba(244, 180, 0, 0.25); }
   .message strong { color: var(--saffron-gold); }
   .message.user strong { color: #1a1410; font-weight: 700; }
-  .message time { display: block; font-size: 10px; opacity: 0.55; margin-top: 6px; text-align: left; }
+  .message time { display: block; font-size: 9.5px; opacity: 0.55; margin-top: 5px; text-align: left; }
+
+  /* Bargain highlight */
+  .bargain-offer {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(34, 197, 94, 0.03));
+    border: 2px solid var(--green);
+    border-radius: 14px; padding: 14px; margin-top: 10px;
+    text-align: center;
+  }
+  .bargain-offer .percent {
+    font-size: 32px; font-weight: 800;
+    background: linear-gradient(135deg, var(--green), #16a34a);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    display: block; margin-bottom: 6px;
+  }
+  .bargain-timer {
+    font-size: 11px; color: var(--text-muted);
+    direction: ltr; margin: 8px 0;
+    font-family: monospace; font-size: 14px;
+    font-weight: 700; letter-spacing: 1px;
+    color: var(--saffron-red);
+  }
+  .bargain-btns { display: flex; gap: 8px; margin-top: 10px; justify-content: center; flex-wrap: wrap; }
+  .bargain-btns button {
+    padding: 8px 14px; border-radius: 10px;
+    border: none; font-family: inherit;
+    font-size: 12px; font-weight: 700; cursor: pointer;
+    transition: all 0.25s;
+  }
+  .bargain-accept { background: linear-gradient(135deg, var(--green), #16a34a); color: white; }
+  .bargain-decline { background: rgba(192, 57, 43, 0.15); color: #ff8a80; border: 1px solid rgba(192, 57, 43, 0.4) !important; }
+
+  /* Products in chat */
+  .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; margin-top: 10px; }
+  .product-mini {
+    background: rgba(26, 20, 16, 0.6);
+    border: 1px solid var(--border-gold);
+    border-radius: 12px; padding: 8px;
+    text-align: center;
+  }
+  .product-mini .p-img {
+    height: 50px; display: flex; align-items: center; justify-content: center;
+    font-size: 32px; margin-bottom: 6px; overflow: hidden; border-radius: 8px;
+  }
+  .product-mini .p-img img { width: 100%; height: 100%; object-fit: cover; }
+  .product-mini .p-name { font-size: 11.5px; font-weight: 600; margin-bottom: 3px; }
+  .product-mini .p-price { font-size: 11px; color: var(--saffron-gold); font-weight: 600; }
+  .product-mini .p-add {
+    margin-top: 6px; width: 100%; padding: 5px;
+    background: linear-gradient(135deg, var(--saffron-gold), var(--saffron-deep));
+    color: #1a1410; border: none; border-radius: 8px;
+    font-size: 10.5px; font-weight: 700; cursor: pointer; font-family: inherit;
+  }
 
   .typing-row { display: flex; gap: 10px; animation: slideIn 0.3s ease; }
   .typing-bubble {
     background: var(--dark-card); border: 1px solid var(--border-gold);
-    padding: 14px 18px; border-radius: 16px; border-top-right-radius: 4px;
+    padding: 12px 16px; border-radius: 16px; border-top-right-radius: 4px;
     display: flex; gap: 5px; align-items: center;
   }
-  .typing-bubble span { width: 7px; height: 7px; background: var(--saffron-gold); border-radius: 50%; animation: bounce 1.4s infinite; }
+  .typing-bubble span { width: 6px; height: 6px; background: var(--saffron-gold); border-radius: 50%; animation: bounce 1.4s infinite; }
   .typing-bubble span:nth-child(2) { animation-delay: 0.2s; }
   .typing-bubble span:nth-child(3) { animation-delay: 0.4s; }
-  @keyframes bounce { 0%, 60%, 100% { transform: translateY(0); opacity: 0.5; } 30% { transform: translateY(-7px); opacity: 1; } }
+  @keyframes bounce { 0%, 60%, 100% { transform: translateY(0); opacity: 0.5; } 30% { transform: translateY(-6px); opacity: 1; } }
 
-  .quick-replies { padding: 0 26px 12px; display: flex; gap: 8px; flex-wrap: wrap; position: relative; z-index: 1; flex-shrink: 0; }
+  .quick-replies { padding: 0 22px 10px; display: flex; gap: 6px; flex-wrap: wrap; position: relative; z-index: 1; flex-shrink: 0; }
   .quick-reply {
-    padding: 8px 14px; background: rgba(244, 180, 0, 0.08);
+    padding: 7px 12px; background: rgba(244, 180, 0, 0.08);
     border: 1px solid var(--border-gold); border-radius: 20px;
-    font-size: 12px; color: var(--saffron-gold); cursor: pointer;
+    font-size: 11.5px; color: var(--saffron-gold); cursor: pointer;
     transition: all 0.25s; font-family: inherit; white-space: nowrap;
   }
   .quick-reply:hover { background: rgba(244, 180, 0, 0.2); transform: translateY(-2px); }
 
   .chat-footer {
-    padding: 18px 26px 22px;
+    padding: 14px 22px calc(16px + var(--safe-bottom));
     background: linear-gradient(0deg, rgba(36, 29, 22, 0.95), rgba(26, 20, 16, 0.6));
     border-top: 1px solid var(--border-gold);
-    display: flex; gap: 12px; align-items: center;
+    display: flex; gap: 8px; align-items: center;
     position: relative; z-index: 2; flex-shrink: 0;
   }
   .input-wrapper { flex: 1; position: relative; display: flex; align-items: center; min-width: 0; }
   .chat-footer input {
-    width: 100%; padding: 14px 20px;
+    width: 100%; padding: 13px 18px;
     border: 1px solid var(--border-gold); border-radius: 14px;
     background: rgba(26, 20, 16, 0.8); color: var(--text-light);
-    font-size: 13.5px; font-family: inherit; outline: none; transition: all 0.25s;
+    font-size: 13px; font-family: inherit; outline: none; transition: all 0.25s;
   }
-  .chat-footer input::placeholder { color: var(--text-muted); }
   .chat-footer input:focus { border-color: var(--saffron-gold); box-shadow: 0 0 0 3px rgba(244, 180, 0, 0.12); }
-  .send-btn {
-    width: 50px; height: 50px; border: none; border-radius: 14px;
-    background: linear-gradient(135deg, var(--saffron-gold), var(--saffron-deep));
-    color: #1a1410; cursor: pointer; font-size: 20px;
+  .send-btn, .mic-btn {
+    width: 46px; height: 46px; border-radius: 14px;
+    border: none; cursor: pointer; font-size: 18px;
     display: flex; align-items: center; justify-content: center;
-    transition: all 0.25s; box-shadow: 0 8px 20px rgba(244, 180, 0, 0.35); flex-shrink: 0;
+    transition: all 0.25s; flex-shrink: 0;
   }
-  .send-btn:hover { transform: translateY(-2px) scale(1.03); }
-  .send-btn:active { transform: scale(0.96); }
+  .send-btn { background: linear-gradient(135deg, var(--saffron-gold), var(--saffron-deep)); color: #1a1410; box-shadow: 0 8px 20px rgba(244, 180, 0, 0.35); }
+  .mic-btn { background: rgba(244, 180, 0, 0.08); border: 1px solid var(--border-gold); color: var(--saffron-gold); }
+  .mic-btn.recording { background: linear-gradient(135deg, #c0392b, #8b2a1f); color: white; animation: micPulse 1.2s infinite; }
+  @keyframes micPulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(192, 57, 43, 0.7); } 50% { box-shadow: 0 0 0 10px rgba(192, 57, 43, 0); } }
 
-  /* ================= ADMIN PANEL ================= */
-  .admin-panel {
+  /* Cart Float */
+  .cart-float {
+    position: fixed; bottom: calc(30px + var(--safe-bottom)); left: 30px;
+    width: 58px; height: 58px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--saffron-gold), var(--saffron-deep));
+    color: #1a1410; border: none; cursor: pointer;
+    display: none; align-items: center; justify-content: center;
+    font-size: 24px; box-shadow: 0 12px 32px rgba(244, 180, 0, 0.5);
+    z-index: 50;
+  }
+  .cart-float.show { display: flex; animation: cartPulse 2s infinite; }
+  .cart-float .count {
+    position: absolute; top: -5px; right: -5px;
+    background: var(--saffron-red); color: white;
+    min-width: 22px; height: 22px; border-radius: 11px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700; padding: 0 5px;
+    border: 2px solid var(--dark-panel);
+  }
+  @keyframes cartPulse {
+    0%, 100% { box-shadow: 0 12px 32px rgba(244, 180, 0, 0.5); }
+    50% { box-shadow: 0 12px 42px rgba(244, 180, 0, 0.8); }
+  }
+
+  /* ============ PANEL (reusable) ============ */
+  .panel {
     position: absolute; inset: 0;
     background: linear-gradient(180deg, #1f1812, #17110c);
-    z-index: 100;
+    z-index: 90;
     display: flex; flex-direction: column;
     transform: translateY(100%); opacity: 0; pointer-events: none;
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s;
   }
-  .admin-panel.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+  .panel.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+  .panel.high { z-index: 110; }
 
-  .admin-header {
-    padding: 18px 24px;
+  .panel-header {
+    padding: 16px 22px;
     background: linear-gradient(180deg, rgba(36, 29, 22, 0.95), rgba(26, 20, 16, 0.5));
     border-bottom: 1px solid var(--border-gold);
     display: flex; align-items: center; justify-content: space-between; flex-shrink: 0;
   }
-  .admin-title { display: flex; align-items: center; gap: 12px; font-size: 16px; font-weight: 700; color: var(--saffron-gold); }
-  .admin-title .icon { font-size: 22px; }
-  .close-admin {
-    width: 38px; height: 38px; border-radius: 10px;
+  .panel-title { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: var(--saffron-gold); }
+  .panel-title .icon { font-size: 20px; }
+  .close-panel {
+    width: 36px; height: 36px; border-radius: 10px;
     background: rgba(192, 57, 43, 0.15); border: 1px solid rgba(192, 57, 43, 0.4);
-    color: #ff8a80; cursor: pointer; font-size: 16px;
-    display: flex; align-items: center; justify-content: center; transition: all 0.25s;
-  }
-  .close-admin:hover { background: rgba(192, 57, 43, 0.3); }
-
-  .admin-tabs {
-    display: flex; gap: 4px; padding: 12px 20px 0;
-    background: rgba(26, 20, 16, 0.5);
-    border-bottom: 1px solid var(--border-gold);
-    overflow-x: auto; flex-shrink: 0;
-  }
-  .admin-tabs::-webkit-scrollbar { height: 0; }
-  .admin-tab {
-    padding: 12px 20px; background: transparent;
-    border: none; color: var(--text-muted);
-    font-size: 13px; font-weight: 500; cursor: pointer;
-    font-family: inherit; border-radius: 10px 10px 0 0;
-    transition: all 0.25s; white-space: nowrap;
-    border-bottom: 2px solid transparent;
-  }
-  .admin-tab:hover { color: var(--text-light); background: rgba(244, 180, 0, 0.05); }
-  .admin-tab.active { color: var(--saffron-gold); border-bottom-color: var(--saffron-gold); background: rgba(244, 180, 0, 0.08); }
-
-  .admin-content { flex: 1; overflow-y: auto; padding: 24px; -webkit-overflow-scrolling: touch; }
-  .admin-content::-webkit-scrollbar { width: 8px; }
-  .admin-content::-webkit-scrollbar-thumb { background: rgba(244, 180, 0, 0.25); border-radius: 10px; }
-
-  .tab-pane { display: none; animation: fadeInPane 0.3s ease; }
-  .tab-pane.active { display: block; }
-  @keyframes fadeInPane { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-  .section-title {
-    font-size: 14px; color: var(--saffron-gold);
-    margin-bottom: 16px; font-weight: 700;
-    display: flex; align-items: center; gap: 8px;
-  }
-
-  .form-group { margin-bottom: 16px; }
-  .form-group label { display: block; font-size: 12.5px; color: var(--text-muted); margin-bottom: 6px; font-weight: 500; }
-  .form-group input, .form-group textarea, .form-group select {
-    width: 100%; padding: 12px 16px;
-    background: rgba(26, 20, 16, 0.8);
-    border: 1px solid var(--border-gold); border-radius: 10px;
-    color: var(--text-light); font-size: 13px; font-family: inherit;
-    outline: none; transition: all 0.25s;
-  }
-  .form-group input:focus, .form-group textarea:focus { border-color: var(--saffron-gold); box-shadow: 0 0 0 3px rgba(244, 180, 0, 0.12); }
-  .form-group textarea { resize: vertical; min-height: 90px; line-height: 1.7; }
-
-  .btn {
-    padding: 11px 20px; border-radius: 10px;
-    font-size: 13px; font-weight: 600; font-family: inherit;
-    cursor: pointer; transition: all 0.25s; border: none;
-    display: inline-flex; align-items: center; gap: 8px;
-  }
-  .btn-primary { background: linear-gradient(135deg, var(--saffron-gold), var(--saffron-deep)); color: #1a1410; box-shadow: 0 6px 18px rgba(244, 180, 0, 0.3); }
-  .btn-primary:hover { transform: translateY(-2px); }
-  .btn-danger { background: rgba(192, 57, 43, 0.15); color: #ff8a80; border: 1px solid rgba(192, 57, 43, 0.4); }
-  .btn-danger:hover { background: rgba(192, 57, 43, 0.3); }
-  .btn-ghost { background: rgba(244, 180, 0, 0.08); color: var(--saffron-gold); border: 1px solid var(--border-gold); }
-  .btn-ghost:hover { background: rgba(244, 180, 0, 0.18); }
-  .btn-sm { padding: 7px 12px; font-size: 12px; }
-
-  .items-list { display: flex; flex-direction: column; gap: 10px; }
-  .item-card {
-    background: rgba(26, 20, 16, 0.6);
-    border: 1px solid var(--border-gold);
-    border-radius: 12px; padding: 14px 16px;
-    transition: all 0.25s;
-  }
-  .item-card:hover { border-color: rgba(244, 180, 0, 0.5); }
-  .item-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 8px; }
-  .item-keywords { display: flex; flex-wrap: wrap; gap: 5px; }
-  .kw-tag {
-    background: rgba(244, 180, 0, 0.12);
-    color: var(--saffron-gold);
-    padding: 3px 9px; border-radius: 8px; font-size: 11px;
-    border: 1px solid rgba(244, 180, 0, 0.25);
-  }
-  .item-answer { font-size: 12.5px; color: var(--text-muted); line-height: 1.7; margin-top: 6px; max-height: 60px; overflow: hidden; }
-  .item-actions { display: flex; gap: 6px; flex-shrink: 0; }
-
-  .empty-state { text-align: center; padding: 40px 20px; color: var(--text-muted); font-size: 13px; }
-  .empty-state .emoji { font-size: 40px; display: block; margin-bottom: 12px; opacity: 0.5; }
-
-  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 14px; }
-  .color-field label { display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 6px; font-weight: 500; }
-  .color-input-wrap { display: flex; gap: 8px; align-items: center; }
-  .color-input-wrap input[type="color"] {
-    width: 46px; height: 46px; padding: 3px;
-    border: 1px solid var(--border-gold); border-radius: 10px;
-    background: transparent; cursor: pointer;
-  }
-  .color-input-wrap input[type="text"] { flex: 1; padding: 10px 12px; font-size: 12px; direction: ltr; }
-
-  .stats-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-bottom: 24px; }
-  .stat-card {
-    background: linear-gradient(135deg, rgba(244, 180, 0, 0.08), rgba(244, 180, 0, 0.02));
-    border: 1px solid var(--border-gold); border-radius: 12px;
-    padding: 16px; text-align: center;
-  }
-  .stat-card .num { font-size: 26px; font-weight: 700; color: var(--saffron-gold); }
-  .stat-card .lbl { font-size: 11.5px; color: var(--text-muted); margin-top: 6px; }
-
-  .divider { height: 1px; background: var(--border-gold); margin: 20px 0; }
-
-  .questions-list { display: flex; flex-direction: column; gap: 8px; }
-  .question-row {
-    display: flex; align-items: center; gap: 12px;
-    background: rgba(26, 20, 16, 0.6);
-    border: 1px solid var(--border-gold);
-    border-radius: 10px; padding: 10px 14px;
-    transition: all 0.25s;
-  }
-  .question-row:hover { background: rgba(26, 20, 16, 0.9); }
-  .question-rank {
-    width: 28px; height: 28px; border-radius: 8px;
-    background: linear-gradient(135deg, var(--saffron-gold), var(--saffron-deep));
-    color: #1a1410; font-size: 12px; font-weight: 700;
+    color: #ff8a80; cursor: pointer; font-size: 15px;
     display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
   }
-  .question-rank.top3 { box-shadow: 0 0 12px rgba(244, 180, 0, 0.5); }
-  .question-text { flex: 1; font-size: 13px; color: var(--text-light); line-height: 1.5; word-break: break-word; }
-  .question-count {
-    background: rgba(244, 180, 0, 0.12); color: var(--saffron-gold);
-    padding: 4px 10px; border-radius: 8px; font-size: 11.5px; font-weight: 600;
-    border: 1px solid rgba(244, 180, 0, 0.25); flex-shrink: 0;
+  .panel-content { flex: 1; overflow-y: auto; padding: 22px; -webkit-overflow-scrolling: touch; }
+  .panel-content::-webkit-scrollbar { width: 8px; }
+  .panel-content::-webkit-scrollbar-thumb { background: rgba(244, 180, 0, 0.25); border-radius: 10px; }
+  .panel-footer {
+    padding: 16px 22px calc(16px + var(--safe-bottom));
+    background: linear-gradient(0deg, rgba(36, 29, 22, 0.95), rgba(26, 20, 16, 0.5));
+    border-top: 1px solid var(--border-gold); flex-shrink: 0;
   }
 
-  /* لاگین */
-  .login-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(180deg, #1f1812, #17110c);
-    z-index: 150;
+  /* ============ WHEEL OF FORTUNE ============ */
+  .wheel-container {
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 20px; gap: 24px;
+  }
+  .wheel-wrap {
+    position: relative;
+    width: 320px; height: 320px;
+  }
+  .wheel-pointer {
+    position: absolute; top: -15px; left: 50%;
+    transform: translateX(-50%);
+    width: 0; height: 0;
+    border-left: 18px solid transparent;
+    border-right: 18px solid transparent;
+    border-top: 32px solid var(--saffron-red);
+    z-index: 10;
+    filter: drop-shadow(0 4px 8px rgba(192, 57, 43, 0.5));
+    animation: pointerBounce 1s infinite;
+  }
+  @keyframes pointerBounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-4px); }
+  }
+  .wheel-svg {
+    width: 100%; height: 100%;
+    transition: transform 5s cubic-bezier(0.17, 0.67, 0.15, 1);
+    filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.5));
+  }
+  .wheel-center {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70px; height: 70px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--saffron-gold), var(--saffron-deep));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 34px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), inset 0 -4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 5;
+    border: 4px solid #fff;
+  }
+  .spin-btn {
+    padding: 16px 50px;
+    background: linear-gradient(135deg, var(--saffron-gold), var(--saffron-deep));
+    color: #1a1410; border: none; border-radius: 16px;
+    font-size: 16px; font-weight: 800; font-family: inherit;
+    cursor: pointer; box-shadow: 0 12px 30px rgba(244, 180, 0, 0.5);
+    transition: all 0.3s; letter-spacing: 0.5px;
+  }
+  .spin-btn:hover:not(:disabled) { transform: translateY(-3px) scale(1.03); box-shadow: 0 16px 40px rgba(244, 180, 0, 0.7); }
+  .spin-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .wheel-timer {
+    font-size: 12px; color: var(--text-muted);
+    text-align: center; line-height: 1.8;
+  }
+
+  /* Prize Modal */
+  .prize-modal {
+    position: fixed; inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    z-index: 400;
     display: none; align-items: center; justify-content: center;
     padding: 20px;
   }
-  .login-overlay.open { display: flex; }
-  .login-card {
-    width: 100%; max-width: 380px;
-    background: linear-gradient(180deg, #241d16, #1a1410);
-    border: 1px solid var(--border-gold); border-radius: 20px;
-    padding: 32px 28px;
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
-    animation: modalIn 0.35s ease;
+  .prize-modal.show { display: flex; animation: fadeIn 0.3s; }
+  .prize-card {
+    background: linear-gradient(135deg, #2d2419, #1a1410);
+    border: 2px solid var(--saffron-gold);
+    border-radius: 24px; padding: 40px 30px;
+    max-width: 380px; width: 100%;
     text-align: center;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 60px rgba(244, 180, 0, 0.4);
+    animation: prizePop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
-  @keyframes modalIn { from { opacity: 0; transform: scale(0.94); } to { opacity: 1; transform: scale(1); } }
-  .login-icon {
-    width: 70px; height: 70px; border-radius: 20px;
-    background: linear-gradient(135deg, var(--saffron-gold), var(--saffron-deep));
-    display: flex; align-items: center; justify-content: center;
-    font-size: 34px; margin: 0 auto 18px;
-    box-shadow: 0 12px 30px rgba(244, 180, 0, 0.35);
+  @keyframes prizePop {
+    0% { opacity: 0; transform: scale(0.5) rotate(-10deg); }
+    100% { opacity: 1; transform: scale(1) rotate(0); }
   }
-  .login-card h2 { font-size: 18px; color: var(--saffron-gold); margin-bottom: 8px; font-weight: 700; }
-  .login-card p { font-size: 12.5px; color: var(--text-muted); margin-bottom: 24px; }
-  .login-input-wrap { position: relative; margin-bottom: 14px; }
-  .login-card input {
-    width: 100%; padding: 14px 18px;
-    background: rgba(26, 20, 16, 0.9);
-    border: 1px solid var(--border-gold); border-radius: 12px;
-    color: var(--text-light); font-size: 14px; font-family: inherit;
-    outline: none; transition: all 0.25s; text-align: center; letter-spacing: 1px;
+  .prize-emoji {
+    font-size: 80px; display: block;
+    margin-bottom: 16px;
+    animation: prizeSpin 1.5s ease-out;
   }
-  .login-card input:focus { border-color: var(--saffron-gold); box-shadow: 0 0 0 3px rgba(244, 180, 0, 0.15); }
-  .login-card button {
-    width: 100%; padding: 14px;
-    background: linear-gradient(135deg, var(--saffron-gold), var(--saffron-deep));
-    color: #1a1410; border: none; border-radius: 12px;
-    font-size: 14px; font-weight: 700; font-family: inherit;
+  @keyframes prizeSpin {
+    0% { transform: scale(0) rotate(0); }
+    100% { transform: scale(1) rotate(720deg); }
+  }
+  .prize-title { font-size: 22px; font-weight: 800; color: var(--saffron-gold); margin-bottom: 8px; }
+  .prize-desc { font-size: 14px; color: var(--text-light); line-height: 1.7; margin-bottom: 20px; }
+  .prize-code {
+    background: rgba(244, 180, 0, 0.15);
+    border: 2px dashed var(--saffron-gold);
+    border-radius: 12px; padding: 14px;
+    font-size: 22px; font-weight: 800;
+    letter-spacing: 3px;
+    color: var(--saffron-gold); margin-bottom: 18px;
+    direction: ltr; font-family: monospace;
     cursor: pointer; transition: all 0.25s;
-    box-shadow: 0 8px 24px rgba(244, 180, 0, 0.35);
   }
-  .login-card button:hover { transform: translateY(-2px); }
-  .login-error { color: #ff8a80; font-size: 12.5px; margin-top: 12px; min-height: 18px; font-weight: 500; }
-  .login-cancel {
-    margin-top: 14px; background: transparent;
-    border: none; color: var(--text-muted);
-    font-size: 12.5px; cursor: pointer; font-family: inherit;
-    padding: 6px 12px; border-radius: 8px; transition: all 0.25s;
-  }
-  .login-cancel:hover { color: var(--text-light); background: rgba(255,255,255,0.05); }
+  .prize-code:hover { background: rgba(244, 180, 0, 0.25); }
 
-  .modal-overlay {
-    position: fixed; inset: 0;
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(6px);
-    display: none; align-items: center; justify-content: center;
-    z-index: 200; padding: 20px;
+  /* Confetti */
+  .confetti {
+    position: fixed; width: 10px; height: 10px;
+    background: var(--saffron-gold);
+    z-index: 350; pointer-events: none;
+    animation: confettiFall linear forwards;
   }
-  .modal-overlay.open { display: flex; }
-  .modal {
-    width: 100%; max-width: 520px; max-height: 88vh;
-    background: linear-gradient(180deg, #241d16, #1a1410);
-    border: 1px solid var(--border-gold); border-radius: 18px;
-    display: flex; flex-direction: column; overflow: hidden;
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
-    animation: modalIn 0.3s ease;
-  }
-  .modal-header {
-    padding: 18px 22px; border-bottom: 1px solid var(--border-gold);
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .modal-header h3 { font-size: 15px; color: var(--saffron-gold); font-weight: 700; }
-  .modal-body { flex: 1; overflow-y: auto; padding: 22px; -webkit-overflow-scrolling: touch; }
-  .modal-footer {
-    padding: 16px 22px; border-top: 1px solid var(--border-gold);
-    display: flex; gap: 10px; justify-content: flex-end;
+  @keyframes confettiFall {
+    0% { transform: translateY(-100vh) rotate(0); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
   }
 
-  .toast {
-    position: fixed; bottom: 30px; left: 50%;
-    transform: translateX(-50%) translateY(100px);
-    background: linear-gradient(135deg, var(--saffron-gold), var(--saffron-deep));
-    color: #1a1410; padding: 12px 22px;
-    border-radius: 12px; font-size: 13px; font-weight: 600;
-    box-shadow: 0 12px 32px rgba(244, 180, 0, 0.4);
-    z-index: 300; opacity: 0; transition: all 0.4s ease; pointer-events: none;
+  /* ============ LEVELS ============ */
+  .level-hero {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(244, 180, 0, 0.1));
+    border: 2px solid rgba(168, 85, 247, 0.4);
+    border-radius: 20px; padding: 24px;
+    text-align: center; margin-bottom: 20px;
+    position: relative; overflow: hidden;
   }
-  .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+  .level-hero::before {
+    content: ''; position: absolute; top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(244, 180, 0, 0.15), transparent 60%);
+    animation: rotateBg 10s linear infinite;
+  }
+  @keyframes rotateBg { from { transform: rotate(0); } to { transform: rotate(360deg); } }
+  .level-hero > * { position: relative; z-index: 1; }
+  .level-badge-big {
+    width: 90px; height: 90px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--purple), #7c3aed);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 44px; margin: 0 auto 14px;
+    box-shadow: 0 12px 30px rgba(168, 85, 247, 0.5);
+    border: 4px solid white;
+    animation: levelPulse 2s infinite;
+  }
+  @keyframes levelPulse {
+    0%, 100% { box-shadow: 0 12px 30px rgba(168, 85, 247, 0.5); }
+    50% { box-shadow: 0 12px 45px rgba(168, 85, 247, 0.9); }
+  }
+  .level-name { font-size: 20px; font-weight: 800; color: var(--saffron-gold); margin-bottom: 6px; }
+  .level-score { font-size: 26px; font-weight: 800; color: white; }
+  .level-score-lbl { font-size: 12px; color: var(--text-muted); }
 
-  /* PWA Install Banner */
-  .install-banner {
-    position: fixed; bottom: calc(20px + var(--safe-bottom)); left: 50%;
-    transform: translateX(-50%) translateY(200px);
-    background: linear-gradient(135deg, var(--saffron-gold), var(--saffron-deep));
-    color: #1a1410;
-    padding: 14px 20px;
-    border-radius: 16px;
+  .progress-big {
+    width: 100%; height: 12px; border-radius: 6px;
+    background: rgba(0, 0, 0, 0.3);
+    margin: 14px 0 6px; overflow: hidden;
+    border: 1px solid var(--border-gold);
+  }
+  .progress-big-bar {
+    height: 100%; border-radius: 6px;
+    background: linear-gradient(90deg, var(--saffron-gold), #ff6b35);
+    transition: width 0.8s ease;
+    position: relative; overflow: hidden;
+  }
+  .progress-big-bar::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    animation: shine 2s infinite;
+  }
+  @keyframes shine { from { transform: translateX(-100%); } to { transform: translateX(100%); } }
+  .progress-hint { font-size: 11.5px; color: var(--text-muted); }
+
+  .levels-list { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+  .level-item {
     display: flex; align-items: center; gap: 12px;
-    box-shadow: 0 12px 32px rgba(244, 180, 0, 0.5);
-    z-index: 250;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    font-size: 13px; font-weight: 600;
-    max-width: calc(100% - 40px);
+    padding: 14px; border-radius: 14px;
+    background: rgba(26, 20, 16, 0.6);
+    border: 1px solid var(--border-gold);
+    transition: all 0.25s;
   }
-  .install-banner.show { transform: translateX(-50%) translateY(0); }
-  .install-banner button {
-    padding: 8px 14px; background: #1a1410; color: var(--saffron-gold);
-    border: none; border-radius: 10px;
-    font-size: 12px; font-weight: 700; font-family: inherit;
-    cursor: pointer; white-space: nowrap;
+  .level-item.current {
+    border-color: var(--saffron-gold);
+    background: linear-gradient(135deg, rgba(244, 180, 0, 0.12), rgba(244, 180, 0, 0.02));
+    box-shadow: 0 8px 20px rgba(244, 180, 0, 0.15);
   }
-  .install-banner .close-banner {
-    background: transparent; color: #1a1410; font-size: 18px;
-    padding: 0 4px; cursor: pointer;
+  .level-item.locked { opacity: 0.5; }
+  .level-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; flex-shrink: 0;
   }
+  .level-info { flex: 1; min-width: 0; }
+  .level-info .name { font-size: 13.5px; font-weight: 700; color: var(--text-light); }
+  .level-info .desc { font-size: 11.5px; color: var(--text-muted); margin-top: 3px; }
+  .level-info .req { font-size: 10.5px; color: var(--saffron-gold); margin-top: 3px; font-weight: 600; }
+
+  .points-actions {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px; margin-top: 20px;
+  }
+  .point-card {
+    background: rgba(26, 20, 16, 0.6);
+    border: 1px solid var(--border-gold);
+    border-radius: 14px; padding: 14px;
+    text-align: center; cursor: pointer;
+    transition: all 0.25s;
+  }
+  .point-card:hover { border-color: var(--saffron-gold); transform: translateY(-2px); }
+  .point-card .pc-icon { font-size: 26px; margin-bottom: 6px; }
+  .point-card .pc-title { font-size: 12px; font-weight: 700; color: var(--text-light); margin-bottom: 4px; }
+  .point-card .pc-points { font-size: 11.5px; color: var(--saffron-gold); font-weight: 600; }
+
+  /* ============ BARGAIN ============ */
+  .bargain-intro {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.12), rgba(34, 197, 94, 0.03));
+    border: 2px solid rgba(34, 197, 94, 0.4);
+    border-radius: 20px; padding: 20px;
+    text-align: center; margin-bottom: 20px;
+  }
+  .bargain-intro .big-emoji { font-size: 60px; display: block; margin-bottom: 12px; }
+  .bargain-intro h2 { font-size: 20px; color: var(--green); font-weight: 800; margin-bottom: 8px; }
+  .bargain-intro p { font-size: 13px; color: var(--text-muted); line-height: 1.8; }
+
+  .chat-bargain-area {
+    background: rgba(0,0,0,0.3);
+    border-radius: 16px; padding: 16px;
+    height: 300px; overflow-y: auto;
+    margin-bottom: 14px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .bmsg {
+    padding: 10px 14px; border-radius: 12px;
+    font-size: 12.5px; line-height: 1.7;
+    max-width: 80%;
+    animation: slideIn 0.3s;
+  }
+  .bmsg.user { align-self: flex-start; background: linear-gradient(135deg, var(--saffron-gold), var(--saffron-deep)); color: #1a1410; font-weight: 500; }
+  .bmsg.bot { align-self: flex-end; background: var(--dark-card); border: 1px solid var(--border-gold); }
+
+  /* ============ PRODUCTS / CART / ETC ============ */
+  .cart-item { display: flex; gap: 10px; align-items: center; background: rgba(26, 20, 16, 0.6); border: 1px solid var(--border-gold); border-radius: 14px; padding: 12px; margin-bottom: 10px; }
+  .cart-item .c-img { width: 52px; height: 52px; border-radius: 10px; background: linear-gradient(135deg, rgba(244, 180, 0, 0.15), rgba(244, 180, 0, 0.05)); display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; overflow: hidden; }
+  .cart-item .c-img img { width: 100%; height: 100%; object-fit: cover; }
+  .cart-item .c-info { flex: 1; min-width: 0; }
+  .cart-item .c-name { font-size: 12.5px; font-weight: 600; margin-bottom: 4px; }
+  .cart-item .c-price { font-size: 11.5px; color: var(--saffron-gold); font-weight: 600; }
+  .cart-item .c-qty { display: flex; align-items: center; gap: 6px; background: rgba(244, 180, 0, 0.08); border: 1px solid var(--border-gold); border-radius: 10px; padding: 3px; }
+  .cart-item .qty-btn { width: 24px; height: 24px; border-radius: 7px; background: rgba(244, 180, 0, 0.15); border: none; color: var(--saffron-gold); font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit; }
+  .cart-item .qty-num { font-size: 12.5px; font-weight: 700; min-width: 18px; text-align: center; }
+  .cart-item .c-remove { width: 28px; height: 28px; border-radius: 8px; background: rgba(192, 57, 43, 0.15); border: 1px solid rgba(192, 57, 43, 0.3); color: #ff8a80; font-size: 13px; cursor: pointer; }
+  .cart-empty { text-align: center; padding: 50px 20px; color: var(--text-muted); }
+  .cart-empty .emoji { font-size: 50px; display: block; margin-bottom: 12px; opacity: 0.4; }
+  .cart-summary { background: rgba(26, 20, 16, 0.6); border: 1px solid var(--border-gold); border-radius: 14px; padding: 14px; margin-bottom: 14px; }
+  .summary-row { display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; padding: 5px 0; color: var(--text-muted); }
+  .summary-row.discount { color: var(--green); }
+  .summary-row.total { border-top: 1px solid var(--border-gold); margin-top: 6px; padding-top: 10px; font-size: 14px; font-weight: 700; color: var(--text-light); }
+  .summary-row.total .val { color: var(--saffron-gold); font-size: 16px; }
+  .coupon-box { display: flex; gap: 6px; margin-bottom: 10px; }
+  .coupon-box input { flex: 1; padding: 10px 12px; background: rgba(26, 20, 16, 0.8); border: 1px solid var(--border-gold); border-radius: 10px; color: var(--text-light); font-size: 12px; outline: none; text-transform: uppercase; font-family: inherit; }
+  .coupon-box button { padding: 0 14px; border-radius: 10px; background: linear-gradient(135deg, var(--saffron-gold), var(--saffron-deep)); color: #1a1410; border: none; font-size: 11.5px; font-weight: 700; font-family: inherit; cursor: pointer; }
+  .coupon-applied { display: flex; justify-content: space-between; align-items: center; background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.4); border-radius: 10px; padding: 9px 12px; margin-bottom: 10px; font-size: 12px; }
+  .coupon-applied .code { color: var(--green); font-weight: 700; }
+  .coupon-applied .remove-coupon { background: transparent; border: none; color: #ff8a80; cursor: pointer; font-size: 11px; font-family: inherit; padding: 4px 8px; }
+
+  .products-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; }
+  .product-card { background: rgba(26, 20, 16, 0.6); border: 1px solid var(--border-gold); border-radius: 16px; overflow: hidden; transition: all 0.25s; display: flex; flex-direction: column; }
+  .product-card:hover { border-color: var(--saffron-gold); transform: translateY(-3px); }
+  .product-image { height: 130px; background: linear-gradient(135deg, rgba(244, 180, 0, 0.15), rgba(244, 180, 0, 0.02)); display: flex; align-items: center; justify-content: center; font-size: 56px; overflow: hidden; }
+  .product-image img { width: 100%; height: 100%; object-fit: cover; }
+  .product-body { padding: 12px; flex: 1; display: flex; flex-direction: column; }
+  .product-name { font-size: 13.5px; font-weight: 700; margin-bottom: 5px; }
+  .product-desc { font-size: 11px; color: var(--text-muted); line-height: 1.6; margin-bottom: 8px; flex: 1; }
+  .product-price { font-size: 14px; font-weight: 700; color: var(--saffron-gold); }
+  .product-unit { font-size: 10.5px; color: var(--text-muted); margin-bottom: 8px; }
+  .product-add-btn {
+    width: 100%; padding: 9px;
+    background: linear-gradient(135deg, var(--saffron-gold), var(--saffron-deep));
+    color: #1a1410; border: none; border-radius: 10px;
+    font-size: 12px; font-weight: 700; font-family: inherit; cursor: pointer;
+    transition: all 0.25s;
+  }
+  .product-add-btn.added { background: linear-gradient(135deg, #22c55e, #16a34a); color: white; }
+
+  /* ============ ADMIN ============ */
+  .admin-panel { position: absolute; inset: 0; background: linear-gradient(180deg, #1f1812, #17110c); z-index: 100; display: flex; flex-direction: column; transform: translateY(100%); opacity: 0; pointer-events: none; transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+  .admin-panel.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+  .admin-tabs { display: flex; gap: 3px; padding: 10px 16px 0; background: rgba(26, 20, 16, 0.5); border-bottom: 1px solid var(--border-gold); overflow-x: auto; flex-shrink: 0; }
+  .admin-tabs::-webkit-scrollbar { height: 0; }
+  .admin-tab { padding: 10px 16px; background: transparent; border: none; color: var(--text-muted); font-size: 12.5px; font-weight: 500; cursor: pointer; font-family: inherit; border-radius: 10px 10px 0 0; transition: all 0.25s; white-space: nowrap; border-bottom: 2px solid transparent; }
+  .admin-tab.active { color: var(--saffron-gold); border-bottom-color: var(--saffron-gold); background: rgba(244, 180, 0, 0.08); }
+  .admin-content { flex: 1; overflow-y: auto; padding: 20px; }
+  .tab-pane { display: none; }
+  .tab-pane.active { display: block; animation: fadeIn 0.3s; }
+  .section-title { font-size: 13.5px; color: var(--saffron-gold); margin-bottom: 14px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+  .items-list { display: flex; flex-direction: column; gap: 10px; }
+  .item-card { background: rgba(26, 20, 16, 0.6); border: 1px solid var(--border-gold); border-radius: 12px; padding: 12px 14px; }
+  .item-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 6px; }
+  .item-keywords { display: flex; flex-wrap: wrap; gap: 4px; }
+  .kw-tag { background: rgba(244, 180, 0, 0.12); color: var(--saffron-gold); padding: 3px 8px; border-radius: 8px; font-size: 10.5px; border: 1px solid rgba(244, 180, 0, 0.25); }
+  .item-answer { font-size: 12px; color: var(--text-muted); line-height: 1.6; margin-top: 5px; max-height: 50px; overflow: hidden; }
+  .item-actions { display: flex; gap: 5px; flex-shrink: 0; }
+  .empty-state { text-align: center; padding: 40px 20px; color: var(--text-muted); font-size: 12.5px; }
+  .empty-state .emoji { font-size: 40px; display: block; margin-bottom: 12px; opacity: 0.5; }
+  .stats-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; margin-bottom: 20px; }
+  .stat-card { background: linear-gradient(135deg, rgba(244, 180, 0, 0.08), rgba(244, 180, 0, 0.02)); border: 1px solid var(--border-gold); border-radius: 12px; padding: 14px; text-align: center; }
+  .stat-card .num { font-size: 24px; font-weight: 700; color: var(--saffron-gold); }
+  .stat-card .lbl { font-size: 11px; color: var(--text-muted); margin-top: 5px; }
+  .divider { height: 1px; background: var(--border-gold); margin: 18px 0; }
+  .form-group { margin-bottom: 14px; }
+  .form-group label { display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 5px; font-weight: 500; }
+  .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 11px 14px; background: rgba(26, 20, 16, 0.8); border: 1px solid var(--border-gold); border-radius: 10px; color: var(--text-light); font-size: 12.5px; font-family: inherit; outline: none; }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--saffron-gold); }
+  .form-group textarea { resize: vertical; min-height: 70px; line-height: 1.7; }
+  .btn { padding: 10px 18px; border-radius: 10px; font-size: 12.5px; font-weight: 600; font-family: inherit; cursor: pointer; transition: all 0.25s; border: none; display: inline-flex; align-items: center; gap: 6px; justify-content: center; }
+  .btn-primary { background: linear-gradient(135deg, var(--saffron-gold), var(--saffron-deep)); color: #1a1410; }
+  .btn-danger { background: rgba(192, 57, 43, 0.15); color: #ff8a80; border: 1px solid rgba(192, 57, 43, 0.4); }
+  .btn-ghost { background: rgba(244, 180, 0, 0.08); color: var(--saffron-gold); border: 1px solid var(--border-gold); }
+  .btn-green { background: linear-gradient(135deg, #22c55e, #16a34a); color: white; }
+  .btn-full { width: 100%; padding: 13px; font-size: 13.5px; }
+  .btn-sm { padding: 6px 11px; font-size: 11.5px; }
+  .question-row { display: flex; align-items: center; gap: 10px; background: rgba(26, 20, 16, 0.6); border: 1px solid var(--border-gold); border-radius: 10px; padding: 9px 12px; margin-bottom: 6px; }
+  .question-rank { width: 26px; height: 26px; border-radius: 8px; background: linear-gradient(135deg, var(--saffron-gold), var(--saffron-deep)); color: #1a1410; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .question-rank.top3 { box-shadow: 0 0 12px rgba(244, 180, 0, 0.5); }
+  .question-text { flex: 1; font-size: 12.5px; line-height: 1.5; }
+  .question-count { background: rgba(244, 180, 0, 0.12); color: var(--saffron-gold); padding: 4px 9px; border-radius: 8px; font-size: 11px; font-weight: 600; flex-shrink: 0; }
+  .order-card { background: rgba(26, 20, 16, 0.6); border: 1px solid var(--border-gold); border-radius: 14px; padding: 14px; margin-bottom: 10px; }
+  .order-card.new { border-color: rgba(34, 197, 94, 0.5); background: rgba(34, 197, 94, 0.05); }
+  .order-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+  .order-id { font-size: 12.5px; font-weight: 700; color: var(--saffron-gold); }
+  .order-status { font-size: 10px; padding: 4px 9px; border-radius: 8px; font-weight: 600; }
+  .status-new { background: rgba(34, 197, 94, 0.15); color: #22c55e; border: 1px solid rgba(34, 197, 94, 0.4); }
+  .status-processing { background: rgba(244, 180, 0, 0.15); color: var(--saffron-gold); border: 1px solid var(--border-gold); }
+  .status-done { background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.4); }
+  .status-cancelled { background: rgba(192, 57, 43, 0.15); color: #ff8a80; border: 1px solid rgba(192, 57, 43, 0.4); }
+  .order-items { background: rgba(0,0,0,0.2); border-radius: 10px; padding: 9px; margin-bottom: 10px; font-size: 11.5px; }
+  .order-item-row { display: flex; justify-content: space-between; padding: 3px 0; color: var(--text-muted); }
+  .order-total { font-size: 13px; font-weight: 700; color: var(--saffron-gold); text-align: left; padding-top: 6px; border-top: 1px solid var(--border-gold); margin-top: 6px; }
+  .order-actions { display: flex; gap: 5px; flex-wrap: wrap; }
+  .order-actions .btn { padding: 6px 11px; font-size: 11px; }
+  .p-admin-card { display: flex; gap: 10px; align-items: center; background: rgba(26, 20, 16, 0.6); border: 1px solid var(--border-gold); border-radius: 12px; padding: 10px; margin-bottom: 8px; }
+  .p-admin-img { width: 52px; height: 52px; border-radius: 10px; background: linear-gradient(135deg, rgba(244, 180, 0, 0.15), rgba(244, 180, 0, 0.05)); display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; overflow: hidden; }
+  .p-admin-img img { width: 100%; height: 100%; object-fit: cover; }
+  .p-admin-info { flex: 1; min-width: 0; }
+  .p-admin-info h4 { font-size: 12.5px; font-weight: 600; margin-bottom: 3px; }
+  .p-admin-info p { font-size: 11px; color: var(--text-muted); }
+  .p-admin-price { color: var(--saffron-gold); font-weight: 700; }
+  .img-upload { display: flex; align-items: center; gap: 12px; background: rgba(26, 20, 16, 0.6); border: 1px dashed var(--border-gold); border-radius: 12px; padding: 10px; }
+  .img-preview { width: 70px; height: 70px; border-radius: 10px; background: linear-gradient(135deg, rgba(244, 180, 0, 0.15), rgba(244, 180, 0, 0.02)); display: flex; align-items: center; justify-content: center; font-size: 28px; overflow: hidden; flex-shrink: 0; border: 1px solid var(--border-gold); }
+  .img-preview img { width: 100%; height: 100%; object-fit: cover; }
+  .img-upload-actions { flex: 1; display: flex; flex-direction: column; gap: 5px; }
+  .img-upload-actions button { padding: 7px 10px; border-radius: 8px; background: rgba(244, 180, 0, 0.08); border: 1px solid var(--border-gold); color: var(--saffron-gold); font-family: inherit; font-size: 11.5px; font-weight: 600; cursor: pointer; }
+  .img-upload-actions .remove-img { color: #ff8a80; border-color: rgba(192, 57, 43, 0.4); }
+
+  /* Login */
+  .login-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, #1f1812, #17110c); z-index: 150; display: none; align-items: center; justify-content: center; padding: 20px; }
+  .login-overlay.open { display: flex; }
+  .login-card { width: 100%; max-width: 380px; background: linear-gradient(180deg, #241d16, #1a1410); border: 1px solid var(--border-gold); border-radius: 20px; padding: 30px 26px; text-align: center; }
+  .login-icon { width: 70px; height: 70px; border-radius: 20px; background: linear-gradient(135deg, var(--saffron-gold), var(--saffron-deep)); display: flex; align-items: center; justify-content: center; font-size: 34px; margin: 0 auto 16px; }
+  .login-card h2 { font-size: 18px; color: var(--saffron-gold); margin-bottom: 6px; }
+  .login-card p { font-size: 12.5px; color: var(--text-muted); margin-bottom: 20px; }
+  .login-card input { width: 100%; padding: 13px 16px; background: rgba(26, 20, 16, 0.9); border: 1px solid var(--border-gold); border-radius: 12px; color: var(--text-light); font-size: 13.5px; font-family: inherit; outline: none; text-align: center; letter-spacing: 1px; margin-bottom: 12px; }
+  .login-card button { width: 100%; padding: 13px; background: linear-gradient(135deg, var(--saffron-gold), var(--saffron-deep)); color: #1a1410; border: none; border-radius: 12px; font-size: 13.5px; font-weight: 700; font-family: inherit; cursor: pointer; }
+  .login-error { color: #ff8a80; font-size: 12px; margin-top: 10px; min-height: 16px; }
+  .login-cancel { margin-top: 12px; background: transparent; border: none; color: var(--text-muted); font-size: 12px; cursor: pointer; font-family: inherit; }
+
+  /* Modal */
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(6px); display: none; align-items: center; justify-content: center; z-index: 200; padding: 20px; }
+  .modal-overlay.open { display: flex; }
+  .modal { width: 100%; max-width: 500px; max-height: 88vh; background: linear-gradient(180deg, #241d16, #1a1410); border: 1px solid var(--border-gold); border-radius: 18px; display: flex; flex-direction: column; overflow: hidden; animation: prizePop 0.3s; }
+  .modal-header { padding: 16px 20px; border-bottom: 1px solid var(--border-gold); display: flex; align-items: center; justify-content: space-between; }
+  .modal-header h3 { font-size: 14.5px; color: var(--saffron-gold); font-weight: 700; }
+  .modal-body { flex: 1; overflow-y: auto; padding: 20px; }
+  .modal-footer { padding: 14px 20px; border-top: 1px solid var(--border-gold); display: flex; gap: 8px; justify-content: flex-end; }
+
+  /* Toast */
+  .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: linear-gradient(135deg, var(--saffron-gold), var(--saffron-deep)); color: #1a1410; padding: 12px 22px; border-radius: 12px; font-size: 13px; font-weight: 600; z-index: 500; opacity: 0; transition: all 0.4s ease; pointer-events: none; max-width: 90%; text-align: center; }
+  .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
   /* ============ RESPONSIVE ============ */
   @media (max-width: 760px) {
     body { padding: 0; }
     .app { height: 100vh; height: 100dvh; max-width: 100%; border-radius: 0; flex-direction: column; }
-    .sidebar {
-      width: 100%; flex-direction: row; padding: 12px 16px; gap: 12px;
-      overflow-x: auto; border-left: none; border-bottom: 1px solid var(--border-gold);
-      flex-shrink: 0;
-    }
+    .sidebar { width: 100%; flex-direction: row; padding: 10px 14px; gap: 10px; overflow-x: auto; border-left: none; border-bottom: 1px solid var(--border-gold); flex-shrink: 0; }
     .sidebar::-webkit-scrollbar { display: none; }
     .sidebar::before { display: none; }
     .brand { border: none; padding: 0; flex-shrink: 0; }
     .brand-text { display: none; }
+    .user-mini { flex-shrink: 0; padding: 8px; }
+    .user-mini .user-avatar { width: 36px; height: 36px; font-size: 17px; }
+    .user-mini .user-info { display: none; }
     .nav-title { display: none; }
-    .nav { flex-direction: row; gap: 6px; overflow-x: auto; }
+    .nav { flex-direction: row; gap: 5px; overflow-x: auto; }
     .nav-item { padding: 8px 12px; font-size: 12px; white-space: nowrap; flex-shrink: 0; }
-    .nav-item span:not(.icon) { display: none; }
+    .nav-item span:not(.icon):not(.count-badge) { display: none; }
     .nav-item.active::before { display: none; }
-    .sidebar-footer { display: none; }
+    .nav-item .count-badge { margin-right: 0; }
     .message { max-width: 85%; }
-    .chat-header { padding: 14px 18px; }
-    .bot-avatar { width: 40px; height: 40px; font-size: 20px; }
-    .header-info h3 { font-size: 14px; }
-    .header-info p { font-size: 11px; }
-    .chat-body { padding: 18px; }
-    .chat-footer { padding: 14px 18px calc(14px + var(--safe-bottom)); }
-    .quick-replies { padding: 0 18px 10px; overflow-x: auto; flex-wrap: nowrap; }
+    .chat-header { padding: 12px 16px; }
+    .bot-avatar { width: 38px; height: 38px; font-size: 19px; }
+    .header-info h3 { font-size: 13.5px; }
+    .chat-body { padding: 16px; }
+    .chat-footer { padding: 12px 16px calc(12px + var(--safe-bottom)); gap: 6px; }
+    .mic-btn, .send-btn { width: 42px; height: 42px; font-size: 17px; }
+    .quick-replies { padding: 0 16px 8px; overflow-x: auto; flex-wrap: nowrap; }
     .quick-replies::-webkit-scrollbar { display: none; }
     .quick-reply { flex-shrink: 0; }
-    .admin-content { padding: 18px; }
-    .admin-tabs { padding: 10px 14px 0; }
-    .admin-tab { padding: 10px 14px; font-size: 12px; }
+    .admin-content { padding: 16px; }
+    .admin-tabs { padding: 8px 12px 0; }
+    .admin-tab { padding: 9px 13px; font-size: 11.5px; }
+    .cart-float { bottom: calc(20px + var(--safe-bottom)); left: 20px; width: 52px; height: 52px; font-size: 22px; }
+    .products-list { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+    .product-image { height: 100px; font-size: 44px; }
+    .wheel-wrap { width: 260px; height: 260px; }
+    .wheel-center { width: 60px; height: 60px; font-size: 28px; }
+    .spin-btn { padding: 14px 40px; font-size: 15px; }
   }
 </style>
 </head>
 <body>
   <div class="app">
     
+    <!-- SIDEBAR -->
     <aside class="sidebar">
       <div class="brand">
-        <div class="brand-logo" id="brandLogo">🌸</div>
+        <div class="brand-logo">🌸</div>
         <div class="brand-text">
-          <h2 id="brandName">زعفران شیرزاد</h2>
-          <p id="brandSub">پشتیبانی هوشمند</p>
+          <h2>زعفران شیرزاد</h2>
+          <p>تجربه خرید لوکس</p>
         </div>
       </div>
-      <div class="nav-title">دسته‌بندی‌ها</div>
-      <nav class="nav" id="navList"></nav>
-      <div class="sidebar-footer">
-        ساخته شده با ❤️ برای<br>
-        <strong>زعفران شیرزاد</strong>
+
+      <div class="user-mini" onclick="openLevelsPanel()">
+        <div class="user-avatar">
+          🧑
+          <div class="badge-lvl" id="miniLvlIcon">🥉</div>
+        </div>
+        <div class="user-info">
+          <div class="name" id="miniUserName">مهمان عزیز</div>
+          <div class="score" id="miniUserScore">۰ امتیاز</div>
+          <div class="user-progress">
+            <div class="user-progress-bar" id="miniProgressBar" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-title">امکانات ویژه</div>
+      <nav class="nav">
+        <div class="nav-item wheel" onclick="openWheelPanel()">
+          <span class="icon">🎰</span>
+          <span>گردونه شانس</span>
+          <span class="count-badge" id="wheelFreeBadge" style="display:none">FREE</span>
+        </div>
+        <div class="nav-item" onclick="openLevelsPanel()">
+          <span class="icon">💎</span>
+          <span>سطح و امتیاز</span>
+        </div>
+        <div class="nav-item" onclick="openBargainPanel()">
+          <span class="icon">🤝</span>
+          <span>چانه‌زنی با AI</span>
+        </div>
+        <div class="nav-item" onclick="openProductsPanel()">
+          <span class="icon">🛍</span>
+          <span>محصولات</span>
+        </div>
+        <div class="nav-item" onclick="sendMessage('درباره زعفران')">
+          <span class="icon">🌿</span>
+          <span>دانستنی‌ها</span>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer" style="margin-top:auto; padding-top:14px; border-top:1px solid var(--border-gold); font-size:10.5px; color:var(--text-muted); text-align:center;">
+        ساخته شده با ❤️<br>
+        <strong style="color:var(--saffron-gold);">زعفران شیرزاد</strong>
       </div>
     </aside>
 
+    <!-- MAIN -->
     <main class="main">
       <header class="chat-header">
         <div class="header-left">
-          <div class="bot-avatar" id="botAvatar">🌸</div>
+          <div class="bot-avatar">🌸</div>
           <div class="header-info">
-            <h3 id="botName">دستیار زعفران شیرزاد</h3>
-            <p><span>●</span> آماده پاسخگویی</p>
+            <h3>دستیار هوشمند زعفران شیرزاد</h3>
+            <p><span>●</span> آنلاین • پاسخ فوری</p>
           </div>
         </div>
         <div class="header-actions">
-          <button class="icon-btn" id="adminBtn" title="پنل مدیریت">⚙️</button>
-          <button class="icon-btn" id="clearBtn" title="پاک کردن گفتگو">🗑</button>
+          <button class="icon-btn" onclick="openMyCouponsPanel()" title="کوپن‌های من">🎟</button>
+          <button class="icon-btn" id="secretStarBtn" title="؟؟؟">🌟</button>
+          <button class="icon-btn" onclick="openAdminLogin()" title="پنل ادمین">⚙️</button>
+          <button class="icon-btn" onclick="clearChat()" title="پاک کردن">🗑</button>
         </div>
       </header>
 
@@ -556,157 +887,222 @@
         <div class="input-wrapper">
           <input type="text" id="userInput" placeholder="سوالتون رو بنویسید..." autocomplete="off">
         </div>
+        <button class="mic-btn" id="micBtn" title="ضبط صدا">🎙</button>
         <button class="send-btn" id="sendBtn">➤</button>
+      </div>
+
+      <!-- PRODUCTS PANEL -->
+      <div class="panel" id="productsPanel">
+        <div class="panel-header">
+          <div class="panel-title"><span class="icon">🛍</span><span>محصولات ما</span></div>
+          <button class="close-panel" onclick="closePanel('productsPanel')">✕</button>
+        </div>
+        <div class="panel-content">
+          <div class="products-list" id="productsList"></div>
+        </div>
+      </div>
+
+      <!-- CART PANEL -->
+      <div class="panel" id="cartPanel">
+        <div class="panel-header">
+          <div class="panel-title"><span class="icon">🛒</span><span>سبد خرید</span></div>
+          <button class="close-panel" onclick="closePanel('cartPanel')">✕</button>
+        </div>
+        <div class="panel-content" id="cartContent"></div>
+        <div class="panel-footer" id="cartFooter" style="display:none;">
+          <div id="couponArea"></div>
+          <div class="cart-summary">
+            <div class="summary-row"><span>تعداد اقلام:</span><span id="summaryCount">۰</span></div>
+            <div class="summary-row"><span>جمع اقلام:</span><span id="summarySubtotal">۰</span></div>
+            <div class="summary-row discount" id="summaryDiscountRow" style="display:none;"><span>تخفیف:</span><span id="summaryDiscount">۰</span></div>
+            <div class="summary-row total"><span>جمع کل:</span><span class="val" id="summaryTotal">۰</span></div>
+          </div>
+          <button class="btn btn-primary btn-full" onclick="openCheckoutModal()">📝 ثبت سفارش</button>
+        </div>
+      </div>
+
+      <!-- WHEEL PANEL -->
+      <div class="panel high" id="wheelPanel">
+        <div class="panel-header">
+          <div class="panel-title"><span class="icon">🎰</span><span>گردونه شانس روزانه</span></div>
+          <button class="close-panel" onclick="closePanel('wheelPanel')">✕</button>
+        </div>
+        <div class="panel-content">
+          <div class="wheel-container">
+            <div style="text-align:center; margin-bottom:6px;">
+              <div style="font-size:14px; font-weight:700; color:var(--saffron-gold); margin-bottom:6px;">🎁 یه بار در روز رایگان بچرخون!</div>
+              <div style="font-size:11.5px; color:var(--text-muted); line-height:1.7;">جایزه‌ها: تخفیف، ارسال رایگان، امتیاز و جایزه بزرگ 💎</div>
+            </div>
+
+            <div class="wheel-wrap">
+              <div class="wheel-pointer"></div>
+              <svg class="wheel-svg" id="wheelSvg" viewBox="0 0 320 320"></svg>
+              <div class="wheel-center">🌸</div>
+            </div>
+
+            <button class="spin-btn" id="spinBtn" onclick="spinWheel()">🎰 بچرخون!</button>
+            <div class="wheel-timer" id="wheelTimer"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LEVELS PANEL -->
+      <div class="panel" id="levelsPanel">
+        <div class="panel-header">
+          <div class="panel-title"><span class="icon">💎</span><span>سطح و امتیاز شما</span></div>
+          <button class="close-panel" onclick="closePanel('levelsPanel')">✕</button>
+        </div>
+        <div class="panel-content" id="levelsContent"></div>
+      </div>
+
+      <!-- MY COUPONS PANEL -->
+      <div class="panel" id="myCouponsPanel">
+        <div class="panel-header">
+          <div class="panel-title"><span class="icon">🎟</span><span>کوپن‌های من</span></div>
+          <button class="close-panel" onclick="closePanel('myCouponsPanel')">✕</button>
+        </div>
+        <div class="panel-content" id="myCouponsContent"></div>
+      </div>
+
+      <!-- BARGAIN PANEL -->
+      <div class="panel high" id="bargainPanel">
+        <div class="panel-header">
+          <div class="panel-title"><span class="icon">🤝</span><span>چانه‌زنی هوشمند با AI</span></div>
+          <button class="close-panel" onclick="closePanel('bargainPanel')">✕</button>
+        </div>
+        <div class="panel-content">
+          <div class="bargain-intro">
+            <span class="big-emoji">🤝</span>
+            <h2>چانه بزن، تخفیف بگیر!</h2>
+            <p>با هوش مصنوعی ما چانه بزن. اگه مهارت داشته باشی، تا ۲۵٪ تخفیف می‌گیری! ولی حواست باشه — ربات هم باهوشه 😏</p>
+          </div>
+
+          <div class="chat-bargain-area" id="bargainChat"></div>
+
+          <div class="coupon-box" style="margin-bottom:10px;">
+            <input type="text" id="bargainInput" placeholder="مثلاً: تخفیف میدی؟">
+            <button onclick="sendBargainMessage()">ارسال</button>
+          </div>
+
+          <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:12px;">
+            <button class="quick-reply" onclick="document.getElementById('bargainInput').value='تخفیف میدی؟'; sendBargainMessage();">تخفیف میدی؟</button>
+            <button class="quick-reply" onclick="document.getElementById('bargainInput').value='گرونه، کمترش کن'; sendBargainMessage();">گرونه، کمترش کن</button>
+            <button class="quick-reply" onclick="document.getElementById('bargainInput').value='آخرین قیمت چنده؟'; sendBargainMessage();">آخرین قیمت؟</button>
+          </div>
+
+          <div id="bargainOffers"></div>
+        </div>
       </div>
 
       <!-- ADMIN PANEL -->
       <div class="admin-panel" id="adminPanel">
-        <div class="admin-header">
-          <div class="admin-title"><span class="icon">⚙️</span><span>پنل مدیریت</span></div>
-          <button class="close-admin" id="closeAdmin">✕</button>
+        <div class="panel-header">
+          <div class="panel-title"><span class="icon">⚙️</span><span>پنل مدیریت</span></div>
+          <button class="close-panel" onclick="closeAdmin()">✕</button>
         </div>
-
         <div class="admin-tabs">
-          <button class="admin-tab active" data-tab="dashboard">📊 داشبورد</button>
-          <button class="admin-tab" data-tab="knowledge">🧠 دانشنامه</button>
-          <button class="admin-tab" data-tab="analytics">📈 آمار</button>
-          <button class="admin-tab" data-tab="categories">📂 دسته‌بندی</button>
-          <button class="admin-tab" data-tab="branding">🎨 برند</button>
-          <button class="admin-tab" data-tab="settings">💬 تنظیمات</button>
-          <button class="admin-tab" data-tab="security">🔐 امنیت</button>
-          <button class="admin-tab" data-tab="backup">💾 پشتیبان</button>
+          <button class="admin-tab active" data-tab="dashboard" onclick="switchTab('dashboard')">📊 داشبورد</button>
+          <button class="admin-tab" data-tab="orders" onclick="switchTab('orders')">📦 سفارشات <span id="newOrdersBadge" style="display:none;background:#22c55e;color:white;padding:2px 7px;border-radius:8px;font-size:10px;"></span></button>
+          <button class="admin-tab" data-tab="products" onclick="switchTab('products')">🛍 محصولات</button>
+          <button class="admin-tab" data-tab="knowledge" onclick="switchTab('knowledge')">🧠 دانشنامه</button>
+          <button class="admin-tab" data-tab="users" onclick="switchTab('users')">👥 کاربران <span id="usersBadge" style="display:none;background:var(--purple);color:white;padding:2px 7px;border-radius:8px;font-size:10px;"></span></button>
+          <button class="admin-tab" data-tab="coupons" onclick="switchTab('coupons')">🏷 کوپن‌ها</button>
+          <button class="admin-tab" data-tab="prizes" onclick="switchTab('prizes')">🎁 جوایز گردونه</button>
+          <button class="admin-tab" data-tab="analytics" onclick="switchTab('analytics')">📈 آمار</button>
+          <button class="admin-tab" data-tab="settings" onclick="switchTab('settings')">⚙️ تنظیمات</button>
         </div>
-
         <div class="admin-content">
-          
           <div class="tab-pane active" data-pane="dashboard">
             <div class="section-title">📊 آمار کلی</div>
             <div class="stats-grid">
-              <div class="stat-card"><div class="num" id="statKnowledge">0</div><div class="lbl">پاسخ دانشنامه</div></div>
-              <div class="stat-card"><div class="num" id="statCategories">0</div><div class="lbl">دسته‌بندی</div></div>
-              <div class="stat-card"><div class="num" id="statQuick">0</div><div class="lbl">پاسخ سریع</div></div>
-              <div class="stat-card"><div class="num" id="statMessages">0</div><div class="lbl">پیام گفتگو</div></div>
-              <div class="stat-card"><div class="num" id="statTotalQuestions">0</div><div class="lbl">کل سوالات</div></div>
-              <div class="stat-card"><div class="num" id="statUnanswered">0</div><div class="lbl">بی‌پاسخ</div></div>
+              <div class="stat-card"><div class="num" id="statUsers">0</div><div class="lbl">کاربر</div></div>
+              <div class="stat-card"><div class="num" id="statOrders">0</div><div class="lbl">سفارش</div></div>
+              <div class="stat-card"><div class="num" id="statNewOrders">0</div><div class="lbl">سفارش جدید</div></div>
+              <div class="stat-card"><div class="num" id="statProducts">0</div><div class="lbl">محصول</div></div>
+              <div class="stat-card"><div class="num" id="statWheelSpins">0</div><div class="lbl">گردونه چرخیده</div></div>
+              <div class="stat-card"><div class="num" id="statBargains">0</div><div class="lbl">چانه‌زنی موفق</div></div>
             </div>
-            <div class="divider"></div>
-            <div class="section-title">⚡ عملیات سریع</div>
-            <div style="display:flex; gap:10px; flex-wrap:wrap;">
-              <button class="btn btn-primary" onclick="openKnowledgeModal()">➕ افزودن پاسخ</button>
-              <button class="btn btn-ghost" onclick="switchTab('analytics')">📈 آمار</button>
-              <button class="btn btn-ghost" onclick="switchTab('backup')">💾 پشتیبان</button>
+          </div>
+
+          <div class="tab-pane" data-pane="orders">
+            <div class="section-title">📦 سفارشات</div>
+            <div id="ordersList"></div>
+          </div>
+
+          <div class="tab-pane" data-pane="products">
+            <div class="section-title" style="justify-content: space-between;">
+              <span>🛍 مدیریت محصولات</span>
+              <button class="btn btn-primary btn-sm" onclick="openProductModal()">➕ افزودن</button>
             </div>
+            <div class="items-list" id="productsAdminList"></div>
           </div>
 
           <div class="tab-pane" data-pane="knowledge">
             <div class="section-title" style="justify-content: space-between;">
-              <span>🧠 مدیریت دانشنامه</span>
+              <span>🧠 دانشنامه</span>
               <button class="btn btn-primary btn-sm" onclick="openKnowledgeModal()">➕ افزودن</button>
             </div>
             <div class="items-list" id="knowledgeList"></div>
           </div>
 
-          <div class="tab-pane" data-pane="analytics">
+          <div class="tab-pane" data-pane="users">
+            <div class="section-title">👥 کاربران فعال</div>
+            <div id="usersList"></div>
+          </div>
+
+          <div class="tab-pane" data-pane="coupons">
             <div class="section-title" style="justify-content: space-between;">
-              <span>🔥 پرتکرارترین سوالات</span>
-              <button class="btn btn-danger btn-sm" onclick="clearAnalytics()">🗑 پاک کردن</button>
+              <span>🏷 کوپن‌ها</span>
+              <button class="btn btn-primary btn-sm" onclick="openCouponModal()">➕ افزودن</button>
             </div>
-            <div class="questions-list" id="topQuestionsList"></div>
+            <div id="couponsList"></div>
+          </div>
+
+          <div class="tab-pane" data-pane="prizes">
+            <div class="section-title">🎁 مدیریت جوایز گردونه</div>
+            <div style="font-size:12px; color:var(--text-muted); margin-bottom:12px; line-height:1.7;">
+              جوایز گردونه شانس رو ویرایش کن. هر جایزه می‌تونه تخفیف، امتیاز یا ارسال رایگان باشه.
+            </div>
+            <div id="prizesList"></div>
+          </div>
+
+          <div class="tab-pane" data-pane="analytics">
+            <div class="section-title">🔥 پرتکرارترین سوالات</div>
+            <div id="topQuestionsList"></div>
             <div class="divider"></div>
             <div class="section-title">❓ سوالات بی‌پاسخ</div>
-            <p style="font-size:12px; color:var(--text-muted); margin-bottom:12px; line-height:1.7;">
-              سوالاتی که کاربرا پرسیدن ولی ربات جواب نداشته.
-            </p>
-            <div class="questions-list" id="unansweredList"></div>
-          </div>
-
-          <div class="tab-pane" data-pane="categories">
-            <div class="section-title" style="justify-content: space-between;">
-              <span>📂 دسته‌بندی‌ها</span>
-              <button class="btn btn-primary btn-sm" onclick="openCategoryModal()">➕ افزودن</button>
-            </div>
-            <div class="items-list" id="categoriesList"></div>
-            <div class="divider"></div>
-            <div class="section-title" style="justify-content: space-between;">
-              <span>⚡ پاسخ‌های سریع</span>
-              <button class="btn btn-primary btn-sm" onclick="openQuickModal()">➕ افزودن</button>
-            </div>
-            <div class="items-list" id="quickList"></div>
-          </div>
-
-          <div class="tab-pane" data-pane="branding">
-            <div class="section-title">🎨 برند</div>
-            <div class="form-group"><label>نام برند</label><input type="text" id="inputBrandName"></div>
-            <div class="form-group"><label>زیرعنوان</label><input type="text" id="inputBrandSub"></div>
-            <div class="form-group"><label>لوگو (ایموجی)</label><input type="text" id="inputBrandLogo" maxlength="4"></div>
-            <div class="divider"></div>
-            <div class="section-title">🌈 رنگ‌بندی</div>
-            <div class="color-grid">
-              <div class="color-field"><label>رنگ اصلی</label><div class="color-input-wrap"><input type="color" id="colGold"><input type="text" id="colGoldTxt"></div></div>
-              <div class="color-field"><label>تیره طلایی</label><div class="color-input-wrap"><input type="color" id="colDeep"><input type="text" id="colDeepTxt"></div></div>
-              <div class="color-field"><label>پس‌زمینه</label><div class="color-input-wrap"><input type="color" id="colBg"><input type="text" id="colBgTxt"></div></div>
-              <div class="color-field"><label>پنل</label><div class="color-input-wrap"><input type="color" id="colPanel"><input type="text" id="colPanelTxt"></div></div>
-              <div class="color-field"><label>کارت پیام</label><div class="color-input-wrap"><input type="color" id="colCard"><input type="text" id="colCardTxt"></div></div>
-            </div>
-            <div style="display:flex; gap:10px; margin-top:20px;">
-              <button class="btn btn-primary" onclick="saveBranding()">💾 ذخیره</button>
-              <button class="btn btn-ghost" onclick="resetColors()">↺ بازنشانی</button>
-            </div>
+            <div id="unansweredList"></div>
           </div>
 
           <div class="tab-pane" data-pane="settings">
-            <div class="section-title">💬 تنظیمات ربات</div>
-            <div class="form-group"><label>نام ربات</label><input type="text" id="inputBotName"></div>
-            <div class="form-group"><label>آواتار (ایموجی)</label><input type="text" id="inputBotAvatar" maxlength="4"></div>
-            <div class="form-group"><label>پیام خوش‌آمد</label><textarea id="inputWelcome" rows="4"></textarea></div>
-            <div class="form-group"><label>سرعت پاسخ (ms)</label><input type="number" id="inputSpeed" min="200" max="5000" step="100"></div>
+            <div class="section-title">⚙️ تنظیمات</div>
+            <div class="form-group"><label>شماره واتساپ (بدون +)</label><input type="text" id="setWhatsapp" style="direction:ltr;" placeholder="989121234567"></div>
+            <div class="form-group"><label>سرعت پاسخ (ms)</label><input type="number" id="setSpeed" min="200" max="5000"></div>
+            <div class="form-group"><label>امتیاز هر خرید (به ازای هر ۱۰۰۰ تومان)</label><input type="number" id="setPointsPerBuy" min="0" max="100" value="1"></div>
+            <div class="form-group"><label>هدیه خوش‌آمد (امتیاز)</label><input type="number" id="setWelcomePoints" min="0" value="50"></div>
             <button class="btn btn-primary" onclick="saveSettings()">💾 ذخیره</button>
-          </div>
-
-          <div class="tab-pane" data-pane="security">
-            <div class="section-title">🔐 تغییر رمز عبور</div>
-            <div class="form-group"><label>رمز فعلی</label><input type="password" id="inputOldPass"></div>
-            <div class="form-group"><label>رمز جدید (حداقل ۶ کاراکتر)</label><input type="password" id="inputNewPass"></div>
-            <div class="form-group"><label>تکرار رمز جدید</label><input type="password" id="inputConfirmPass"></div>
+            <div class="divider"></div>
+            <div class="section-title">🔐 امنیت</div>
+            <div class="form-group"><label>رمز فعلی</label><input type="password" id="oldPass"></div>
+            <div class="form-group"><label>رمز جدید (۶+ کاراکتر)</label><input type="password" id="newPass"></div>
             <button class="btn btn-primary" onclick="changePassword()">🔑 تغییر رمز</button>
             <div class="divider"></div>
-            <div class="section-title">🛡 امنیت</div>
-            <div style="background: rgba(26,20,16,0.6); border:1px solid var(--border-gold); border-radius:12px; padding:16px; font-size:12.5px; color:var(--text-muted); line-height:1.8;">
-              • رمز به‌صورت هش ذخیره می‌شه<br>
-              • پنل بعد از ۱۵ دقیقه بی‌کاری قفل می‌شه<br>
-              • رمز پیش‌فرض رو حتماً تغییر بدید
-            </div>
+            <div class="section-title">💾 پشتیبان</div>
+            <button class="btn btn-primary" onclick="exportBackup()">📥 دانلود پشتیبان</button>
+            <button class="btn btn-ghost" onclick="document.getElementById('importFile').click()">📂 بازیابی</button>
+            <input type="file" id="importFile" accept=".json" style="display:none">
           </div>
-
-          <div class="tab-pane" data-pane="backup">
-            <div class="section-title">💾 پشتیبان‌گیری</div>
-            <div style="background: rgba(26,20,16,0.6); border:1px solid var(--border-gold); border-radius:12px; padding:18px; margin-bottom:16px;">
-              <h4 style="font-size:13px; color:var(--saffron-gold); margin-bottom:8px;">📤 گرفتن پشتیبان</h4>
-              <button class="btn btn-primary" onclick="exportBackup()">📥 دانلود فایل</button>
-            </div>
-            <div style="background: rgba(26,20,16,0.6); border:1px solid var(--border-gold); border-radius:12px; padding:18px; margin-bottom:16px;">
-              <h4 style="font-size:13px; color:var(--saffron-gold); margin-bottom:8px;">📥 بازیابی</h4>
-              <input type="file" id="importFile" accept=".json" style="display:none">
-              <button class="btn btn-ghost" onclick="document.getElementById('importFile').click()">📂 انتخاب فایل</button>
-            </div>
-            <div style="background: rgba(192,57,43,0.08); border:1px solid rgba(192,57,43,0.3); border-radius:12px; padding:18px;">
-              <h4 style="font-size:13px; color:#ff8a80; margin-bottom:8px;">⚠️ منطقه خطر</h4>
-              <button class="btn btn-danger" onclick="resetAll()">🗑 پاک کردن همه چیز</button>
-            </div>
-          </div>
-
         </div>
       </div>
 
+      <!-- LOGIN -->
       <div class="login-overlay" id="loginOverlay">
         <div class="login-card">
           <div class="login-icon">🔐</div>
-          <h2>ورود به پنل مدیریت</h2>
-          <p>برای دسترسی، رمز عبور رو وارد کنید</p>
-          <div class="login-input-wrap">
-            <input type="password" id="loginPass" placeholder="رمز عبور..." autocomplete="off">
-          </div>
-          <button onclick="tryLogin()">ورود به پنل</button>
+          <h2>ورود به پنل</h2>
+          <p>رمز عبور را وارد کنید</p>
+          <input type="password" id="loginPass" placeholder="رمز عبور...">
+          <button onclick="tryLogin()">ورود</button>
           <div class="login-error" id="loginError"></div>
           <button class="login-cancel" onclick="closeLogin()">انصراف</button>
         </div>
@@ -715,772 +1111,1409 @@
     </main>
   </div>
 
-  <div class="modal-overlay" id="modalOverlay">
-    <div class="modal">
-      <div class="modal-header">
-        <h3 id="modalTitle">افزودن</h3>
-        <button class="close-admin" onclick="closeModal()">✕</button>
-      </div>
-      <div class="modal-body" id="modalBody"></div>
-      <div class="modal-footer">
-        <button class="btn btn-ghost" onclick="closeModal()">انصراف</button>
-        <button class="btn btn-primary" id="modalSave">💾 ذخیره</button>
-      </div>
+  <button class="cart-float" id="cartFloat" onclick="openPanel('cartPanel')">
+    🛒
+    <span class="count" id="cartCount">0</span>
+  </button>
+
+  <!-- PRIZE MODAL -->
+  <div class="prize-modal" id="prizeModal">
+    <div class="prize-card">
+      <span class="prize-emoji" id="prizeEmoji">🎉</span>
+      <div class="prize-title" id="prizeTitle">تبریک!</div>
+      <div class="prize-desc" id="prizeDesc"></div>
+      <div class="prize-code" id="prizeCode" style="display:none;" onclick="copyPrizeCode()"></div>
+      <button class="btn btn-primary btn-full" onclick="closePrizeModal()">ادامه</button>
     </div>
   </div>
 
   <div class="toast" id="toast"></div>
 
-  <div class="install-banner" id="installBanner">
-    <span>📱 این اپ رو نصب کنید!</span>
-    <button id="installBtn">نصب</button>
-    <button class="close-banner" id="closeBanner">✕</button>
-  </div>
-
 <script>
-  /* ================= پیش‌فرض‌ها ================= */
-  const DEFAULT_KNOWLEDGE = [
-    { id: 'k1', keywords: ['زعفران چیه','زعفران چیست','زعفران چیه و از کجا'], answer: '🌿 <strong>زعفران چیه؟</strong><br><br>زعفران گران‌بهاترین ادویه‌ی دنیاست که از کلاله‌ی گل <strong>Crocus sativus</strong> به دست میاد.<br><br>• هر گل فقط <strong>۳ کلاله</strong> داره<br>• برای ۱ کیلو زعفران حدود <strong>۱۵۰,۰۰۰ گل</strong> لازمه<br>• برداشتش کاملاً دستیه<br><br>🇮🇷 ایران تأمین‌کننده حدود <strong>۹۰٪ زعفران جهان</strong> است.' },
-    { id: 'k2', keywords: ['انواع زعفران','چه نوع زعفران','انواعش'], answer: '📦 <strong>انواع زعفران:</strong><br><br>• <strong>سرگل (کلاله):</strong> فقط سرخ — باکیفیت‌ترین<br>• <strong>پوشال (مانتا):</strong> کلاله + کمی خامه زرد<br>• <strong>دسته (دخترپیچ):</strong> کلاله + خامه، دسته‌ای<br>• <strong>سائیده (پودر):</strong> آسیاب‌شده<br><br>💡 زعفران درجه‌یک معمولاً سرگل نگین یا پوشال ممتازه.' },
-    { id: 'k3', keywords: ['تشخیص اصالت','زعفران اصل','تقلب','چطور بفهمم'], answer: '✨ <strong>تشخیص زعفران اصل:</strong><br><br>1️⃣ <strong>آب‌زدن:</strong> توی آب سرد، رنگ زرد طلایی آروم آزاد می‌کنه<br>2️⃣ <strong>بو:</strong> عطر طبیعی مخصوص<br>3️⃣ <strong>لمس:</strong> نرم و روغنی، نه خشک<br>4️⃣ <strong>شکل:</strong> کلاله‌های طبیعی و قلمی<br>5️⃣ <strong>طعم:</strong> کمی تلخ با عطر<br><br>🔬 بهترین راه: آزمون آزمایشگاهی.' },
-    { id: 'k4', keywords: ['خواص','خاصیت','فایده','خواص زعفران'], answer: '💚 <strong>خواص زعفران:</strong><br><br>• <strong>ضد افسردگی</strong><br>• <strong>آنتی‌اکسیدان قوی</strong><br>• <strong>تقویت حافظه</strong><br>• <strong>بهبود خلق‌وخو</strong><br>• <strong>کمک به هضم</strong><br>• <strong>سلامت قلب</strong><br><br>⚠️ <strong>مقدار:</strong> روزانه ۳۰-۵۰ میلی‌گرم کافیه.' },
-    { id: 'k5', keywords: ['روش استفاده','چطور استفاده','دم کردن'], answer: '🍵 <strong>روش صحیح استفاده:</strong><br><br>1️⃣ مقدار لازم رو با کمی شکر آسیاب کنید<br>2️⃣ آب جوش اضافه کنید<br>3️⃣ در ظرف دربسته <strong>۲۰ دقیقه</strong> دم کنید<br>4️⃣ عصاره طلایی آماده‌ست!<br><br>💡 در ظرف شیشه‌ای تیره نگه‌داری کنید.' },
-    { id: 'k6', keywords: ['قیمت','چنده','هزینه','نرخ'], answer: '💰 <strong>قیمت زعفران:</strong><br><br>بستگی به این عوامل داره:<br>• <strong>نوع:</strong> سرگل گران‌تر<br>• <strong>کیفیت:</strong> کروسین و سافرانال<br>• <strong>بسته‌بندی</strong><br><br>🌿 برای قیمت روز تماس بگیرید.' },
-    { id: 'k7', keywords: ['سفارش','خرید','ارسال','پست'], answer: '📦 <strong>سفارش و ارسال:</strong><br><br>• ثبت سفارش از سایت و واتساپ<br>• <strong>ارسال سریع</strong> به سراسر ایران<br>• بسته‌بندی امن<br>• <strong>گارانتی اصالت</strong><br>• امکان <strong>مرجوعی</strong><br><br>برای سفارش با پشتیبانی تماس بگیرید. 🌸' },
-    { id: 'k8', keywords: ['نگهداری','چطور نگه‌داری'], answer: '🏺 <strong>نگهداری زعفران:</strong><br><br>• ظرف <strong>شیشه‌ای تیره</strong><br>• دور از نور مستقیم<br>• محل خشک و خنک<br>• درب کاملاً بسته<br>• <strong>۶ ماه</strong> پس از باز کردن مصرف کنید<br><br>❌ یخچال و فریزر توصیه نمی‌شه.' },
-    { id: 'k9', keywords: ['کروسین','سافرانال','پیکروکروسین','استاندارد'], answer: '🔬 <strong>ترکیبات کلیدی (ISO 3632):</strong><br><br>• <strong>کروسین:</strong> مسئول رنگ<br>• <strong>سافرانال:</strong> مسئول عطر<br>• <strong>پیکروکروسین:</strong> مسئول طعم<br><br>✅ زعفران شیرزاد دارای آزمون آزمایشگاهی معتبره.' },
-    { id: 'k10', keywords: ['سلام','درود','وقت بخیر'], answer: 'سلام و درود! 🌸 خوشحالم که اینجایید.<br>چطور میتونم کمکتون کنم؟' },
-    { id: 'k11', keywords: ['ممنون','مرسی','سپاس'], answer: 'خواهش می‌کنم، خوشحالم که تونستم کمکتون کنم! 🌸' },
-    { id: 'k12', keywords: ['خداحافظ','بای','خدانگهدار'], answer: 'خدانگهدار! 🌸 منتظر حضور گرمتون هستیم. ✨' },
-    { id: 'k13', keywords: ['شیرزاد','برند','شما کی هستید'], answer: '🌸 <strong>زعفران شیرزاد</strong><br><br>تولیدکننده و عرضه‌کننده زعفران اصیل ایرانی با:<br>• کیفیت تضمین‌شده<br>• آزمون آزمایشگاهی<br>• بسته‌بندی شکیل<br>• قیمت منصفانه<br><br>افتخار ما اعتماد شماست. 💛' }
-  ];
+/* ================= CONFIG ================= */
+const CONFIG = {
+  pointsPerBuy: 1,      // امتیاز به ازای هر ۱۰۰۰ تومان
+  welcomePoints: 50,    // امتیاز خوش‌آمد
+  levels: [
+    { id: 'bronze',   name: 'برنزی',    icon: '🥉', color: '#cd7f32', min: 0,    discount: 0,  desc: 'شروع سفر شما' },
+    { id: 'silver',   name: 'نقره‌ای',   icon: '🥈', color: '#c0c0c0', min: 200,  discount: 3,  desc: '۳٪ تخفیف دائمی' },
+    { id: 'gold',     name: 'طلایی',    icon: '🥇', color: '#f4b400', min: 500,  discount: 5,  desc: '۵٪ تخفیف دائمی' },
+    { id: 'platinum', name: 'پلاتینیوم', icon: '💠', color: '#67e8f9', min: 1000, discount: 8,  desc: '۸٪ تخفیف دائمی' },
+    { id: 'diamond',  name: 'الماسی',   icon: '💎', color: '#a855f7', min: 2000, discount: 12, desc: '۱۲٪ تخفیف دائمی + ارسال رایگان' }
+  ],
+  wheelPrizes: [
+    { id: 'w1', label: '۵٪ تخفیف',   icon: '🎁', type: 'coupon', value: 5,  weight: 25 },
+    { id: 'w2', label: '۱۰٪ تخفیف',  icon: '💝', type: 'coupon', value: 10, weight: 20 },
+    { id: 'w3', label: '۱۵٪ تخفیف',  icon: '🌟', type: 'coupon', value: 15, weight: 12 },
+    { id: 'w4', label: '۲۰٪ تخفیف',  icon: '💎', type: 'coupon', value: 20, weight: 5 },
+    { id: 'w5', label: '۵۰ امتیاز',  icon: '⭐', type: 'points', value: 50, weight: 18 },
+    { id: 'w6', label: '۱۰۰ امتیاز', icon: '✨', type: 'points', value: 100, weight: 10 },
+    { id: 'w7', label: 'ارسال رایگان', icon: '🚚', type: 'freeship', value: 0, weight: 8 },
+    { id: 'w8', label: 'پوچ! 😅',     icon: '😅', type: 'nothing', value: 0, weight: 2 }
+  ]
+};
 
-  const DEFAULT_CATEGORIES = [
-    { id: 'c1', topic: 'general', icon: '💬', title: 'گفتگوی آزاد' },
-    { id: 'c2', topic: 'products', icon: '🌿', title: 'محصولات' },
-    { id: 'c3', topic: 'quality', icon: '✨', title: 'کیفیت و اصالت' },
-    { id: 'c4', topic: 'usage', icon: '🍵', title: 'روش استفاده' },
-    { id: 'c5', topic: 'health', icon: '💚', title: 'خواص و سلامت' },
-    { id: 'c6', topic: 'order', icon: '📦', title: 'سفارش و ارسال' }
-  ];
+/* ================= DEFAULT DATA ================= */
+const DEFAULT_KNOWLEDGE = [
+  { id:'k1', keywords:['زعفران چیه','زعفران چیست'], answer:'🌿 <strong>زعفران چیه؟</strong><br>گران‌بهاترین ادویه دنیا از گل <strong>Crocus sativus</strong> 🌸<br><br>برای ۱ کیلو، ۱۵۰,۰۰۰ گل لازمه!<br>🇮🇷 ایران ۹۰٪ زعفران جهان رو تأمین می‌کنه.' },
+  { id:'k2', keywords:['انواع','سرگل','پوشال','نگین'], answer:'📦 <strong>انواع:</strong><br>🥇 <strong>سرگل/نگین:</strong> فقط سرخ، باکیفیت‌ترین<br>🌿 <strong>پوشال:</strong> با کمی خامه زرد<br>📦 <strong>دسته:</strong> دسته‌ای<br>🥄 <strong>سائیده:</strong> پودری' },
+  { id:'k3', keywords:['تشخیص','اصل','تقلب'], answer:'✨ <strong>تشخیص اصل:</strong><br>1️⃣ در آب سرد رنگ طلایی آروم آزاد میکنه<br>2️⃣ عطر طبیعی<br>3️⃣ نرم و روغنی<br>4️⃣ کلاله‌های قلمی' },
+  { id:'k4', keywords:['خواص','خاصیت','فایده'], answer:'💚 <strong>خواص:</strong><br>• ضد افسردگی<br>• آنتی‌اکسیدان قوی<br>• تقویت حافظه<br>• بهبود خلق‌وخو<br>• سلامت قلب<br><br>⚠️ روزانه ۳۰-۵۰ میلی‌گرم کافیه.' },
+  { id:'k5', keywords:['دم کردن','روش استفاده'], answer:'🍵 <strong>روش صحیح:</strong><br>1️⃣ با کمی شکر آسیاب کن<br>2️⃣ آب جوش (نه در حال جوش) اضافه کن<br>3️⃣ ۲۰ دقیقه در ظرف دربسته دم کن<br>4️⃣ عصاره طلایی آماده‌ست!' },
+  { id:'k6', keywords:['سلام','درود'], answer:'سلام و درود! 🌸 خوش آمدید.<br>چطور میتونم کمکتون کنم؟' },
+  { id:'k7', keywords:['ممنون','مرسی'], answer:'خواهش می‌کنم 🌸 هر وقت سوالی داشتید در خدمتم!' },
+  { id:'k8', keywords:['درباره زعفران'], answer:'🌿 <strong>زعفران — طلای سرخ ایران</strong><br><br>• گران‌بهاترین ادویه دنیا<br>• از کلاله گل Crocus sativus<br>• برداشت دستی در پاییز<br>• 🇮🇷 خراسان قطب تولید<br><br>سوال خاصی داری؟ بپرس 🌸' }
+];
 
-  const DEFAULT_QUICK = [
-    { id: 'q1', label: '🌿 زعفران چیه؟', query: 'زعفران چیه و از کجا میاد؟' },
-    { id: 'q2', label: '📦 انواع زعفران', query: 'انواع زعفران چیه؟' },
-    { id: 'q3', label: '✨ تشخیص اصالت', query: 'چطور زعفران اصل رو تشخیص بدم؟' },
-    { id: 'q4', label: '💚 خواص زعفران', query: 'خواص زعفران چیه؟' }
-  ];
+const DEFAULT_PRODUCTS = [
+  { id:'p1', name:'زعفران سرگل ممتاز', emoji:'🌸', image:null, price:250000, unit:'۱ مثقال (۴.۶ گرم)', desc:'زعفران سرگل درجه یک با عطر و رنگ فوق‌العاده', active:true },
+  { id:'p2', name:'زعفران پوشال درجه یک', emoji:'🌿', image:null, price:180000, unit:'۱ مثقال', desc:'زعفران پوشال با کیفیت صادراتی', active:true },
+  { id:'p3', name:'زعفران نگین ممتاز', emoji:'✨', image:null, price:320000, unit:'۱ مثقال', desc:'کلاله‌های بلند و یکدست', active:true },
+  { id:'p4', name:'پک هدیه زعفران', emoji:'🎁', image:null, price:450000, unit:'پک ۲ مثقالی', desc:'پک شکیل هدیه شامل ۲ مثقال سرگل', active:true }
+];
 
-  const DEFAULT_BRANDING = {
-    brandName: 'زعفران شیرزاد',
-    brandSub: 'پشتیبانی هوشمند',
-    brandLogo: '🌸',
-    colors: { gold: '#f4b400', deep: '#d48806', bg: '#1a1410', panel: '#241d16', card: '#2d2419' }
-  };
+const DEFAULT_COUPONS = [
+  { id:'cp1', code:'WELCOME10', type:'percent', value:10, minTotal:0, active:true, usageLimit:0, usedCount:0 }
+];
 
-  const DEFAULT_SETTINGS = {
-    botName: 'دستیار زعفران شیرزاد',
-    botAvatar: '🌸',
-    welcome: 'سلام و درود! 🌸<br>به پشتیبانی <strong>زعفران شیرزاد</strong> خوش آمدید.<br><br>من اینجام تا درباره محصولات، کیفیت، روش استفاده و خواص زعفران کمکتون کنم. چطور میتونم خدمتتون باشم؟',
-    speed: 1000
-  };
+let state = {
+  knowledge:[], products:[], orders:[], coupons:[], wheelPrizes:[], users:[],
+  cart:[], appliedCoupon:null, analytics:{}, messages:[],
+  passwordHash:'', settings:{},
+  wheelSpins:[],           // تاریخچه چرخش‌ها
+  currentUser: null,       // کاربر فعلی
+  bargainHistory:[],       // تاریخچه چانه‌زنی
+  hiddenStarFound: [],     // easter eggs پیدا شده
+  _lastStarTime: 0
+};
 
-  const DEFAULT_PASSWORD = 'shirzad1404';
+const STORAGE_KEY = 'saffron_explosion_v1';
 
-  let state = {
-    knowledge: [], categories: [], quick: [], branding: {}, settings: {},
-    messages: [], analytics: {}, passwordHash: '',
-    lastActivity: Date.now()
-  };
+/* ================= UTILS ================= */
+function simpleHash(s){let h=0;for(let i=0;i<s.length;i++){h=((h<<5)-h)+s.charCodeAt(i);h=h&h;}return 'h_'+Math.abs(h).toString(36)+'_'+s.length;}
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),2500);}
+function escapeHtml(s){return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
+function formatPrice(n){return Number(n).toLocaleString('fa-IR')+' تومان';}
+function formatNum(n){return Number(n).toLocaleString('fa-IR');}
+function today(){return new Date().toISOString().slice(0,10);}
+function now(){return Date.now();}
 
-  const STORAGE_KEY = 'saffron_shirzad_chat_v3';
-  const LOCK_TIMEOUT = 15 * 60 * 1000;
-
-  /* ================= هش ================= */
-  function simpleHash(str) {
-    let hash = 0;
-    for (let i = 0; i < str.length; i++) {
-      const char = str.charCodeAt(i);
-      hash = ((hash << 5) - hash) + char;
-      hash = hash & hash;
+/* ================= STORAGE ================= */
+function loadState(){
+  try{
+    const s=localStorage.getItem(STORAGE_KEY);
+    if(s){
+      const p=JSON.parse(s);
+      Object.keys(state).forEach(k=>{if(p[k]!==undefined)state[k]=p[k];});
+      if(!state.passwordHash)state.passwordHash=simpleHash('shirzad1404');
+      if(!state.wheelPrizes||!state.wheelPrizes.length)state.wheelPrizes=JSON.parse(JSON.stringify(CONFIG.wheelPrizes));
+      if(!state.settings)state.settings={};
+      if(!state.settings.whatsapp)state.settings.whatsapp='989121234567';
+      if(!state.settings.speed)state.settings.speed=1000;
+    } else {
+      resetToDefaults();
     }
-    return 'h_' + Math.abs(hash).toString(36) + '_' + str.length;
-  }
+  }catch(e){console.error(e);resetToDefaults();}
+  if(!state.currentUser) createNewUser();
+}
 
-  /* ================= Storage ================= */
-  function loadState() {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) {
-        const p = JSON.parse(saved);
-        state.knowledge = p.knowledge || JSON.parse(JSON.stringify(DEFAULT_KNOWLEDGE));
-        state.categories = p.categories || JSON.parse(JSON.stringify(DEFAULT_CATEGORIES));
-        state.quick = p.quick || JSON.parse(JSON.stringify(DEFAULT_QUICK));
-        state.branding = p.branding || JSON.parse(JSON.stringify(DEFAULT_BRANDING));
-        state.settings = p.settings || JSON.parse(JSON.stringify(DEFAULT_SETTINGS));
-        state.analytics = p.analytics || {};
-        state.passwordHash = p.passwordHash || simpleHash(DEFAULT_PASSWORD);
-      } else {
-        resetToDefaults();
-      }
-    } catch (e) { console.error(e); resetToDefaults(); }
-  }
+function resetToDefaults(){
+  state.knowledge = JSON.parse(JSON.stringify(DEFAULT_KNOWLEDGE));
+  state.products = JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
+  state.coupons = JSON.parse(JSON.stringify(DEFAULT_COUPONS));
+  state.wheelPrizes = JSON.parse(JSON.stringify(CONFIG.wheelPrizes));
+  state.orders=[];state.users=[];state.cart=[];state.appliedCoupon=null;
+  state.analytics={};state.messages=[];state.wheelSpins=[];state.bargainHistory=[];
+  state.hiddenStarFound=[];state.passwordHash=simpleHash('shirzad1404');
+  state.settings={whatsapp:'989121234567',speed:1000};
+  state.currentUser=null;
+  saveState();
+}
 
-  function resetToDefaults() {
-    state.knowledge = JSON.parse(JSON.stringify(DEFAULT_KNOWLEDGE));
-    state.categories = JSON.parse(JSON.stringify(DEFAULT_CATEGORIES));
-    state.quick = JSON.parse(JSON.stringify(DEFAULT_QUICK));
-    state.branding = JSON.parse(JSON.stringify(DEFAULT_BRANDING));
-    state.settings = JSON.parse(JSON.stringify(DEFAULT_SETTINGS));
-    state.analytics = {};
-    state.passwordHash = simpleHash(DEFAULT_PASSWORD);
+function saveState(){
+  try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));}catch(e){console.error(e);}
+}
+
+/* ================= USER (مغز دوم) ================= */
+function createNewUser(){
+  const uid = 'U'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+  state.currentUser = {
+    id: uid,
+    name: '',
+    createdAt: now(),
+    lastSeen: now(),
+    visits: 1,
+    points: CONFIG.welcomePoints,
+    level: 'bronze',
+    totalSpent: 0,
+    orderCount: 0,
+    interests: {},        // {productId: count}
+    chatTopics: {},       // {topic: count}
+    coupons: [],          // کوپن‌های شخصی
+    lastWheelSpin: null,  // تاریخچه
+    lastBargain: null,
+    freeshipUntil: 0,
+    permanentDiscount: 0
+  };
+  state.users.push(state.currentUser);
+  saveState();
+  // هدیه خوش‌آمد
+  setTimeout(()=>{
+    addMessage(`🎁 <strong>هدیه خوش‌آمدگویی!</strong><br><br>${CONFIG.welcomePoints} امتیاز به شما هدیه دادیم! 🌸<br><br>با خرید و فعالیت، امتیاز بیشتری جمع کن و به سطح‌های بالاتر برس 💎`, 'bot');
+  }, 500);
+}
+
+function currentUser(){return state.currentUser;}
+function updateUserActivity(){
+  if(!state.currentUser)return;
+  state.currentUser.lastSeen = now();
+  state.currentUser.visits++;
+  saveState();
+}
+
+function getUserLevel(){
+  const u = currentUser();
+  if(!u) return CONFIG.levels[0];
+  for(let i=CONFIG.levels.length-1;i>=0;i--){
+    if(u.points >= CONFIG.levels[i].min) return CONFIG.levels[i];
+  }
+  return CONFIG.levels[0];
+}
+
+function getNextLevel(){
+  const u = currentUser();
+  if(!u) return null;
+  for(let i=0;i<CONFIG.levels.length;i++){
+    if(u.points < CONFIG.levels[i].min) return CONFIG.levels[i];
+  }
+  return null;
+}
+
+function addPoints(amount, reason){
+  if(!state.currentUser)return;
+  const oldLvl = getUserLevel().id;
+  state.currentUser.points += amount;
+  const newLvl = getUserLevel().id;
+  saveState();
+  updateMiniProfile();
+  if(oldLvl !== newLvl){
+    setTimeout(()=>showLevelUp(newLvl), 800);
+  }
+  return amount;
+}
+
+function addUserCoupon(coupon){
+  if(!state.currentUser)return;
+  state.currentUser.coupons = state.currentUser.coupons || [];
+  state.currentUser.coupons.push({...coupon, id:'uc'+Date.now(), addedAt: now()});
+  saveState();
+}
+
+/* ================= CHAT ================= */
+const chatBody = document.getElementById('chatBody');
+const userInput = document.getElementById('userInput');
+function addMessage(text, sender, save=true){
+  const row = document.createElement('div');
+  row.className = `message-row ${sender==='user'?'user':''}`;
+  const avatar = document.createElement('div');
+  avatar.className = `msg-avatar ${sender==='user'?'user':'bot'}`;
+  avatar.textContent = sender==='user'?'👤':'🌸';
+  const msg = document.createElement('div');
+  msg.className = `message ${sender}`;
+  msg.innerHTML = text + `<time>${new Date().toLocaleTimeString('fa-IR',{hour:'2-digit',minute:'2-digit'})}</time>`;
+  row.appendChild(avatar); row.appendChild(msg);
+  chatBody.appendChild(row);
+  chatBody.scrollTop = chatBody.scrollHeight;
+  if(save) state.messages.push({text, sender});
+  return msg;
+}
+
+function showTyping(){
+  const r=document.createElement('div');
+  r.className='typing-row';r.id='typingIndicator';
+  r.innerHTML='<div class="msg-avatar bot">🌸</div><div class="typing-bubble"><span></span><span></span><span></span></div>';
+  chatBody.appendChild(r);
+  chatBody.scrollTop=chatBody.scrollHeight;
+}
+function hideTyping(){const t=document.getElementById('typingIndicator');if(t)t.remove();}
+
+function findAnswer(text){
+  const t = text.trim().toLowerCase();
+  let best=null,score=0;
+  for(const k of state.knowledge){
+    let s=0;
+    for(const kw of k.keywords){if(t.includes(kw.toLowerCase()))s+=kw.length;}
+    if(s>score){score=s;best=k;}
+  }
+  return best;
+}
+
+function getPersonalizedGreeting(){
+  const u = currentUser();
+  if(!u) return 'سلام! 🌸';
+  const h = new Date().getHours();
+  let timeGreet = 'سلام';
+  if(h<12) timeGreet='صبح بخیر';
+  else if(h<18) timeGreet='وقت بخیر';
+  else timeGreet='شب بخیر';
+  
+  let text = `🌸 ${timeGreet}`;
+  if(u.name) text += ` <strong>${escapeHtml(u.name)}</strong> جان`;
+  text += `!<br><br>`;
+  
+  if(u.orderCount>0){
+    text += `📦 شما <strong>${formatNum(u.orderCount)}</strong> سفارش موفق داشتید<br>`;
+  }
+  const lvl = getUserLevel();
+  text += `${lvl.icon} سطح شما: <strong>${lvl.name}</strong> (${formatNum(u.points)} امتیاز)<br>`;
+  
+  // پیشنهاد بر اساس علاقه
+  if(u.interests && Object.keys(u.interests).length){
+    const favPid = Object.entries(u.interests).sort((a,b)=>b[1]-a[1])[0][0];
+    const favP = state.products.find(p=>p.id===favPid);
+    if(favP){
+      text += `<br>💡 آخرین بار <strong>${escapeHtml(favP.name)}</strong> رو دیدید. بازم می‌خواید یا چیز دیگه‌ای؟`;
+    }
+  }
+  
+  if(!u.name){
+    text += `<br>📝 اگه دوست داشتید اسمتون رو بهم بگید تا شخصی‌تر صحبت کنیم 🌸`;
+  }
+  
+  return text;
+}
+
+function sendMessage(text){
+  const v = (text||userInput.value).trim();
+  if(!v)return;
+  addMessage(escapeHtml(v),'user',false);
+  userInput.value='';
+
+  // تشخیص اسم
+  const nameMatch = v.match(/(?:اسمم|اسم من|من)\s+([آ-یa-zA-Z]{2,20})/i);
+  if(nameMatch && state.currentUser && !state.currentUser.name){
+    state.currentUser.name = nameMatch[1];
     saveState();
+    updateMiniProfile();
+    setTimeout(()=>{
+      addMessage(`🌸 خوشحالم <strong>${escapeHtml(nameMatch[1])}</strong> جان! از این به بعد به اسم کوچیک صدات می‌زنم 💛`, 'bot');
+    },500);
+    return;
   }
 
-  function saveState() {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify({
-        knowledge: state.knowledge, categories: state.categories,
-        quick: state.quick, branding: state.branding,
-        settings: state.settings, analytics: state.analytics,
-        passwordHash: state.passwordHash
-      }));
-    } catch (e) { console.error(e); }
-  }
-
-  /* ================= Analytics ================= */
-  function recordQuestion(question, answered) {
-    const key = question.trim().toLowerCase();
-    if (!key) return;
-    if (!state.analytics[key]) {
-      state.analytics[key] = { text: question.trim(), count: 0, answered: answered, lastAsked: Date.now() };
-    }
-    state.analytics[key].count++;
-    state.analytics[key].lastAsked = Date.now();
-    if (answered) state.analytics[key].answered = true;
-    saveState();
-  }
-
-  function getTopQuestions(limit = 10) {
-    return Object.values(state.analytics).sort((a, b) => b.count - a.count).slice(0, limit);
-  }
-
-  function getUnansweredQuestions(limit = 10) {
-    return Object.values(state.analytics).filter(q => !q.answered).sort((a, b) => b.count - a.count).slice(0, limit);
-  }
-
-  function clearAnalytics() {
-    if (!confirm('تمام آمار پاک بشه؟')) return;
-    state.analytics = {}; saveState(); refreshAdmin(); toast('🗑 آمار پاک شد');
-  }
-
-  /* ================= Helpers ================= */
-  function toast(msg) {
-    const t = document.getElementById('toast');
-    t.textContent = msg;
-    t.classList.add('show');
-    clearTimeout(t._timeout);
-    t._timeout = setTimeout(() => t.classList.remove('show'), 2500);
-  }
-
-  function escapeHtml(s) {
-    return String(s).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]));
-  }
-
-  function hexToRgba(hex, alpha) {
-    const h = hex.replace('#', '');
-    const r = parseInt(h.substring(0, 2), 16);
-    const g = parseInt(h.substring(2, 4), 16);
-    const b = parseInt(h.substring(4, 6), 16);
-    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
-  }
-
-  /* ================= Theme ================= */
-  function applyTheme() {
-    const r = document.documentElement.style;
-    const c = state.branding.colors;
-    r.setProperty('--saffron-gold', c.gold);
-    r.setProperty('--saffron-deep', c.deep);
-    r.setProperty('--dark-bg', c.bg);
-    r.setProperty('--dark-panel', c.panel);
-    r.setProperty('--dark-card', c.card);
-    r.setProperty('--border-gold', hexToRgba(c.gold, 0.25));
-    document.getElementById('brandName').textContent = state.branding.brandName;
-    document.getElementById('brandSub').textContent = state.branding.brandSub;
-    document.getElementById('brandLogo').textContent = state.branding.brandLogo;
-    document.getElementById('botName').textContent = state.settings.botName;
-    document.getElementById('botAvatar').textContent = state.settings.botAvatar;
-    document.title = state.branding.brandName + ' | پشتیبانی';
-    document.querySelector('meta[name="theme-color"]').setAttribute('content', c.gold);
-  }
-
-  /* ================= Chat ================= */
-  const chatBody = document.getElementById('chatBody');
-  const userInput = document.getElementById('userInput');
-  const sendBtn = document.getElementById('sendBtn');
-  const clearBtn = document.getElementById('clearBtn');
-  const quickReplies = document.getElementById('quickReplies');
-
-  function getTime() {
-    return new Date().toLocaleTimeString('fa-IR', { hour: '2-digit', minute: '2-digit' });
-  }
-
-  function addMessage(text, sender, save = true) {
-    const row = document.createElement('div');
-    row.className = `message-row ${sender === 'user' ? 'user' : ''}`;
-    const avatar = document.createElement('div');
-    avatar.className = `msg-avatar ${sender === 'user' ? 'user' : 'bot'}`;
-    avatar.textContent = sender === 'user' ? '👤' : state.settings.botAvatar;
-    const msg = document.createElement('div');
-    msg.className = `message ${sender}`;
-    msg.innerHTML = text + `<time>${getTime()}</time>`;
-    row.appendChild(avatar); row.appendChild(msg);
-    chatBody.appendChild(row);
-    chatBody.scrollTop = chatBody.scrollHeight;
-    if (save) state.messages.push({ text, sender });
-  }
-
-  function showTyping() {
-    const row = document.createElement('div');
-    row.className = 'typing-row'; row.id = 'typingIndicator';
-    row.innerHTML = `<div class="msg-avatar bot">${state.settings.botAvatar}</div><div class="typing-bubble"><span></span><span></span><span></span></div>`;
-    chatBody.appendChild(row);
-    chatBody.scrollTop = chatBody.scrollHeight;
-  }
-
-  function hideTyping() {
-    const t = document.getElementById('typingIndicator');
-    if (t) t.remove();
-  }
-
-  function findAnswer(userText) {
-    const text = userText.trim().toLowerCase();
-    let best = null, maxScore = 0;
-    for (const item of state.knowledge) {
-      let score = 0;
-      for (const kw of item.keywords) {
-        if (text.includes(kw.toLowerCase())) score += kw.length;
-      }
-      if (score > maxScore) { maxScore = score; best = item; }
-    }
-    return best ? best.answer : null;
-  }
-
-  const DEFAULT_REPLIES = [
-    'متوجه شدم 🌸 می‌تونید سوالتون رو دقیق‌تر بپرسید؟',
-    'سوال جالبیه! 🌿 برای پاسخ دقیق‌تر، موضوع رو مشخص‌تر بگید.',
-    'درباره این موضوع اطلاعات دقیقی ندارم، ولی درباره <strong>زعفران شیرزاد</strong> خوشحال می‌شم راهنمایی کنم 🌸',
-    'سوالتون رو دریافت کردم ✨ درباره <strong>زعفران، کیفیت، خواص یا سفارش</strong> بپرسید.'
-  ];
-
-  function sendMessage(text) {
-    const value = (text || userInput.value).trim();
-    if (!value) return;
-    addMessage(value, 'user');
-    userInput.value = '';
+  // Keywords
+  if(/محصول|فروشگاه|خرید|قیمت/.test(v)){
     showTyping();
-    const answer = findAnswer(value);
-    recordQuestion(value, !!answer);
-    setTimeout(() => {
-      hideTyping();
-      const finalAnswer = answer || DEFAULT_REPLIES[Math.floor(Math.random() * DEFAULT_REPLIES.length)];
-      addMessage(finalAnswer, 'bot');
-    }, state.settings.speed + Math.random() * 500);
+    setTimeout(()=>{hideTyping();showProductsInChat();},600);
+    return;
+  }
+  if(/گردونه|شانس|جایزه|قرعه/.test(v)){
+    setTimeout(()=>openPanel('wheelPanel'),400);
+    addMessage('🎰 گردونه شانس روزانه رو باز کردم! بچرخون و شانست رو امتحان کن 🌸', 'bot');
+    return;
+  }
+  if(/چانه|ارزون|تخفیف میدی|کمترش کن/.test(v)){
+    setTimeout(()=>openPanel('bargainPanel'),400);
+    addMessage('🤝 بیا چانه بزنیم! پنل مذاکره باز شد 😎', 'bot');
+    return;
+  }
+  if(/سطح|امتیاز|لول/.test(v)){
+    setTimeout(()=>openPanel('levelsPanel'),400);
+    return;
   }
 
-  sendBtn.addEventListener('click', () => sendMessage());
-  userInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
-
-  clearBtn.addEventListener('click', () => {
-    if (confirm('گفتگو پاک بشه؟')) {
-      chatBody.innerHTML = '';
-      state.messages = [];
-      addMessage(state.settings.welcome, 'bot', false);
-    }
-  });
-
-  function renderQuickReplies() {
-    quickReplies.innerHTML = '';
-    state.quick.forEach(q => {
-      const btn = document.createElement('button');
-      btn.className = 'quick-reply';
-      btn.textContent = q.label;
-      btn.onclick = () => sendMessage(q.query);
-      quickReplies.appendChild(btn);
-    });
-  }
-
-  function renderNav() {
-    const nav = document.getElementById('navList');
-    nav.innerHTML = '';
-    state.categories.forEach(cat => {
-      const div = document.createElement('div');
-      div.className = 'nav-item' + (cat.topic === 'general' ? ' active' : '');
-      div.innerHTML = `<span class="icon">${cat.icon}</span><span>${escapeHtml(cat.title)}</span>`;
-      div.onclick = () => {
-        document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
-        div.classList.add('active');
-        addMessage(`📂 موضوع <strong>«${cat.title}»</strong> انتخاب شد.<br>لطفاً سوالتون رو بپرسید. 🌸`, 'bot');
-      };
-      nav.appendChild(div);
-    });
-  }
-
-  /* ================= Login (بدون sessionStorage) ================= */
-  const loginOverlay = document.getElementById('loginOverlay');
-  const adminPanel = document.getElementById('adminPanel');
-  let isLoggedIn = false; // فقط در حافظه
-
-  document.getElementById('adminBtn').addEventListener('click', () => {
-    if (isLoggedIn) {
-      adminPanel.classList.add('open');
-      refreshAdmin();
+  showTyping();
+  const ans = findAnswer(v);
+  recordQuestion(v, !!ans);
+  setTimeout(()=>{
+    hideTyping();
+    if(ans){
+      addMessage(ans.answer, 'bot');
+      if(state.currentUser){
+        state.currentUser.chatTopics = state.currentUser.chatTopics||{};
+        const topic = ans.keywords[0];
+        state.currentUser.chatTopics[topic] = (state.currentUser.chatTopics[topic]||0)+1;
+        addPoints(2, 'chat');
+        saveState();
+      }
     } else {
-      loginOverlay.classList.add('open');
-      setTimeout(() => document.getElementById('loginPass').focus(), 100);
+      const answers = [
+        `متوجه شدم 🌸 می‌تونید سوالتون رو دقیق‌تر بپرسید؟<br><br>💡 مثلاً:<br>• «گردونه شانس» 🎰<br>• «چانه بزنیم» 🤝<br>• «محصولات» 🛍`,
+        `سوال جالبیه! 🌿 ولی اطلاعات دقیقی ندارم.<br><br>می‌تونید درباره:<br>🌿 زعفران و خواصش<br>🎰 گردونه شانس<br>🤝 چانه‌زنی با AI<br>💎 سطح و امتیاز<br><br>بپرسید!`,
+        `سوالتون رو دریافت کردم ✨<br><br>📞 برای سوالات خاص با پشتیبانی در تماس باشید: بنویسید «پشتیبان»`
+      ];
+      addMessage(answers[Math.floor(Math.random()*answers.length)], 'bot');
     }
+  }, 800+Math.random()*500);
+}
+
+function recordQuestion(q,answered){
+  const k = q.trim().toLowerCase();
+  if(!k)return;
+  if(!state.analytics[k])state.analytics[k]={text:q.trim(),count:0,answered:answered,lastAsked:now()};
+  state.analytics[k].count++;
+  state.analytics[k].lastAsked=now();
+  if(answered)state.analytics[k].answered=true;
+  saveState();
+}
+
+function showProductsInChat(){
+  const row=document.createElement('div');row.className='message-row';
+  const av=document.createElement('div');av.className='msg-avatar bot';av.textContent='🌸';
+  const msg=document.createElement('div');msg.className='message bot';
+  const items = state.products.filter(p=>p.active);
+  if(!items.length){msg.textContent='محصولی موجود نیست';}
+  else{
+    msg.innerHTML=`🛍 <strong>محصولات ما:</strong><div class="products-grid">`+
+      items.map(p=>`
+        <div class="product-mini">
+          <div class="p-img">${p.image?`<img src="${p.image}">`:(p.emoji||'🌸')}</div>
+          <div class="p-name">${escapeHtml(p.name)}</div>
+          <div class="p-price">${formatPrice(p.price)}</div>
+          <button class="p-add" onclick="addToCart('${p.id}')">➕ افزودن</button>
+        </div>`).join('')+`</div>`;
+  }
+  row.appendChild(av);row.appendChild(msg);chatBody.appendChild(row);chatBody.scrollTop=chatBody.scrollHeight;
+}
+
+/* ================= CART ================= */
+const cartFloat = document.getElementById('cartFloat');
+const cartCount = document.getElementById('cartCount');
+
+window.addToCart = function(pid){
+  const p = state.products.find(x=>x.id===pid);
+  if(!p||!p.active){toast('❌ موجود نیست');return;}
+  const ex = state.cart.find(c=>c.id===pid);
+  if(ex)ex.qty++;
+  else state.cart.push({id:pid,qty:1});
+  // ثبت علاقه
+  if(state.currentUser){
+    state.currentUser.interests = state.currentUser.interests||{};
+    state.currentUser.interests[pid] = (state.currentUser.interests[pid]||0)+1;
+  }
+  saveState();
+  updateCartUI();
+  toast('✅ به سبد اضافه شد (+۵ امتیاز)');
+  addPoints(5,'cart');
+};
+
+window.changeQty = function(pid,d){
+  const it = state.cart.find(c=>c.id===pid);
+  if(!it)return;
+  it.qty+=d;
+  if(it.qty<=0)state.cart=state.cart.filter(c=>c.id!==pid);
+  saveState();updateCartUI();
+};
+
+window.removeFromCart = function(pid){
+  state.cart=state.cart.filter(c=>c.id!==pid);
+  saveState();updateCartUI();
+};
+
+function updateCartUI(){
+  const total = state.cart.reduce((s,c)=>s+c.qty,0);
+  if(total>0){cartFloat.classList.add('show');cartCount.textContent=total;}
+  else cartFloat.classList.remove('show');
+  renderCartPanel();
+}
+
+function calcTotals(){
+  let sub=0;
+  state.cart.forEach(c=>{
+    const p=state.products.find(x=>x.id===c.id);
+    if(p)sub+=p.price*c.qty;
   });
-
-  function tryLogin() {
-    const pass = document.getElementById('loginPass').value;
-    const err = document.getElementById('loginError');
-    if (!pass) { err.textContent = '⚠️ رمز عبور رو وارد کنید'; return; }
-    if (simpleHash(pass) === state.passwordHash) {
-      isLoggedIn = true;
-      state.lastActivity = Date.now();
-      err.textContent = '';
-      document.getElementById('loginPass').value = '';
-      loginOverlay.classList.remove('open');
-      adminPanel.classList.add('open');
-      refreshAdmin();
-      toast('✅ خوش آمدید');
-    } else {
-      err.textContent = '❌ رمز عبور اشتباه است';
-      document.getElementById('loginPass').value = '';
+  let disc = 0;
+  if(state.appliedCoupon){
+    const cp = state.coupons.find(c=>c.id===state.appliedCoupon.id) || state.currentUser.coupons?.find(c=>c.id===state.appliedCoupon.id);
+    if(cp&&sub>=(cp.minTotal||0)){
+      if(cp.type==='percent')disc=Math.floor(sub*cp.value/100);
+      else if(cp.type==='fixed')disc=Math.min(cp.value,sub);
     }
   }
+  // تخفیف سطح کاربر
+  const lvl = getUserLevel();
+  if(lvl.discount>0)disc += Math.floor(sub*lvl.discount/100);
+  // ارسال رایگان
+  const freeShip = state.currentUser && state.currentUser.freeshipUntil > now();
+  return {subtotal:sub, discount:Math.min(disc,sub), total:Math.max(0,sub-disc), freeShip};
+}
 
-  function closeLogin() {
-    loginOverlay.classList.remove('open');
-    document.getElementById('loginPass').value = '';
-    document.getElementById('loginError').textContent = '';
+function renderCartPanel(){
+  const cc = document.getElementById('cartContent');
+  const cf = document.getElementById('cartFooter');
+  if(!state.cart.length){
+    cc.innerHTML=`<div class="cart-empty"><span class="emoji">🛒</span><div>سبد خرید خالیه</div></div>`;
+    cf.style.display='none';return;
+  }
+  cf.style.display='block';
+  cc.innerHTML=state.cart.map(c=>{
+    const p=state.products.find(x=>x.id===c.id);
+    if(!p)return '';
+    return `<div class="cart-item">
+      <div class="c-img">${p.image?`<img src="${p.image}">`:(p.emoji||'🌸')}</div>
+      <div class="c-info">
+        <div class="c-name">${escapeHtml(p.name)}</div>
+        <div class="c-price">${formatPrice(p.price)} × ${c.qty}</div>
+      </div>
+      <div class="c-qty">
+        <button class="qty-btn" onclick="changeQty('${p.id}',-1)">−</button>
+        <span class="qty-num">${c.qty}</span>
+        <button class="qty-btn" onclick="changeQty('${p.id}',1)">+</button>
+      </div>
+      <button class="c-remove" onclick="removeFromCart('${p.id}')">🗑</button>
+    </div>`;
+  }).join('');
+
+  const cArea = document.getElementById('couponArea');
+  if(state.appliedCoupon){
+    cArea.innerHTML=`<div class="coupon-applied"><span>✅ <span class="code">${escapeHtml(state.appliedCoupon.code)}</span></span><button class="remove-coupon" onclick="removeCoupon()">حذف</button></div>`;
+  } else {
+    cArea.innerHTML=`<div class="coupon-box"><input type="text" id="couponInput" placeholder="کد تخفیف..."><button onclick="applyCoupon()">اعمال</button></div>`;
   }
 
-  document.getElementById('loginPass').addEventListener('keypress', e => {
-    if (e.key === 'Enter') tryLogin();
+  const tot = calcTotals();
+  document.getElementById('summaryCount').textContent = formatNum(state.cart.reduce((s,c)=>s+c.qty,0));
+  document.getElementById('summarySubtotal').textContent = formatPrice(tot.subtotal);
+  if(tot.discount>0){
+    document.getElementById('summaryDiscountRow').style.display='flex';
+    document.getElementById('summaryDiscount').textContent='− '+formatPrice(tot.discount);
+  } else document.getElementById('summaryDiscountRow').style.display='none';
+  document.getElementById('summaryTotal').textContent = formatPrice(tot.total);
+}
+
+window.applyCoupon = function(){
+  const inp = document.getElementById('couponInput');
+  if(!inp)return;
+  const code = inp.value.trim().toUpperCase();
+  if(!code)return;
+  const cp = state.coupons.find(c=>c.code.toUpperCase()===code && c.active) ||
+             (state.currentUser?.coupons||[]).find(c=>c.code.toUpperCase()===code);
+  if(!cp){toast('❌ کد نامعتبره');return;}
+  state.appliedCoupon={id:cp.id, code:cp.code};
+  saveState();renderCartPanel();
+  toast('✅ کد اعمال شد');
+};
+window.removeCoupon = function(){state.appliedCoupon=null;saveState();renderCartPanel();};
+
+/* ================= PANELS ================= */
+window.openPanel = function(id){
+  closeAllPanels();
+  document.getElementById(id).classList.add('open');
+  if(id==='wheelPanel')renderWheel();
+  if(id==='levelsPanel')renderLevels();
+  if(id==='myCouponsPanel')renderMyCoupons();
+  if(id==='bargainPanel')renderBargain();
+  if(id==='productsPanel')renderProductsPanel();
+};
+window.closePanel = function(id){document.getElementById(id).classList.remove('open');};
+function closeAllPanels(){
+  document.querySelectorAll('.panel.open').forEach(p=>p.classList.remove('open'));
+}
+window.openWheelPanel = ()=>openPanel('wheelPanel');
+window.openLevelsPanel = ()=>openPanel('levelsPanel');
+window.openBargainPanel = ()=>openPanel('bargainPanel');
+window.openProductsPanel = ()=>openPanel('productsPanel');
+window.openMyCouponsPanel = ()=>openPanel('myCouponsPanel');
+
+function renderProductsPanel(){
+  const list = document.getElementById('productsList');
+  const items = state.products.filter(p=>p.active);
+  if(!items.length){list.innerHTML='<div class="empty-state"><span class="emoji">🛍</span></div>';return;}
+  list.innerHTML = items.map(p=>`
+    <div class="product-card">
+      <div class="product-image">${p.image?`<img src="${p.image}">`:(p.emoji||'🌸')}</div>
+      <div class="product-body">
+        <div class="product-name">${escapeHtml(p.name)}</div>
+        <div class="product-desc">${escapeHtml(p.desc||'')}</div>
+        <div class="product-price">${formatPrice(p.price)}</div>
+        <div class="product-unit">${escapeHtml(p.unit||'')}</div>
+        <button class="product-add-btn" onclick="addToCart('${p.id}');this.textContent='✓ اضافه شد';this.classList.add('added');setTimeout(()=>{this.textContent='➕ افزودن به سبد';this.classList.remove('added');},1200);">➕ افزودن به سبد</button>
+      </div>
+    </div>`).join('');
+}
+
+/* ================= WHEEL OF FORTUNE ================= */
+let isSpinning = false;
+
+function renderWheel(){
+  const svg = document.getElementById('wheelSvg');
+  const prizes = state.wheelPrizes && state.wheelPrizes.length ? state.wheelPrizes : CONFIG.wheelPrizes;
+  const n = prizes.length;
+  const segAngle = 360/n;
+  const colors = ['#f4b400','#c0392b','#22c55e','#a855f7','#3b82f6','#f97316','#ec4899','#06b6d4'];
+  
+  let html = '';
+  prizes.forEach((p,i)=>{
+    const start = i*segAngle - 90;
+    const end = start + segAngle;
+    const rad1 = start*Math.PI/180, rad2 = end*Math.PI/180;
+    const x1 = 160 + 160*Math.cos(rad1), y1 = 160 + 160*Math.sin(rad1);
+    const x2 = 160 + 160*Math.cos(rad2), y2 = 160 + 160*Math.sin(rad2);
+    const large = segAngle>180?1:0;
+    const mid = start + segAngle/2;
+    const radMid = mid*Math.PI/180;
+    const tx = 160 + 100*Math.cos(radMid);
+    const ty = 160 + 100*Math.sin(radMid);
+    const color = colors[i%colors.length];
+    html += `<path d="M160,160 L${x1},${y1} A160,160 0 ${large},1 ${x2},${y2} Z" fill="${color}" stroke="#1a1410" stroke-width="2"/>`;
+    html += `<text x="${tx}" y="${ty}" fill="white" font-size="14" font-weight="700" text-anchor="middle" dominant-baseline="middle" transform="rotate(${mid+90} ${tx} ${ty})">${escapeHtml(p.icon)}</text>`;
   });
+  svg.innerHTML = html;
+  
+  updateSpinButton();
+}
 
-  /* ================= Admin Panel ================= */
-  document.getElementById('closeAdmin').addEventListener('click', () => adminPanel.classList.remove('open'));
-
-  document.querySelectorAll('.admin-tab').forEach(tab => {
-    tab.addEventListener('click', () => switchTab(tab.dataset.tab));
-  });
-
-  function switchTab(name) {
-    document.querySelectorAll('.admin-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === name));
-    document.querySelectorAll('.tab-pane').forEach(p => p.classList.toggle('active', p.dataset.pane === name));
-    refreshAdmin();
+function updateSpinButton(){
+  const btn = document.getElementById('spinBtn');
+  const timer = document.getElementById('wheelTimer');
+  const badge = document.getElementById('wheelFreeBadge');
+  if(!state.currentUser){btn.disabled=true;return;}
+  const last = state.currentUser.lastWheelSpin;
+  const todayStr = today();
+  const canSpin = !last || last !== todayStr;
+  btn.disabled = !canSpin;
+  if(canSpin){
+    btn.innerHTML = '🎰 بچرخون! (رایگان)';
+    timer.textContent = '✨ فرصت امروز شما فعاله!';
+    badge.style.display='inline';
+  } else {
+    btn.innerHTML = '⏰ فردا بیا!';
+    badge.style.display='none';
+    const tomorrow = new Date();tomorrow.setDate(tomorrow.getDate()+1);tomorrow.setHours(0,0,0,0);
+    const diff = tomorrow - new Date();
+    const h = Math.floor(diff/3600000), m = Math.floor((diff%3600000)/60000);
+    timer.innerHTML = `⏰ فرصت بعدی: <strong>${h} ساعت و ${m} دقیقه</strong> دیگه`;
   }
+}
 
-  function refreshAdmin() {
-    document.getElementById('statKnowledge').textContent = state.knowledge.length;
-    document.getElementById('statCategories').textContent = state.categories.length;
-    document.getElementById('statQuick').textContent = state.quick.length;
-    document.getElementById('statMessages').textContent = state.messages.length;
-    const total = Object.values(state.analytics).reduce((s, q) => s + q.count, 0);
-    document.getElementById('statTotalQuestions').textContent = total;
-    document.getElementById('statUnanswered').textContent = getUnansweredQuestions(999).length;
-    renderKnowledgeList();
-    renderCategoriesList();
-    renderQuickList();
-    renderAnalytics();
-    fillBrandingForm();
-    fillSettingsForm();
+window.spinWheel = function(){
+  if(isSpinning)return;
+  const u = state.currentUser;
+  if(!u)return;
+  if(u.lastWheelSpin===today()){toast('⏰ امروز چرخیدی');return;}
+  
+  isSpinning = true;
+  document.getElementById('spinBtn').disabled = true;
+  
+  const prizes = state.wheelPrizes && state.wheelPrizes.length ? state.wheelPrizes : CONFIG.wheelPrizes;
+  // انتخاب وزنی
+  const total = prizes.reduce((s,p)=>s+(p.weight||1),0);
+  let r = Math.random()*total;
+  let winIdx = 0;
+  for(let i=0;i<prizes.length;i++){
+    r -= prizes[i].weight||1;
+    if(r<=0){winIdx=i;break;}
   }
-
-  function renderKnowledgeList() {
-    const list = document.getElementById('knowledgeList');
-    if (!state.knowledge.length) {
-      list.innerHTML = '<div class="empty-state"><span class="emoji">🧠</span>هنوز پاسخی ثبت نشده</div>';
-      return;
-    }
-    list.innerHTML = state.knowledge.map(k => `
-      <div class="item-card">
-        <div class="item-header">
-          <div class="item-keywords">${k.keywords.map(kw => `<span class="kw-tag">${escapeHtml(kw)}</span>`).join('')}</div>
-          <div class="item-actions">
-            <button class="btn btn-ghost btn-sm" onclick="editKnowledge('${k.id}')">✏️</button>
-            <button class="btn btn-danger btn-sm" onclick="deleteKnowledge('${k.id}')">🗑</button>
-          </div>
-        </div>
-        <div class="item-answer">${k.answer.replace(/<[^>]+>/g, '').substring(0, 150)}${k.answer.length > 150 ? '...' : ''}</div>
-      </div>
-    `).join('');
-  }
-
-  function renderCategoriesList() {
-    const list = document.getElementById('categoriesList');
-    if (!state.categories.length) { list.innerHTML = '<div class="empty-state">دسته‌بندی‌ای نیست</div>'; return; }
-    list.innerHTML = state.categories.map(c => `
-      <div class="item-card">
-        <div class="item-header">
-          <div style="display:flex; align-items:center; gap:10px;">
-            <span style="font-size:22px;">${c.icon}</span>
-            <div>
-              <div style="font-size:13.5px; font-weight:600;">${escapeHtml(c.title)}</div>
-              <div style="font-size:11px; color:var(--text-muted); margin-top:2px;">topic: ${c.topic}</div>
-            </div>
-          </div>
-          <div class="item-actions">
-            <button class="btn btn-ghost btn-sm" onclick="editCategory('${c.id}')">✏️</button>
-            <button class="btn btn-danger btn-sm" onclick="deleteCategory('${c.id}')">🗑</button>
-          </div>
-        </div>
-      </div>
-    `).join('');
-  }
-
-  function renderQuickList() {
-    const list = document.getElementById('quickList');
-    if (!state.quick.length) { list.innerHTML = '<div class="empty-state">پاسخ سریعی نیست</div>'; return; }
-    list.innerHTML = state.quick.map(q => `
-      <div class="item-card">
-        <div class="item-header">
-          <div>
-            <div style="font-size:13.5px; font-weight:600; color:var(--saffron-gold);">${escapeHtml(q.label)}</div>
-            <div style="font-size:11px; color:var(--text-muted); margin-top:3px;">پرسش: ${escapeHtml(q.query)}</div>
-          </div>
-          <div class="item-actions">
-            <button class="btn btn-ghost btn-sm" onclick="editQuick('${q.id}')">✏️</button>
-            <button class="btn btn-danger btn-sm" onclick="deleteQuick('${q.id}')">🗑</button>
-          </div>
-        </div>
-      </div>
-    `).join('');
-  }
-
-  function renderAnalytics() {
-    const topList = document.getElementById('topQuestionsList');
-    const top = getTopQuestions(10);
-    if (!top.length) {
-      topList.innerHTML = '<div class="empty-state"><span class="emoji">📊</span>هنوز سوالی پرسیده نشده</div>';
-    } else {
-      topList.innerHTML = top.map((q, i) => `
-        <div class="question-row">
-          <div class="question-rank ${i < 3 ? 'top3' : ''}">${i + 1}</div>
-          <div class="question-text">${escapeHtml(q.text)}</div>
-          <div class="question-count">${q.count}</div>
-        </div>
-      `).join('');
-    }
-    const unList = document.getElementById('unansweredList');
-    const un = getUnansweredQuestions(20);
-    if (!un.length) {
-      unList.innerHTML = '<div class="empty-state"><span class="emoji">✅</span>همه سوالات پاسخ داده شدن!</div>';
-    } else {
-      unList.innerHTML = un.map((q, i) => `
-        <div class="question-row">
-          <div class="question-rank">${i + 1}</div>
-          <div class="question-text">${escapeHtml(q.text)}</div>
-          <div class="question-count">${q.count}</div>
-          <button class="btn btn-primary btn-sm" onclick="addFromAnalytics('${escapeHtml(q.text).replace(/'/g, "\\'")}')">➕</button>
-        </div>
-      `).join('');
-    }
-  }
-
-  function addFromAnalytics(text) {
-    openModal('➕ افزودن به دانشنامه', `
-      <div class="form-group">
-        <label>کلمات کلیدی (هر خط یک کلمه)</label>
-        <textarea id="mKeywords" style="min-height:100px;">${escapeHtml(text)}</textarea>
-      </div>
-      <div class="form-group">
-        <label>پاسخ</label>
-        <textarea id="mAnswer" style="min-height:140px;"></textarea>
-      </div>
-    `, () => {
-      const kwsRaw = document.getElementById('mKeywords').value.trim();
-      const ansRaw = document.getElementById('mAnswer').value.trim();
-      if (!kwsRaw || !ansRaw) { toast('⚠️ هر دو فیلد الزامی'); return false; }
-      const keywords = kwsRaw.split('\n').map(s => s.trim()).filter(Boolean);
-      state.knowledge.push({ id: 'k' + Date.now(), keywords, answer: ansRaw });
-      const key = text.trim().toLowerCase();
-      if (state.analytics[key]) state.analytics[key].answered = true;
-      saveState(); refreshAdmin(); toast('✅ اضافه شد');
-    });
-  }
-
-  function fillBrandingForm() {
-    const b = state.branding;
-    document.getElementById('inputBrandName').value = b.brandName;
-    document.getElementById('inputBrandSub').value = b.brandSub;
-    document.getElementById('inputBrandLogo').value = b.brandLogo;
-    ['gold','deep','bg','panel','card'].forEach(k => {
-      const cap = k.charAt(0).toUpperCase() + k.slice(1);
-      document.getElementById('col' + cap).value = b.colors[k];
-      document.getElementById('col' + cap + 'Txt').value = b.colors[k];
-    });
-  }
-
-  function fillSettingsForm() {
-    const s = state.settings;
-    document.getElementById('inputBotName').value = s.botName;
-    document.getElementById('inputBotAvatar').value = s.botAvatar;
-    document.getElementById('inputWelcome').value = s.welcome.replace(/<br>/g, '\n').replace(/<[^>]+>/g, '');
-    document.getElementById('inputSpeed').value = s.speed;
-  }
-
-  ['Gold','Deep','Bg','Panel','Card'].forEach(key => {
-    const c = document.getElementById('col' + key);
-    const t = document.getElementById('col' + key + 'Txt');
-    c.addEventListener('input', () => { t.value = c.value; });
-    t.addEventListener('input', () => { if (/^#[0-9a-fA-F]{6}$/.test(t.value)) c.value = t.value; });
-  });
-
-  function saveBranding() {
-    state.branding.brandName = document.getElementById('inputBrandName').value.trim() || 'زعفران شیرزاد';
-    state.branding.brandSub = document.getElementById('inputBrandSub').value.trim();
-    state.branding.brandLogo = document.getElementById('inputBrandLogo').value.trim() || '🌸';
-    state.branding.colors = {
-      gold: document.getElementById('colGold').value,
-      deep: document.getElementById('colDeep').value,
-      bg: document.getElementById('colBg').value,
-      panel: document.getElementById('colPanel').value,
-      card: document.getElementById('colCard').value
-    };
-    saveState(); applyTheme(); toast('✅ ذخیره شد');
-  }
-
-  function resetColors() {
-    state.branding.colors = JSON.parse(JSON.stringify(DEFAULT_BRANDING.colors));
-    saveState(); applyTheme(); fillBrandingForm(); toast('↺ بازنشانی شد');
-  }
-
-  function saveSettings() {
-    state.settings.botName = document.getElementById('inputBotName').value.trim() || 'دستیار';
-    state.settings.botAvatar = document.getElementById('inputBotAvatar').value.trim() || '🤖';
-    state.settings.welcome = document.getElementById('inputWelcome').value.trim().replace(/\n/g, '<br>');
-    const speed = parseInt(document.getElementById('inputSpeed').value);
-    state.settings.speed = (isNaN(speed) || speed < 200) ? 1000 : Math.min(speed, 5000);
-    saveState(); applyTheme(); toast('✅ ذخیره شد');
-  }
-
-  function changePassword() {
-    const oldP = document.getElementById('inputOldPass').value;
-    const newP = document.getElementById('inputNewPass').value;
-    const confP = document.getElementById('inputConfirmPass').value;
-    if (simpleHash(oldP) !== state.passwordHash) { toast('❌ رمز فعلی اشتباهه'); return; }
-    if (newP.length < 6) { toast('⚠️ حداقل ۶ کاراکتر'); return; }
-    if (newP !== confP) { toast('❌ رمزها یکسان نیستن'); return; }
-    state.passwordHash = simpleHash(newP);
+  
+  const n = prizes.length;
+  const segAngle = 360/n;
+  const targetAngle = 360*5 + (360 - winIdx*segAngle - segAngle/2);
+  
+  const svg = document.getElementById('wheelSvg');
+  svg.style.transform = `rotate(${targetAngle}deg)`;
+  
+  setTimeout(()=>{
+    isSpinning = false;
+    u.lastWheelSpin = today();
+    state.wheelSpins.push({userId:u.id, prizeId:prizes[winIdx].id, at:now()});
     saveState();
-    document.getElementById('inputOldPass').value = '';
-    document.getElementById('inputNewPass').value = '';
-    document.getElementById('inputConfirmPass').value = '';
-    toast('✅ رمز تغییر کرد');
-  }
+    showPrize(prizes[winIdx]);
+    updateSpinButton();
+    updateMiniProfile();
+  }, 5100);
+};
 
-  /* ================= Modal ================= */
-  const modalOverlay = document.getElementById('modalOverlay');
-  const modalTitle = document.getElementById('modalTitle');
-  const modalBody = document.getElementById('modalBody');
-  const modalSave = document.getElementById('modalSave');
+function showPrize(prize){
+  const u = state.currentUser;
+  const modal = document.getElementById('prizeModal');
+  const emoji = document.getElementById('prizeEmoji');
+  const title = document.getElementById('prizeTitle');
+  const desc = document.getElementById('prizeDesc');
+  const codeEl = document.getElementById('prizeCode');
+  codeEl.style.display='none';
+  
+  emoji.textContent = prize.icon || '🎉';
+  
+  if(prize.type==='coupon'){
+    title.textContent = '🎉 تبریک! کد تخفیف گرفتی!';
+    desc.textContent = `${prize.value}٪ تخفیف مخصوص شما فعال شد!`;
+    const code = 'WIN'+prize.value+'-'+Math.random().toString(36).slice(2,6).toUpperCase();
+    addUserCoupon({code, type:'percent', value:prize.value, minTotal:0, active:true});
+    codeEl.textContent = code;
+    codeEl.style.display='block';
+    fireConfetti();
+    addPoints(10,'wheel-win');
+  } else if(prize.type==='points'){
+    title.textContent = '⭐ امتیاز گرفتی!';
+    desc.textContent = `${prize.value} امتیاز به حساب شما اضافه شد!`;
+    addPoints(prize.value,'wheel');
+    fireConfetti();
+  } else if(prize.type==='freeship'){
+    title.textContent = '🚚 ارسال رایگان!';
+    desc.textContent = 'ارسال رایگان برای سفارش بعدی شما فعال شد!';
+    u.freeshipUntil = now() + 7*24*3600*1000;
+    saveState();
+    fireConfetti();
+  } else {
+    title.textContent = '😅 این بار پوچ!';
+    desc.textContent = 'شانس بعدی حتماً می‌گیره! فردا دوباره امتحان کن 🌸';
+  }
+  
+  modal.classList.add('show');
+  // حالت کارت برنده
+  if(prize.type !== 'nothing'){
+    addMessage(`🎉 <strong>تبریک!</strong> توی گردونه <strong>${escapeHtml(prize.label)}</strong> برنده شدی!`, 'bot');
+  }
+}
 
-  function openModal(title, bodyHtml, onSave) {
-    modalTitle.textContent = title;
-    modalBody.innerHTML = bodyHtml;
-    modalSave.onclick = () => { if (onSave() !== false) closeModal(); };
-    modalOverlay.classList.add('open');
-  }
-  function closeModal() { modalOverlay.classList.remove('open'); }
-  modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) closeModal(); });
+window.closePrizeModal = function(){
+  document.getElementById('prizeModal').classList.remove('show');
+};
 
-  function openKnowledgeModal(id) {
-    const item = id ? state.knowledge.find(k => k.id === id) : null;
-    const kws = item ? item.keywords.join('\n') : '';
-    const ans = item ? item.answer : '';
-    openModal(item ? '✏️ ویرایش' : '➕ افزودن', `
-      <div class="form-group"><label>کلمات کلیدی (هر خط یک)</label><textarea id="mKeywords" style="min-height:100px;">${escapeHtml(kws)}</textarea></div>
-      <div class="form-group"><label>پاسخ (HTML مجاز)</label><textarea id="mAnswer" style="min-height:140px;">${escapeHtml(ans)}</textarea></div>
-    `, () => {
-      const kwsRaw = document.getElementById('mKeywords').value.trim();
-      const ansRaw = document.getElementById('mAnswer').value.trim();
-      if (!kwsRaw || !ansRaw) { toast('⚠️ هر دو فیلد الزامی'); return false; }
-      const keywords = kwsRaw.split('\n').map(s => s.trim()).filter(Boolean);
-      if (item) { item.keywords = keywords; item.answer = ansRaw; toast('✅ ویرایش شد'); }
-      else { state.knowledge.push({ id: 'k' + Date.now(), keywords, answer: ansRaw }); toast('✅ اضافه شد'); }
-      saveState(); refreshAdmin();
-    });
-  }
-  function editKnowledge(id) { openKnowledgeModal(id); }
-  function deleteKnowledge(id) {
-    if (!confirm('حذف بشه؟')) return;
-    state.knowledge = state.knowledge.filter(k => k.id !== id);
-    saveState(); refreshAdmin(); toast('🗑 حذف شد');
-  }
+window.copyPrizeCode = function(){
+  const code = document.getElementById('prizeCode').textContent;
+  navigator.clipboard?.writeText(code).then(()=>toast('✅ کد کپی شد!'));
+};
 
-  function openCategoryModal(id) {
-    const item = id ? state.categories.find(c => c.id === id) : null;
-    openModal(item ? '✏️ ویرایش' : '➕ افزودن', `
-      <div class="form-group"><label>عنوان</label><input type="text" id="mCatTitle" value="${item ? escapeHtml(item.title) : ''}"></div>
-      <div class="form-group"><label>ایموجی</label><input type="text" id="mCatIcon" maxlength="4" value="${item ? item.icon : '📂'}"></div>
-      <div class="form-group"><label>شناسه (انگلیسی)</label><input type="text" id="mCatTopic" value="${item ? item.topic : ''}" style="direction:ltr;"></div>
-    `, () => {
-      const title = document.getElementById('mCatTitle').value.trim();
-      const icon = document.getElementById('mCatIcon').value.trim() || '📂';
-      const topic = document.getElementById('mCatTopic').value.trim().toLowerCase() || 'topic' + Date.now();
-      if (!title) { toast('⚠️ عنوان الزامی'); return false; }
-      if (item) { item.title = title; item.icon = icon; item.topic = topic; toast('✅ ویرایش شد'); }
-      else { state.categories.push({ id: 'c' + Date.now(), title, icon, topic }); toast('✅ اضافه شد'); }
-      saveState(); renderNav(); refreshAdmin();
-    });
+function fireConfetti(){
+  const colors = ['#f4b400','#c0392b','#22c55e','#a855f7','#3b82f6','#f97316'];
+  for(let i=0;i<50;i++){
+    const c = document.createElement('div');
+    c.className='confetti';
+    c.style.left = Math.random()*100+'vw';
+    c.style.background = colors[Math.floor(Math.random()*colors.length)];
+    c.style.animationDuration = (2+Math.random()*2)+'s';
+    c.style.animationDelay = Math.random()*0.5+'s';
+    c.style.width = c.style.height = (6+Math.random()*10)+'px';
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(), 5000);
   }
-  function editCategory(id) { openCategoryModal(id); }
-  function deleteCategory(id) {
-    if (!confirm('حذف بشه؟')) return;
-    state.categories = state.categories.filter(c => c.id !== id);
-    saveState(); renderNav(); refreshAdmin(); toast('🗑 حذف شد');
-  }
+}
 
-  function openQuickModal(id) {
-    const item = id ? state.quick.find(q => q.id === id) : null;
-    openModal(item ? '✏️ ویرایش' : '➕ افزودن', `
-      <div class="form-group"><label>متن دکمه</label><input type="text" id="mQLabel" value="${item ? escapeHtml(item.label) : ''}"></div>
-      <div class="form-group"><label>پرسش ارسالی</label><input type="text" id="mQQuery" value="${item ? escapeHtml(item.query) : ''}"></div>
-    `, () => {
-      const label = document.getElementById('mQLabel').value.trim();
-      const query = document.getElementById('mQQuery').value.trim();
-      if (!label || !query) { toast('⚠️ هر دو الزامی'); return false; }
-      if (item) { item.label = label; item.query = query; toast('✅ ویرایش شد'); }
-      else { state.quick.push({ id: 'q' + Date.now(), label, query }); toast('✅ اضافه شد'); }
-      saveState(); renderQuickReplies(); refreshAdmin();
-    });
+/* ================= LEVELS ================= */
+function renderLevels(){
+  const c = document.getElementById('levelsContent');
+  const u = currentUser();
+  if(!u)return;
+  const lvl = getUserLevel();
+  const next = getNextLevel();
+  let progress = 100;
+  if(next){
+    const prevMin = lvl.min;
+    const range = next.min - prevMin;
+    progress = Math.min(100, Math.floor((u.points - prevMin)/range*100));
   }
-  function editQuick(id) { openQuickModal(id); }
-  function deleteQuick(id) {
-    if (!confirm('حذف بشه؟')) return;
-    state.quick = state.quick.filter(q => q.id !== id);
-    saveState(); renderQuickReplies(); refreshAdmin(); toast('🗑 حذف شد');
+  
+  c.innerHTML = `
+    <div class="level-hero">
+      <div class="level-badge-big">${lvl.icon}</div>
+      <div class="level-name">سطح ${lvl.name}</div>
+      <div class="level-score">${formatNum(u.points)}</div>
+      <div class="level-score-lbl">امتیاز</div>
+      ${next?`<div class="progress-big"><div class="progress-big-bar" style="width:${progress}%"></div></div><div class="progress-hint">${formatNum(next.min-u.points)} امتیاز تا سطح ${next.name} ${next.icon}</div>`:'<div class="progress-hint" style="margin-top:10px;">🎉 شما بالاترین سطح رو داری!</div>'}
+    </div>
+    
+    <div class="section-title">🎁 مزایای سطح شما</div>
+    <div style="background:rgba(26,20,16,0.6);border:1px solid var(--border-gold);border-radius:14px;padding:14px;font-size:13px;line-height:2;">
+      ${lvl.discount>0?`✅ <strong>${lvl.discount}٪ تخفیف دائمی</strong> روی همه خریدها<br>`:''}
+      ${lvl.id==='diamond'?'✅ <strong>ارسال رایگان</strong> همیشگی<br>':''}
+      ✅ ${formatNum(u.points)} امتیاز جمع‌آوری شده<br>
+      ✅ ${formatNum(u.coupons?.length||0)} کوپن فعال
+    </div>
+    
+    <div class="section-title" style="margin-top:20px;">📊 راه‌های کسب امتیاز</div>
+    <div class="points-actions">
+      <div class="point-card" onclick="openProductsPanel()">
+        <div class="pc-icon">🛍</div>
+        <div class="pc-title">هر خرید</div>
+        <div class="pc-points">${CONFIG.pointsPerBuy} امتیاز / ۱۰۰۰ تومان</div>
+      </div>
+      <div class="point-card" onclick="openPanel('wheelPanel')">
+        <div class="pc-icon">🎰</div>
+        <div class="pc-title">گردونه شانس</div>
+        <div class="pc-points">۱۰ تا ۱۰۰ امتیاز</div>
+      </div>
+      <div class="point-card" onclick="openPanel('bargainPanel')">
+        <div class="pc-icon">🤝</div>
+        <div class="pc-title">چانه‌زنی</div>
+        <div class="pc-points">۵ امتیاز هر دور</div>
+      </div>
+      <div class="point-card" onclick="sendMessage('درباره زعفران')">
+        <div class="pc-icon">💬</div>
+        <div class="pc-title">گفتگو</div>
+        <div class="pc-points">۲ امتیاز هر پیام</div>
+      </div>
+    </div>
+    
+    <div class="section-title" style="margin-top:20px;">🏆 همه سطوح</div>
+    <div class="levels-list">
+      ${CONFIG.levels.map(l=>`
+        <div class="level-item ${l.id===lvl.id?'current':''} ${u.points<l.min?'locked':''}">
+          <div class="level-icon" style="background:${l.color}25;border:1px solid ${l.color}55;font-size:22px;">${l.icon}</div>
+          <div class="level-info">
+            <div class="name">${l.name}</div>
+            <div class="desc">${l.desc}</div>
+            <div class="req">${formatNum(l.min)}+ امتیاز</div>
+          </div>
+          ${l.id===lvl.id?'<span style="color:var(--saffron-gold);font-size:20px;">✓</span>':''}
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+function showLevelUp(lvlId){
+  const lvl = CONFIG.levels.find(l=>l.id===lvlId);
+  if(!lvl)return;
+  fireConfetti();
+  addMessage(`🎉 <strong>تبریک!</strong> شما به سطح <strong>${lvl.icon} ${lvl.name}</strong> رسیدید!<br><br>🎁 ${lvl.desc}`, 'bot');
+  toast(`🎉 سطح جدید: ${lvl.name}!`);
+}
+
+/* ================= MY COUPONS ================= */
+function renderMyCoupons(){
+  const c = document.getElementById('myCouponsContent');
+  const u = currentUser();
+  const coupons = u?.coupons || [];
+  if(!coupons.length){
+    c.innerHTML = `<div class="empty-state"><span class="emoji">🎟</span><div>هنوز کوپنی نداری</div><p style="margin-top:8px;font-size:12px;">گردونه شانس رو بچرخون و کوپن بگیر! 🎰</p><button class="btn btn-primary" style="margin-top:14px;" onclick="closePanel('myCouponsPanel');openPanel('wheelPanel')">🎰 برو به گردونه</button></div>`;
+    return;
   }
+  c.innerHTML = coupons.map(cp=>`
+    <div style="background:rgba(26,20,16,0.6);border:1px dashed var(--saffron-gold);border-radius:14px;padding:16px;margin-bottom:12px;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:-20px;left:-20px;width:60px;height:60px;border-radius:50%;background:var(--dark-bg);"></div>
+      <div style="position:absolute;bottom:-20px;left:-20px;width:60px;height:60px;border-radius:50%;background:var(--dark-bg);"></div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;padding-right:30px;">
+        <div>
+          <div style="font-size:20px;font-weight:800;color:var(--green);">${cp.type==='percent'?cp.value+'٪':formatPrice(cp.value)}</div>
+          <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px;">${cp.type==='percent'?'تخفیف درصدی':'تخفیف نقدی'}</div>
+        </div>
+        <span style="font-size:11px;color:var(--green);background:rgba(34,197,94,0.15);padding:3px 8px;border-radius:6px;">فعال</span>
+      </div>
+      <div style="font-family:monospace;font-size:15px;font-weight:800;letter-spacing:3px;color:var(--saffron-gold);background:rgba(244,180,0,0.1);padding:10px;border-radius:10px;text-align:center;direction:ltr;margin:12px 0;cursor:pointer;" onclick="navigator.clipboard?.writeText('${cp.code}').then(()=>toast('✅ کپی شد'))">${cp.code}</div>
+      <div style="font-size:11px;color:var(--text-muted);text-align:center;">👆 برای کپی کلیک کن</div>
+    </div>
+  `).join('');
+}
 
-  function exportBackup() {
-    const data = {
-      knowledge: state.knowledge, categories: state.categories,
-      quick: state.quick, branding: state.branding,
-      settings: state.settings, analytics: state.analytics,
-      exportedAt: new Date().toISOString()
-    };
-    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `saffron-shirzad-backup-${new Date().toISOString().slice(0,10)}.json`;
-    a.click();
-    URL.revokeObjectURL(url);
-    toast('📥 دانلود شد');
+/* ================= BARGAIN AI ================= */
+function renderBargain(){
+  const c = document.getElementById('bargainChat');
+  if(!c)return;
+  if(!state.bargainHistory || !state.bargainHistory.length){
+    c.innerHTML = `<div class="bmsg bot">🤖 سلام! من ربات چانه‌زن هستم 😎<br><br>هرچی می‌خوای بگو، منم هوشمندم!<br>💡 «تخفیف میدی؟» یا «گرونه کمترش کن»</div>`;
+  } else {
+    c.innerHTML = state.bargainHistory.map(m=>`<div class="bmsg ${m.sender}">${m.text}</div>`).join('');
   }
+  c.scrollTop = c.scrollHeight;
+}
 
-  document.getElementById('importFile').addEventListener('change', (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = (ev) => {
-      try {
-        const data = JSON.parse(ev.target.result);
-        if (!data.knowledge && !data.categories) throw new Error('invalid');
-        if (!confirm('داده‌های فعلی جایگزین می‌شن. مطمئنید؟')) return;
-        state.knowledge = data.knowledge || state.knowledge;
-        state.categories = data.categories || state.categories;
-        state.quick = data.quick || state.quick;
-        state.branding = data.branding || state.branding;
-        state.settings = data.settings || state.settings;
-        state.analytics = data.analytics || state.analytics;
-        saveState(); applyTheme(); renderNav(); renderQuickReplies(); refreshAdmin();
-        toast('✅ بازیابی شد');
-      } catch (err) { toast('❌ فایل نامعتبر'); }
-    };
-    reader.readAsText(file);
-    e.target.value = '';
-  });
+window.sendBargainMessage = function(){
+  const inp = document.getElementById('bargainInput');
+  const text = inp.value.trim();
+  if(!text)return;
+  inp.value='';
+  
+  state.bargainHistory = state.bargainHistory || [];
+  state.bargainHistory.push({sender:'user', text: escapeHtml(text)});
+  renderBargain();
+  
+  setTimeout(()=>{
+    const reply = generateBargainReply(text);
+    state.bargainHistory.push({sender:'bot', text: reply});
+    renderBargain();
+    saveState();
+    addPoints(5,'bargain');
+  }, 700);
+};
 
-  function resetAll() {
-    if (!confirm('همه داده‌ها به حالت اولیه برمی‌گردن. مطمئنید؟')) return;
-    if (!confirm('قابل بازگشت نیست! ادامه؟')) return;
-    localStorage.removeItem(STORAGE_KEY);
-    resetToDefaults();
-    applyTheme(); renderNav(); renderQuickReplies();
-    chatBody.innerHTML = '';
-    state.messages = [];
-    addMessage(state.settings.welcome, 'bot', false);
+function generateBargainReply(text){
+  const t = text.toLowerCase();
+  const u = state.currentUser;
+  const lvl = getUserLevel();
+  const attempts = (state.bargainHistory||[]).filter(m=>m.sender==='user').length;
+  
+  // شخصیت ربات
+  const baseOffers = [5, 8, 10, 12, 15, 18, 20, 22, 25];
+  let maxAllowed = 25;
+  if(lvl.id==='gold'||lvl.id==='platinum'||lvl.id==='diamond') maxAllowed = 30;
+  
+  // ربات هوشمند
+  if(attempts <= 1){
+    if(/تخفیف|ارزون|کمتر/.test(t)){
+      return `😏 خب خب، چانه‌زن حرفه‌ای!<br><br>اولین پیشنهادم: <strong>۵٪ تخفیف</strong><br>قبول می‌کنی؟`;
+    }
+    if(/چند|قیمت|هزینه/.test(t)){
+      return `💰 قیمت محصولات ما رقابتیه! ولی برای تو... بذار یه <strong>۷٪ تخفیف</strong> حساب کنم 😊`;
+    }
+    return `😎 منتظر پیشنهادتم! بگو چی می‌خوای... تخفیف؟ ارسال رایگان؟`;
+  }
+  
+  if(attempts <= 3){
+    if(/بیشتر|باز هم|کم نیست|بیشتر بده/.test(t)){
+      const offer = 8 + Math.floor(Math.random()*5);
+      return `🤔 داری چانه می‌زنی، خوشم اومد!<br><br>باشه <strong>${offer}٪</strong> ولی دیگه آخرشه! 😤`;
+    }
+    if(/نه|قبول نمی‌کنم|کم|نمی‌ارزه/.test(t)){
+      const offer = 10 + Math.floor(Math.random()*4);
+      return `😤 باشه باشه! <strong>${offer}٪</strong> — ولی این دیگه آخرین قیمتمه!`;
+    }
+    return `😏 اینطوری نمی‌شه! پیشنهاد من: <strong>۱۰٪ تخفیف</strong> یا ارسال رایگان!`;
+  }
+  
+  if(attempts <= 5){
+    const offer = Math.min(maxAllowed, 15 + Math.floor(Math.random()*8));
+    if(/آخرین|نهایی|final|دیگه چی/.test(t)){
+      const finalCode = 'NEGOTIATE'+offer+'-'+Math.random().toString(36).slice(2,6).toUpperCase();
+      addUserCoupon({code: finalCode, type:'percent', value:offer, minTotal:0, active:true});
+      setTimeout(()=>{
+        addMessage(`🤝 <strong>معامله شد!</strong><br><br>کد تخفیف ویژه‌ات: <strong style="direction:ltr;display:inline-block;">${finalCode}</strong><br><br>🎁 ${offer}٪ تخفیف واقعی!<br>از پنل «🎟 کوپن‌های من» ببینش!`, 'bot');
+        fireConfetti();
+      },600);
+      return `🤝 باشه بابا! تو بردی 😅<br><br>آخرین پیشنهادم: <strong>${offer}٪ تخفیف</strong><br>کدش رو الان می‌فرستم! 🎁`;
+    }
+    return `😅 واقعاً سخت‌گیری! باشه:<br><br><strong>${offer}٪ تخفیف</strong> — قبوله؟`;
+  }
+  
+  // خیلی چانه زده — ربات کلافه میشه
+  if(attempts > 7){
+    return `😤 آقا/خانم، این دیگه آخرشه! <strong>۲۰٪ تخفیف</strong> نه یه ریال کمتر!<br><br>قبول یا بریم؟`;
+  }
+  return `😐 گفتم که چانه‌زن باهوشم! همین ۱۵٪ و نه بیشتر`;
+}
+
+/* ================= HIDDEN STAR (Easter Egg) ================= */
+function spawnHiddenStar(){
+  // پاک کردن ستاره قبلی
+  document.querySelectorAll('.hidden-star').forEach(s=>s.remove());
+  
+  // خیلی کم شانس نشون دادن
+  if(Math.random() > 0.7) return;
+  // فاصله زمانی
+  if(now() - (state._lastStarTime||0) < 45000) return;
+  
+  const star = document.createElement('div');
+  star.className = 'hidden-star';
+  star.textContent = '🌟';
+  star.title = 'پیدام کن!';
+  star.style.top = (15 + Math.random()*60) + '%';
+  star.style.left = (10 + Math.random()*80) + '%';
+  star.onclick = function(){
+    this.remove();
+    findHiddenStar();
+  };
+  document.querySelector('.main').appendChild(star);
+  state._lastStarTime = now();
+}
+
+function findHiddenStar(){
+  const rewards = [
+    {type:'coupon', value:15, label:'۱۵٪ تخفیف ویژه'},
+    {type:'coupon', value:20, label:'۲۰٪ تخفیف ویژه'},
+    {type:'points', value:200, label:'۲۰۰ امتیاز'},
+    {type:'points', value:300, label:'۳۰۰ امتیاز'}
+  ];
+  const r = rewards[Math.floor(Math.random()*rewards.length)];
+  fireConfetti();
+  
+  if(r.type==='coupon'){
+    const code = 'STAR'+r.value+'-'+Math.random().toString(36).slice(2,6).toUpperCase();
+    addUserCoupon({code, type:'percent', value:r.value, minTotal:0, active:true});
+    addMessage(`🌟 <strong>آفرین! ستاره مخفی رو پیدا کردی!</strong><br><br>🎁 جایزه: <strong>${r.label}</strong><br><br>🎟 کد: <strong style="direction:ltr;display:inline-block;">${code}</strong><br><br>هر روز یه ستاره جدید بگرد! 🔍`, 'bot');
+  } else {
+    addPoints(r.value,'star');
+    addMessage(`🌟 <strong>آفرین! ستاره مخفی رو پیدا کردی!</strong><br><br>⭐ جایزه: <strong>${r.label}</strong> به حساب شما اضافه شد!`, 'bot');
+  }
+  state.hiddenStarFound = state.hiddenStarFound||[];
+  state.hiddenStarFound.push(now());
+  saveState();
+  toast('🌟 جایزه گرفتی!');
+}
+
+// هر ۳۰ ثانیه چک کن
+setInterval(()=>{
+  if(document.querySelector('.main') && !document.querySelector('.hidden-star')){
+    spawnHiddenStar();
+  }
+}, 30000);
+
+/* ================= MINI PROFILE ================= */
+function updateMiniProfile(){
+  const u = currentUser();
+  if(!u)return;
+  const lvl = getUserLevel();
+  document.getElementById('miniUserName').textContent = u.name || 'مهمان عزیز';
+  document.getElementById('miniUserScore').textContent = formatNum(u.points) + ' امتیاز';
+  document.getElementById('miniLvlIcon').textContent = lvl.icon;
+  const next = getNextLevel();
+  let progress = 100;
+  if(next){
+    const prev = lvl.min;
+    const range = next.min - prev;
+    progress = Math.min(100, Math.floor((u.points-prev)/range*100));
+  }
+  document.getElementById('miniProgressBar').style.width = progress+'%';
+}
+
+/* ================= ADMIN ================= */
+let isLoggedIn = false;
+window.openAdminLogin = function(){
+  if(isLoggedIn){document.getElementById('adminPanel').classList.add('open');refreshAdmin();}
+  else document.getElementById('loginOverlay').classList.add('open');
+};
+window.closeLogin = function(){document.getElementById('loginOverlay').classList.remove('open');};
+window.closeAdmin = function(){document.getElementById('adminPanel').classList.remove('open');};
+window.tryLogin = function(){
+  const p = document.getElementById('loginPass').value;
+  if(simpleHash(p)===state.passwordHash){
+    isLoggedIn=true;
+    document.getElementById('loginOverlay').classList.remove('open');
+    document.getElementById('adminPanel').classList.add('open');
+    document.getElementById('loginError').textContent='';
     refreshAdmin();
-    toast('↺ بازنشانی شد');
+    toast('✅ خوش آمدید');
+  } else {
+    document.getElementById('loginError').textContent='❌ رمز اشتباه';
   }
+};
+window.switchTab = function(name){
+  document.querySelectorAll('.admin-tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===name));
+  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.toggle('active',p.dataset.pane===name));
+  refreshAdmin();
+};
 
-  /* ================= Auto Lock ================= */
-  function updateActivity() { state.lastActivity = Date.now(); }
-  document.addEventListener('mousemove', updateActivity);
-  document.addEventListener('keydown', updateActivity);
-  document.addEventListener('click', updateActivity);
-  document.addEventListener('touchstart', updateActivity);
+function refreshAdmin(){
+  document.getElementById('statUsers').textContent = state.users.length;
+  document.getElementById('statOrders').textContent = state.orders.length;
+  document.getElementById('statNewOrders').textContent = state.orders.filter(o=>o.status==='new').length;
+  document.getElementById('statProducts').textContent = state.products.length;
+  document.getElementById('statWheelSpins').textContent = state.wheelSpins.length;
+  document.getElementById('statBargains').textContent = state.bargainHistory?.filter(m=>m.sender==='user').length||0;
+  
+  const newO = state.orders.filter(o=>o.status==='new').length;
+  const badge = document.getElementById('newOrdersBadge');
+  if(newO>0){badge.textContent=newO;badge.style.display='inline';}else badge.style.display='none';
+  
+  document.getElementById('usersBadge').textContent = state.users.length;
+  document.getElementById('usersBadge').style.display = state.users.length ? 'inline' : 'none';
+  
+  renderOrdersAdmin();
+  renderProductsAdmin();
+  renderKnowledgeAdmin();
+  renderUsersAdmin();
+  renderCouponsAdmin();
+  renderPrizesAdmin();
+  renderAnalyticsAdmin();
+  fillSettings();
+}
 
-  setInterval(() => {
-    if (isLoggedIn && Date.now() - state.lastActivity > LOCK_TIMEOUT) {
-      isLoggedIn = false;
-      adminPanel.classList.remove('open');
-      toast('🔒 پنل به دلیل بی‌کاری قفل شد');
-    }
-  }, 60000);
+function renderOrdersAdmin(){
+  const list = document.getElementById('ordersList');
+  if(!state.orders.length){list.innerHTML='<div class="empty-state"><span class="emoji">📦</span></div>';return;}
+  const statusMap={new:{l:'جدید',c:'status-new'},processing:{l:'پردازش',c:'status-processing'},done:{l:'انجام شده',c:'status-done'},cancelled:{l:'لغو',c:'status-cancelled'}};
+  list.innerHTML = state.orders.map(o=>{
+    const st = statusMap[o.status]||statusMap.new;
+    return `<div class="order-card ${o.status==='new'?'new':''}">
+      <div class="order-header">
+        <div><div class="order-id">📋 ${o.id}</div><div style="font-size:10.5px;color:var(--text-muted);margin-top:3px;">${new Date(o.createdAt).toLocaleString('fa-IR')}</div></div>
+        <span class="order-status ${st.c}">${st.l}</span>
+      </div>
+      <div style="font-size:11.5px;color:var(--text-muted);margin-bottom:8px;line-height:1.7;">
+        👤 <strong style="color:var(--text-light);">${escapeHtml(o.customer.name)}</strong> • 📞 ${escapeHtml(o.customer.phone)} • 🏙 ${escapeHtml(o.customer.city)}
+        <br>📍 ${escapeHtml(o.customer.address)}
+      </div>
+      <div class="order-items">
+        ${o.items.map(i=>`<div class="order-item-row"><span>${i.emoji||'🌸'} ${escapeHtml(i.name)} × ${i.qty}</span><span>${formatPrice(i.price*i.qty)}</span></div>`).join('')}
+        ${o.discount?`<div class="order-item-row" style="color:var(--green);"><span>🎁 تخفیف</span><span>− ${formatPrice(o.discount)}</span></div>`:''}
+        <div class="order-total">${formatPrice(o.total)}</div>
+      </div>
+      <div class="order-actions">
+        ${o.status==='new'?`<button class="btn btn-primary" onclick="setOrderStatus('${o.id}','processing')">▶ پردازش</button>`:''}
+        ${o.status==='processing'?`<button class="btn btn-green" onclick="setOrderStatus('${o.id}','done')">✓ تکمیل</button>`:''}
+        ${o.status!=='cancelled'&&o.status!=='done'?`<button class="btn btn-danger" onclick="setOrderStatus('${o.id}','cancelled')">✕</button>`:''}
+        <button class="btn btn-danger" onclick="deleteOrder('${o.id}')">🗑</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+window.setOrderStatus = (id,s)=>{const o=state.orders.find(x=>x.id===id);if(o){o.status=s;saveState();refreshAdmin();}};
+window.deleteOrder = id=>{if(!confirm('حذف؟'))return;state.orders=state.orders.filter(o=>o.id!==id);saveState();refreshAdmin();};
 
-  /* ================= PWA Install ================= */
-  let deferredPrompt = null;
-  const installBanner = document.getElementById('installBanner');
+function renderProductsAdmin(){
+  const list = document.getElementById('productsAdminList');
+  if(!state.products.length){list.innerHTML='<div class="empty-state"><span class="emoji">🛍</span></div>';return;}
+  list.innerHTML = state.products.map(p=>`
+    <div class="p-admin-card">
+      <div class="p-admin-img">${p.image?`<img src="${p.image}">`:(p.emoji||'🌸')}</div>
+      <div class="p-admin-info">
+        <h4>${escapeHtml(p.name)} ${!p.active?'⛔':''}</h4>
+        <p>${escapeHtml(p.unit||'')} • <span class="p-admin-price">${formatPrice(p.price)}</span></p>
+      </div>
+      <div class="item-actions">
+        <button class="btn btn-ghost btn-sm" onclick="openProductModal('${p.id}')">✏️</button>
+        <button class="btn btn-danger btn-sm" onclick="deleteProduct('${p.id}')">🗑</button>
+      </div>
+    </div>`).join('');
+}
 
-  window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    // فقط اگه قبلاً نصب نکرده یا بسته نشده باشه
-    if (localStorage.getItem('installDismissed') !== 'yes') {
-      setTimeout(() => installBanner.classList.add('show'), 3000);
-    }
+let currentProductImage = null;
+window.openProductModal = function(id){
+  const item = id ? state.products.find(p=>p.id===id) : null;
+  currentProductImage = item ? item.image : null;
+  const preview = currentProductImage ? `<img src="${currentProductImage}">` : (item ? (item.emoji||'🌸') : '🌸');
+  openModal(item?'✏️ ویرایش':'➕ افزودن', `
+    <div class="form-group"><label>نام محصول *</label><input type="text" id="mName" value="${item?escapeHtml(item.name):''}"></div>
+    <div class="form-group"><label>ایموجی</label><input type="text" id="mEmoji" maxlength="4" value="${item?item.emoji:'🌸'}"></div>
+    <div class="form-group"><label>عکس محصول</label>
+      <div class="img-upload">
+        <div class="img-preview" id="imgPreview">${preview}</div>
+        <div class="img-upload-actions">
+          <button onclick="document.getElementById('pImg').click()">📁 انتخاب عکس</button>
+          <button class="remove-img" onclick="removeProductImage()">🗑 حذف عکس</button>
+        </div>
+      </div>
+      <input type="file" id="pImg" accept="image/*" style="display:none" onchange="handleProductImage(this)">
+    </div>
+    <div class="form-group"><label>قیمت *</label><input type="number" id="mPrice" value="${item?item.price:''}"></div>
+    <div class="form-group"><label>واحد</label><input type="text" id="mUnit" value="${item?escapeHtml(item.unit||''):''}"></div>
+    <div class="form-group"><label>توضیحات</label><textarea id="mDesc" style="min-height:60px;">${item?escapeHtml(item.desc||''):''}</textarea></div>
+    <div class="form-group"><label><input type="checkbox" id="mActive" ${!item||item.active?'checked':''} style="width:auto;margin-left:6px;"> فعال</label></div>
+  `, ()=>{
+    const name = document.getElementById('mName').value.trim();
+    const price = parseInt(document.getElementById('mPrice').value);
+    if(!name||isNaN(price)){toast('⚠️ نام و قیمت الزامی');return false;}
+    const data = {
+      name, emoji: document.getElementById('mEmoji').value.trim()||'🌸',
+      image: currentProductImage, price,
+      unit: document.getElementById('mUnit').value.trim(),
+      desc: document.getElementById('mDesc').value.trim(),
+      active: document.getElementById('mActive').checked
+    };
+    if(item)Object.assign(item,data);
+    else state.products.push({id:'p'+Date.now(),...data});
+    saveState();refreshAdmin();toast('✅');
   });
+};
+window.handleProductImage = function(input){
+  const f = input.files?.[0];
+  if(!f)return;
+  const r = new FileReader();
+  r.onload = e=>{
+    const img = new Image();
+    img.onload = ()=>{
+      const canvas = document.createElement('canvas');
+      let w=img.width,h=img.height,MAX=600;
+      if(w>h){if(w>MAX){h=h*MAX/w;w=MAX;}}else{if(h>MAX){w=w*MAX/h;h=MAX;}}
+      canvas.width=w;canvas.height=h;
+      canvas.getContext('2d').drawImage(img,0,0,w,h);
+      currentProductImage = canvas.toDataURL('image/jpeg',0.82);
+      document.getElementById('imgPreview').innerHTML = `<img src="${currentProductImage}">`;
+    };
+    img.src = e.target.result;
+  };
+  r.readAsDataURL(f);
+};
+window.removeProductImage = ()=>{currentProductImage=null;document.getElementById('imgPreview').innerHTML=document.getElementById('mEmoji')?.value||'🌸';};
+window.deleteProduct = id=>{if(!confirm('حذف؟'))return;state.products=state.products.filter(p=>p.id!==id);saveState();refreshAdmin();};
 
-  document.getElementById('installBtn').addEventListener('click', async () => {
-    if (!deferredPrompt) return;
-    deferredPrompt.prompt();
-    const { outcome } = await deferredPrompt.userChoice;
-    if (outcome === 'accepted') toast('✅ اپ نصب شد!');
-    deferredPrompt = null;
-    installBanner.classList.remove('show');
+function renderKnowledgeAdmin(){
+  const list = document.getElementById('knowledgeList');
+  if(!state.knowledge.length){list.innerHTML='<div class="empty-state">خالی</div>';return;}
+  list.innerHTML = state.knowledge.map(k=>`
+    <div class="item-card">
+      <div class="item-header">
+        <div class="item-keywords">${k.keywords.map(kw=>`<span class="kw-tag">${escapeHtml(kw)}</span>`).join('')}</div>
+        <div class="item-actions">
+          <button class="btn btn-ghost btn-sm" onclick="openKnowledgeModal('${k.id}')">✏️</button>
+          <button class="btn btn-danger btn-sm" onclick="deleteKnowledge('${k.id}')">🗑</button>
+        </div>
+      </div>
+      <div class="item-answer">${(k.answer||'').replace(/<[^>]+>/g,'').substring(0,120)}</div>
+    </div>`).join('');
+}
+window.openKnowledgeModal = function(id){
+  const item = id ? state.knowledge.find(k=>k.id===id) : null;
+  openModal(item?'✏️':'➕', `
+    <div class="form-group"><label>کلمات کلیدی (هر خط یکی)</label><textarea id="mKw" style="min-height:80px;">${item?escapeHtml(item.keywords.join('\n')):''}</textarea></div>
+    <div class="form-group"><label>پاسخ (HTML مجاز)</label><textarea id="mAns" style="min-height:120px;">${item?escapeHtml(item.answer):''}</textarea></div>
+  `, ()=>{
+    const kws = document.getElementById('mKw').value.trim();
+    const ans = document.getElementById('mAns').value.trim();
+    if(!kws||!ans){toast('⚠️');return false;}
+    const keywords = kws.split('\n').map(s=>s.trim()).filter(Boolean);
+    if(item){item.keywords=keywords;item.answer=ans;}
+    else state.knowledge.push({id:'k'+Date.now(),keywords,answer:ans});
+    saveState();refreshAdmin();toast('✅');
   });
+};
+window.deleteKnowledge = id=>{if(!confirm('حذف؟'))return;state.knowledge=state.knowledge.filter(k=>k.id!==id);saveState();refreshAdmin();};
 
-  document.getElementById('closeBanner').addEventListener('click', () => {
-    installBanner.classList.remove('show');
-    localStorage.setItem('installDismissed', 'yes');
+function renderUsersAdmin(){
+  const list = document.getElementById('usersList');
+  if(!state.users.length){list.innerHTML='<div class="empty-state">—</div>';return;}
+  list.innerHTML = state.users.sort((a,b)=>b.points-a.points).map((u,i)=>{
+    const lvl = CONFIG.levels.slice().reverse().find(l=>u.points>=l.min)||CONFIG.levels[0];
+    return `<div class="item-card">
+      <div class="item-header">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:36px;height:36px;border-radius:10px;background:${lvl.color}25;border:1px solid ${lvl.color}55;display:flex;align-items:center;justify-content:center;font-size:18px;">${lvl.icon}</div>
+          <div>
+            <div style="font-size:13px;font-weight:700;color:var(--text-light);">${u.name?escapeHtml(u.name):'(بی‌نام #'+(i+1)+')'}</div>
+            <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">سطح: ${lvl.name} • ${formatNum(u.points)} امتیاز</div>
+          </div>
+        </div>
+        <div style="text-align:left;font-size:11px;color:var(--text-muted);">
+          🛍 ${u.orderCount||0} سفارش<br>
+          💰 ${formatPrice(u.totalSpent||0)}
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderCouponsAdmin(){
+  const list = document.getElementById('couponsList');
+  if(!state.coupons.length){list.innerHTML='<div class="empty-state"><span class="emoji">🏷</span></div>';return;}
+  list.innerHTML = state.coupons.map(c=>`
+    <div class="item-card" style="display:flex;justify-content:space-between;align-items:center;">
+      <div>
+        <div style="font-family:monospace;font-size:14px;font-weight:800;color:var(--saffron-gold);direction:ltr;letter-spacing:2px;">${escapeHtml(c.code)}</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">${c.type==='percent'?c.value+'٪':formatPrice(c.value)} • استفاده: ${c.usedCount||0}${c.usageLimit?'/'+c.usageLimit:''}</div>
+      </div>
+      <button class="btn btn-danger btn-sm" onclick="deleteCoupon('${c.id}')">🗑</button>
+    </div>`).join('');
+}
+window.openCouponModal = function(){
+  openModal('➕ کوپن جدید', `
+    <div class="form-group"><label>کد</label><input type="text" id="cCode" style="text-transform:uppercase;direction:ltr;"></div>
+    <div class="form-group"><label>نوع</label><select id="cType"><option value="percent">درصدی</option><option value="fixed">مبلغ ثابت</option></select></div>
+    <div class="form-group"><label>مقدار</label><input type="number" id="cValue"></div>
+    <div class="form-group"><label>حداقل خرید</label><input type="number" id="cMin" value="0"></div>
+  `, ()=>{
+    const code = document.getElementById('cCode').value.trim().toUpperCase();
+    const value = parseInt(document.getElementById('cValue').value);
+    if(!code||isNaN(value)){toast('⚠️');return false;}
+    state.coupons.push({id:'cp'+Date.now(),code,type:document.getElementById('cType').value,value,minTotal:parseInt(document.getElementById('cMin').value)||0,active:true,usageLimit:0,usedCount:0});
+    saveState();refreshAdmin();toast('✅');
   });
+};
+window.deleteCoupon = id=>{if(!confirm('حذف؟'))return;state.coupons=state.coupons.filter(c=>c.id!==id);saveState();refreshAdmin();};
 
-  window.addEventListener('appinstalled', () => {
-    installBanner.classList.remove('show');
-    toast('🎉 اپ با موفقیت نصب شد');
+function renderPrizesAdmin(){
+  const list = document.getElementById('prizesList');
+  const prizes = state.wheelPrizes || CONFIG.wheelPrizes;
+  list.innerHTML = prizes.map((p,i)=>`
+    <div class="item-card" style="display:flex;justify-content:space-between;align-items:center;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="font-size:26px;">${p.icon}</div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">${escapeHtml(p.label)}</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">${p.type} • وزن: ${p.weight||1}</div>
+        </div>
+      </div>
+      <button class="btn btn-ghost btn-sm" onclick="editPrize(${i})">✏️</button>
+    </div>`).join('');
+}
+window.editPrize = function(i){
+  const p = state.wheelPrizes[i];
+  openModal('✏️ ویرایش جایزه', `
+    <div class="form-group"><label>نام</label><input type="text" id="pLabel" value="${escapeHtml(p.label)}"></div>
+    <div class="form-group"><label>ایموجی</label><input type="text" id="pIcon" maxlength="4" value="${p.icon}"></div>
+    <div class="form-group"><label>نوع</label>
+      <select id="pType">
+        <option value="coupon" ${p.type==='coupon'?'selected':''}>کد تخفیف</option>
+        <option value="points" ${p.type==='points'?'selected':''}>امتیاز</option>
+        <option value="freeship" ${p.type==='freeship'?'selected':''}>ارسال رایگان</option>
+        <option value="nothing" ${p.type==='nothing'?'selected':''}>پوچ</option>
+      </select>
+    </div>
+    <div class="form-group"><label>مقدار</label><input type="number" id="pValue" value="${p.value||0}"></div>
+    <div class="form-group"><label>وزن (شانس)</label><input type="number" id="pWeight" value="${p.weight||1}"></div>
+  `, ()=>{
+    state.wheelPrizes[i] = {
+      id:p.id,
+      label: document.getElementById('pLabel').value.trim(),
+      icon: document.getElementById('pIcon').value.trim()||'🎁',
+      type: document.getElementById('pType').value,
+      value: parseInt(document.getElementById('pValue').value)||0,
+      weight: parseInt(document.getElementById('pWeight').value)||1
+    };
+    saveState();refreshAdmin();renderWheel();toast('✅');
   });
+};
 
-  /* ================= Service Worker ================= */
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('service-worker.js').catch(err => {
-        console.log('SW registration failed:', err);
-      });
+function renderAnalyticsAdmin(){
+  const top = Object.values(state.analytics).sort((a,b)=>b.count-a.count).slice(0,10);
+  const topEl = document.getElementById('topQuestionsList');
+  if(!top.length)topEl.innerHTML='<div class="empty-state">داده‌ای نیست</div>';
+  else topEl.innerHTML = top.map((q,i)=>`
+    <div class="question-row">
+      <div class="question-rank ${i<3?'top3':''}">${i+1}</div>
+      <div class="question-text">${escapeHtml(q.text)}</div>
+      <div class="question-count">${q.count}</div>
+    </div>`).join('');
+  
+  const un = Object.values(state.analytics).filter(q=>!q.answered).sort((a,b)=>b.count-a.count).slice(0,10);
+  const unEl = document.getElementById('unansweredList');
+  if(!un.length)unEl.innerHTML='<div class="empty-state">✅ همه پاسخ داده شد</div>';
+  else unEl.innerHTML = un.map((q,i)=>`
+    <div class="question-row">
+      <div class="question-rank">${i+1}</div>
+      <div class="question-text">${escapeHtml(q.text)}</div>
+      <div class="question-count">${q.count}</div>
+      <button class="btn btn-primary btn-sm" onclick="addFromAnalytics('${escapeHtml(q.text).replace(/'/g,"\\'")}')">➕</button>
+    </div>`).join('');
+}
+window.addFromAnalytics = function(text){
+  openModal('➕ افزودن به دانشنامه', `
+    <div class="form-group"><label>کلمات کلیدی</label><textarea id="mKw" style="min-height:70px;">${escapeHtml(text)}</textarea></div>
+    <div class="form-group"><label>پاسخ</label><textarea id="mAns" style="min-height:100px;"></textarea></div>
+  `, ()=>{
+    const kws = document.getElementById('mKw').value.trim();
+    const ans = document.getElementById('mAns').value.trim();
+    if(!kws||!ans){toast('⚠️');return false;}
+    state.knowledge.push({id:'k'+Date.now(),keywords:kws.split('\n').map(s=>s.trim()).filter(Boolean),answer:ans});
+    const key = text.trim().toLowerCase();
+    if(state.analytics[key])state.analytics[key].answered=true;
+    saveState();refreshAdmin();toast('✅');
+  });
+};
+
+function fillSettings(){
+  const s = state.settings||{};
+  document.getElementById('setWhatsapp').value = s.whatsapp||'';
+  document.getElementById('setSpeed').value = s.speed||1000;
+  document.getElementById('setPointsPerBuy').value = s.pointsPerBuy||CONFIG.pointsPerBuy;
+  document.getElementById('setWelcomePoints').value = s.welcomePoints||CONFIG.welcomePoints;
+}
+window.saveSettings = function(){
+  state.settings = state.settings||{};
+  state.settings.whatsapp = document.getElementById('setWhatsapp').value.trim().replace(/[^0-9]/g,'');
+  state.settings.speed = parseInt(document.getElementById('setSpeed').value)||1000;
+  state.settings.pointsPerBuy = parseInt(document.getElementById('setPointsPerBuy').value)||1;
+  state.settings.welcomePoints = parseInt(document.getElementById('setWelcomePoints').value)||50;
+  CONFIG.pointsPerBuy = state.settings.pointsPerBuy;
+  CONFIG.welcomePoints = state.settings.welcomePoints;
+  saveState();toast('✅ ذخیره شد');
+};
+window.changePassword = function(){
+  const oldP = document.getElementById('oldPass').value;
+  const newP = document.getElementById('newPass').value;
+  if(simpleHash(oldP)!==state.passwordHash){toast('❌ رمز فعلی اشتباه');return;}
+  if(newP.length<6){toast('⚠️ حداقل ۶ کاراکتر');return;}
+  state.passwordHash = simpleHash(newP);
+  saveState();
+  document.getElementById('oldPass').value='';
+  document.getElementById('newPass').value='';
+  toast('✅ رمز تغییر کرد');
+};
+
+/* ================= MODAL ================= */
+function openModal(title, body, onSave){
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('modalBody').innerHTML = body;
+  document.getElementById('modalSave').onclick = ()=>{if(onSave()!==false)closeModal();};
+  document.getElementById('modalOverlay').classList.add('open');
+}
+window.closeModal = ()=>document.getElementById('modalOverlay').classList.remove('open');
+document.getElementById('modalOverlay')?.addEventListener('click',e=>{if(e.target.id==='modalOverlay')closeModal();});
+
+/* ================= CHECKOUT ================= */
+window.openCheckoutModal = function(){
+  if(!state.cart.length){toast('سبد خالیه');return;}
+  const tot = calcTotals();
+  openModal('📝 ثبت سفارش', `
+    <div style="background:rgba(244,180,0,0.08);border:1px solid var(--border-gold);border-radius:12px;padding:12px;margin-bottom:14px;font-size:12.5px;">
+      <div style="display:flex;justify-content:space-between;margin-bottom:5px;"><span>تعداد:</span><strong>${state.cart.reduce((s,c)=>s+c.qty,0)}</strong></div>
+      ${tot.discount>0?`<div style="display:flex;justify-content:space-between;color:var(--green);margin-bottom:5px;"><span>تخفیف:</span><strong>− ${formatPrice(tot.discount)}</strong></div>`:''}
+      <div style="display:flex;justify-content:space-between;color:var(--saffron-gold);font-weight:700;font-size:14px;"><span>جمع:</span><span>${formatPrice(tot.total)}</span></div>
+    </div>
+    <div class="form-group"><label>نام و نام خانوادگی *</label><input type="text" id="coName" value="${escapeHtml(state.currentUser?.name||'')}"></div>
+    <div class="form-group"><label>شماره تماس *</label><input type="tel" id="coPhone" placeholder="09123456789" style="direction:ltr;"></div>
+    <div class="form-group"><label>شهر *</label><input type="text" id="coCity"></div>
+    <div class="form-group"><label>آدرس کامل *</label><textarea id="coAddress" style="min-height:60px;"></textarea></div>
+  `, ()=>{
+    const name = document.getElementById('coName').value.trim();
+    const phone = document.getElementById('coPhone').value.trim();
+    const city = document.getElementById('coCity').value.trim();
+    const address = document.getElementById('coAddress').value.trim();
+    if(!name||!phone||!city||!address){toast('⚠️ همه فیلدها الزامی');return false;}
+    
+    const items = state.cart.map(c=>{
+      const p = state.products.find(x=>x.id===c.id);
+      return {id:c.id,name:p.name,price:p.price,qty:c.qty,emoji:p.emoji};
     });
-  }
+    const order = {
+      id:'ORD'+Date.now().toString().slice(-8),
+      customer:{name,phone,city,address},
+      items, subtotal:tot.subtotal, discount:tot.discount, total:tot.total,
+      status:'new', createdAt: now()
+    };
+    state.orders.unshift(order);
+    
+    // آپدیت کاربر
+    if(state.currentUser){
+      if(!state.currentUser.name)state.currentUser.name = name;
+      state.currentUser.orderCount = (state.currentUser.orderCount||0)+1;
+      state.currentUser.totalSpent = (state.currentUser.totalSpent||0)+tot.total;
+      const earned = Math.floor(tot.total/1000)*CONFIG.pointsPerBuy;
+      addPoints(earned,'purchase');
+      updateMiniProfile();
+    }
+    
+    state.cart = [];state.appliedCoupon = null;
+    saveState();updateCartUI();closePanel('cartPanel');
+    
+    // واتساپ
+    const wa = state.settings?.whatsapp;
+    if(wa){
+      const lines = [`🌸 سفارش جدید`,`📋 ${order.id}`,`👤 ${name}`,`📞 ${phone}`,`🏙 ${city}`,`📍 ${address}`,``,`🛍 اقلام:`,
+        ...items.map(i=>`• ${i.emoji||''} ${i.name} × ${i.qty} = ${formatPrice(i.price*i.qty)}`),
+        tot.discount?`🎁 تخفیف: − ${formatPrice(tot.discount)}`:'',
+        ``, `💰 جمع: ${formatPrice(tot.total)}`];
+      window.open(`https://wa.me/${wa}?text=${encodeURIComponent(lines.filter(Boolean).join('\n'))}`,'_blank');
+    }
+    
+    fireConfetti();
+    addMessage(`✅ <strong>سفارش شما ثبت شد!</strong><br><br>📋 کد: <strong>${order.id}</strong><br>💰 مبلغ: <strong>${formatPrice(tot.total)}</strong><br>⭐ امتیاز کسب‌شده: <strong>+${Math.floor(tot.total/1000)*CONFIG.pointsPerBuy}</strong><br><br>به‌زودی با شما تماس می‌گیریم 🌸`, 'bot');
+    toast('🎉 سفارش ثبت شد!');
+  });
+};
 
-  /* ================= Init ================= */
-  loadState();
-  applyTheme();
-  renderNav();
-  renderQuickReplies();
-  addMessage(state.settings.welcome, 'bot', false);
-  userInput.focus();
+/* ================= INPUT ================= */
+document.getElementById('sendBtn').onclick = ()=>sendMessage();
+userInput.addEventListener('keypress', e=>{if(e.key==='Enter')sendMessage();});
+document.getElementById('secretStarBtn').onclick = ()=>{
+  // راهنمایی برای پیدا کردن ستاره
+  addMessage('🌟 <strong>راهنمایی ستاره مخفی:</strong><br><br>بعضی وقتا یه ستاره درخشان 🌟 توی صفحه ظاهر میشه.<br>سریع روش بزن و جایزه بگیر!<br><br>💡 هر ۳۰-۶۰ ثانیه چک کن!', 'bot');
+  spawnHiddenStar();
+};
+document.getElementById('clearChat').onclick = ()=>{
+  if(confirm('گفتگو پاک بشه؟')){
+    chatBody.innerHTML='';
+    state.messages=[];
+    addMessage(getPersonalizedGreeting(),'bot',false);
+  }
+};
+
+/* ================= START ================= */
+loadState();
+if(state.settings){
+  CONFIG.pointsPerBuy = state.settings.pointsPerBuy || CONFIG.pointsPerBuy;
+  CONFIG.welcomePoints = state.settings.welcomePoints || CONFIG.welcomePoints;
+}
+updateMiniProfile();
+addMessage(getPersonalizedGreeting(), 'bot', false);
+updateCartUI();
+
+// خوش‌آمد ویژه بعد از ۳ ثانیه
+setTimeout(()=>{
+  addMessage('🎁 <strong>پیشنهاد امروز!</strong><br><br>🎰 گردونه شانس رایگانه!<br>🤝 چانه‌زن AI آماده‌ست!<br>🌟 یه ستاره مخفی هم قایم شده... پیداش کن!', 'bot');
+}, 3500);
+
+// هر ۵ دقیقه یک بار ستاره چک
+setTimeout(spawnHiddenStar, 8000);
 </script>
 </body>
 </html>
